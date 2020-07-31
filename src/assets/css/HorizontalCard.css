@@ -1,0 +1,18 @@
+.card-image {
+    overflow: hidden;
+    max-width: 50%;
+}
+.card-image img {
+    max-height: 100%;
+}
+.horizontal-left {
+    margin: 100px 40% 100px 100px;
+}
+
+.horizontal-right {
+    margin: 100px 100px 100px 40%;
+}
+
+.card-stacked h1 {
+    margin: 0;
+}
