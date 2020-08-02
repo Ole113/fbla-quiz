@@ -25,4 +25,4 @@ Format Sheet: https://www.fbla-pbl.org/media/Format-Guide-Competitive-Events.pdf
 
 "All data entry must be validated with appropriate user notifications and error messages including the use of required fields."
     - Check that something has been entered in the text field.
-    - If the info entered is wrong us a materialize tooltip to say the info is wrong.
+    - If the info entered is wrong us a tooltip to say the info is wrong.
