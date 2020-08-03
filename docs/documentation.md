@@ -5,3 +5,4 @@ Used Boostrap
 
 
 Picture Attributions:
+Fbla logos: https://www.fbla-pbl.org/cmh/logos-images/

@@ -9,10 +9,10 @@ Format Sheet: https://www.fbla-pbl.org/media/Format-Guide-Competitive-Events.pdf
     - Make answers lowercase when comparing them to DB answers.
     - JSON w/ the question and the answers along with what the question is about.
     - The section will be used to show the user what sections in FBLA they are strong in (for example history) and which they are weak in.
-    - MUST USE FLAT JSON
+    - use XML for datastorage.
 
 "Include at least 4 types of questions (i.e. multiple choice, T/F, fill-in-the-blank, matching, and dropdown, etc.)."
-    - Use Materialize for this
+    - Use Boostrap for this
 
 "Inform the user which questions were correctly answered"
     - Make it so the page doesn't refresh to check the answers.

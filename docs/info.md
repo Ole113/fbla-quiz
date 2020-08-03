@@ -1,2 +1,2 @@
 For components that use state use ES6 Clases but for components that just use props and render use functional components
-For the study section use the Horizontal cards
+For the parallax image it would look really good if there was a fbla image that has the main focus more the left/right (preferably the right) and then you put like a white opacity on top of it.

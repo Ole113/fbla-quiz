@@ -7,6 +7,7 @@ Quiz:
     - When submitting the quiz don't reload the page
     - Make it so you can study individual sections
     - On the output report on the weakest section put next to it a button saying "practice".
+    - Maybe have an option to choose how many questions on the quiz(5 being the lowest).
 
 Study Section:
     - A study section with all the questions where you can practice your skills

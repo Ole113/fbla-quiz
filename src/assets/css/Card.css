@@ -1,0 +1,15 @@
+.card {
+    min-width: 90%;
+}
+
+@media (max-width: 991.98px) {
+    .card { 
+        margin: 50px 15px 35px 15px;
+    }
+}
+
+@media (min-width: 992px) {
+    .card {
+        margin: 100px 40px 75px 40px;
+    }
+}

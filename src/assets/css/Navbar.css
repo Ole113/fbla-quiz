@@ -1,4 +1,13 @@
-/*
-Make the navbar a color that is the theme of the website
-notice on quizlet their theme is blue and the navbar is blue, it stands out in the page, if there's not a common theme use gray(to make it stand out)
-*/
+body, html {
+    overflow-x: hidden;
+}
+
+.navbar-brand img {
+    margin-right: 15px;
+}
+
+.navbar {
+    -webkit-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+}

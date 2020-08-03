@@ -24,7 +24,7 @@ Max Points: Program sequence is logical, error free, and incorporates if-then se
 Main: Program use and navigation
 Max Points: Program use also includes an intelligent feature such as an interactive Q&A
     - Have a forum along with FAQ's
-``
+
 Main: Program results
 Max Points: Program results update dynamically and are error free
     - Don't reload the page when updating the quiz results

@@ -1,0 +1,29 @@
+.footer-copyright {
+    background-color: #004480;
+    padding: 10px;
+}
+
+.page-footer .row {
+    background-color: #00529b;
+    padding: 25px;
+    text-align: center;
+}
+
+.page-footer {
+    color: white;
+}
+
+.logo-image img {
+    width: 80px;
+    height: 80px;
+}
+
+.logo-image h1 {
+    display: inline;
+}
+
+.links a {
+    color: white;
+    display: inline-block;
+    padding-right: 30px;
+}

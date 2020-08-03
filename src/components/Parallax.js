@@ -1,17 +1,9 @@
 import React from "react";
 import "../assets/css/Parallax.css";
 
-/**
- * 
- * @param {Object} props 
- */
-export default function Parallax(props) {
+export default function Parallax() {
 
     return (
-        <div className="parallax-container">
-            <div className="parallax">
-                <img src={props.image} alt="main parallax" />
-            </div>
-        </div>
+        <div className="parallax"></div>
     );
 }
