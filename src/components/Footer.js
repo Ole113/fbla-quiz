@@ -1,30 +1,28 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../assets/css/Footer.css";
 
-/**
- * 
- */
 export default function Footer(props) {
     return (
         <footer className="page-footer">
-            <div className = "row">
-            <div className="col logo-image">
-                    <img src={props.image} alt="" />
-                    <h1>FBLA Quiz</h1>
+            <div className="row">
+                <div className="col logo-image">
+                    <Link to={props.links[0]}>
+                        <img src={props.image} alt="" />
+                        <h1>{props.mainTitle}</h1>
+                    </Link>
                 </div>
             </div>
             <div className="row">
-
                 <div className="col links">
-                    <a href = "index.html">Home</a>
-                    <a href = "quiz.html">Quiz</a>
-                    <a href = "practice.html">Practice</a>
-                    <a href = "qa.html">Q&amp;A</a>
+                    <Link to={props.links[0]}>{props.linkTitles[0]}</Link>
+                    <Link to={props.links[1]}>{props.linkTitles[1]}</Link>
+                    <Link to={props.links[2]}>{props.linkTitles[2]}</Link>
+                    <Link to={props.links[3]}>{props.linkTitles[3]}</Link>
                 </div>
-
             </div>
             <div className="footer-copyright">
-                &copy;2020 FBLA Quiz
+                {props.copyright}
                 {/*darker section with just the copyright on the left side*/}
             </div>
         </footer>

@@ -1,19 +1,30 @@
 import "bootstrap/dist/css/bootstrap.css";
 import React from "react";
-import Navbar from "./components/Navbar.js";
-import Footer from "./components/Footer.js";
-import Parallax from "./components/Parallax.js";
-import Cards from "./components/Cards.js";
+import { Switch, Route } from "react-router-dom";
 
-function App() {
+import Landing from "./pages/Landing.js";
+import Practice from "./pages/Practice"
+import QA from "./pages/QA.js";
+import Quiz from "./pages/Quiz.js";
+import Error from "./pages/Error.js";
+/*
+  Switch tag makes it so that only one Route component can be rendered at one time.
+  
+  Route tags render the specified component when the path is correct.
+	The error pages doesn't use the "exact" parameter so if no other exact 
+	paths have been rendered then as long as the path starts with / (which it always will) then the Error page will be rendered.
+	The error will be from a 404 error page not found.
+*/
+export default function App() {
   return (
     <div className="App">
-      <Navbar image = {require("./assets/images/fblaFlag.png")}/>
-      <Parallax image={require("./assets/images/archs.jpg")} />
-      <Cards images={[require("./assets/images/mountains.jpg"), require("./assets/images/ferns.jpg"), require("./assets/images/desert.jpg")]} contents={["Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum", "content 2", "content 3"]} links={["quiz.html", "practice.html", "qa.html"]} titles={["Quiz", "Practice", "Q&A"]} linkTitles={["Start", "Learn", "Learn More"]}/>
-      <Footer image={require("./assets/images/fblaLogoGray.png")}/>
+      <Switch>
+        <Route component={Landing} exact path="/" />
+        <Route component={Practice} exact path="/practice" />
+        <Route component={QA} exact path="/qa" />
+        <Route component={Quiz} exact path="/quiz" />
+        <Route component={Error} path="/" />
+      </Switch>
     </div>
   );
 }
-
-export default App;

@@ -1,3 +1,4 @@
-Draw out remaining pages and start making the landing page in react.
-
-Finish up the landing page cards, figure out how to add a H1 to the cards w/ text below, position the cards better and ask anthony how he thinks they look
+3. Make the card that goes infront of the parallax
+4. Draw out the other pages
+5. Work on getting the questionParser.html working
+6. Maybe try again to get the landing page card breakpoints to be a little different

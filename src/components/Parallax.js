@@ -1,9 +1,9 @@
 import React from "react";
-import "../assets/css/Parallax.css";
 
-export default function Parallax() {
+export default function Parallax(props) {
+    console.log(props.image)
 
     return (
-        <div className="parallax"></div>
+        <div style = {{backgroundImage: `url(${props.image})`, height: "60em", backgroundAttachment: "fixed", backgroundPosition: "center", backgroundRepeat: "no-repeat", backgroundSize: "cover"}} className="parallax"></div>
     );
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../assets/css/Card.css";
 
 export default function Card(props) {
@@ -8,7 +9,7 @@ export default function Card(props) {
             <div className="card-body">
                 <h5 className="card-title">{props.title}</h5>
                 <p className="card-text">{props.contents}</p>
-                <a href={props.link} className="btn btn-primary">{props.linkTitle}</a>
+                <Link className="btn btn-primary" to={props.links}>{props.linkTitle}</Link>
             </div>
         </div>
     );

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Parser</title>
+</head>
+
+<body>
+    <script>
+        var text, parser, xmlDoc;
+
+        text = "<bookstore><book>" +
+            "<title>Everyday Italian</title>" +
+            "<author>Giada De Laurentiis</author>" +
+            "<year>2005</year>" +
+            "</book></bookstore>";
+
+        parser = new DOMParser();
+        xmlDoc = parser.parseFromString(text, "text/xml");
+
+        console.log(xmlDoc.getElementsByTagName("title")[0].innerHTML);
+    </script>
+    <div></div>
+    <style>
+        div {
+            width: 100%;
+            height: 600px;
+            background: linear-gradient(#64a1e2, #24b7bf);
+        }
+    </style>
+</body>
+
+</html>

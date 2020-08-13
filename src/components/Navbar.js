@@ -1,11 +1,12 @@
 import React from "react";
 import "../assets/css/Navbar.css";
+import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
     return (
         <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
 
-            <a className="navbar-brand" href="index.html">
+            <a className="navbar-brand" href={props.links[0]}>
                 <img src={props.image} width="30" height="30" className="d-inline-block align-top" alt="" />
                 FBLA Quiz
             </a>
@@ -14,17 +15,17 @@ export default function Navbar(props) {
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
-                    <li className="nav-item active">
-                        <a className="nav-link" href="index.html">Home <span className="sr-only">(current)</span></a>
+                    <li className={`nav-item${props.active === "landing" ? " active" : ""}`}>
+                        <Link className="nav-link" to={props.links[0]}>Home<span className="sr-only">(current)</span></Link>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="quiz.html">Quiz</a>
+                    <li className={`nav-item${props.active === "quiz" ? " active" : ""}`}>
+                        <Link className="nav-link" to={props.links[1]}>Quiz</Link>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="practice.html">Practice</a>
+                    <li className={`nav-item${props.active === "practice" ? " active" : ""}`}>
+                        <Link className="nav-link" to={props.links[2]}>Practice</Link>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="qa.html">Q&amp;A</a>
+                    <li className={`nav-item${props.active === "qa" ? " active" : ""}`}>
+                        <Link className="nav-link" to={props.links[3]}>Q&amp;A</Link>
                     </li>
                 </ul>
             </div>

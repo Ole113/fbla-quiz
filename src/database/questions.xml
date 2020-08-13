@@ -1,4 +1,255 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<question catagory = "history">
-    <content>History content</content>
-</question>
+<!-- 
+    Question types:
+        multi: multiple selection answers,
+        single: has only 1 right answer
+        true/false
+-->
+<question_db>
+    <question catagory="history" type="mutli">
+        <content>What are the official colors of FBLA?</content>
+        <answer>Blue and gold</answer>
+    </question>
+    <question catagory="" type="">
+        <content>The FBLA creed contains how many stanzas?</content>
+        <answer>7</answer>
+    </question>
+    <question catagory="" type="">
+        <content>Who is the founder of FBLA?</content>
+        <answer>Hamden L. Forkner in 1937</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What year was the first STATE chapter chartered?</content>
+        <answer>Iowa; 1947</answer>
+    </question>
+    <question catagory="" type="">
+        <content>The first FBLA chapter was chartered where?</content>
+        <answer>Johnson City Tennessee</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What date was the first FBLA CHAPTER chartered?</content>
+        <answer>February 3rd, 1942</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What year and what group purchased the land for the FBLA-PBL National Center?</content>
+        <answer>1981; Conrad N. Hilton foundation</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What are the three words across the top of the FBLA emblem?</content>
+        <answer>Service, education, Progress</answer>
+    </question>
+    <question catagory="" type="">
+        <content>In what year was Phi Beta Lambda created?</content>
+        <answer>1958</answer>
+    </question>
+    <question catagory="" type="">
+        <content>Who was the first executive director of FBLA-PBL?</content>
+        <answer>Dr. Edward Miller</answer>
+    </question>
+    <question catagory="" type="">
+        <content>Who is the Conference Director of FBLA-PBL?</content>
+        <answer>Richard Bowen</answer>
+    </question>
+    <question catagory="" type="">
+        <content>Who is the Director of Membership for FBLA-PBL?</content>
+        <answer>Lisa Frye Smothers</answer>
+    </question>
+    <question catagory="" type="">
+        <content>Where is the National FBLA-PBL Center located?</content>
+        <answer>Reston, Virginia</answer>
+    </question>
+    <question catagory="" type="">
+        <content>Who is the Education Director for FBLA-PBL?</content>
+        <answer>Kelly Scholl</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What year was the groundbreaking for the National Center held?</content>
+        <answer>1990</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What year was the Professional Division created?</content>
+        <answer>1989</answer>
+    </question>
+    <question catagory="" type="">
+        <content>In the absence of the president and vice-president at a regular meeting, who should call
+            the meeting to order?</content>
+        <answer>Secretary</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What symbol on the emblem denotes our belief in democracy, liberty, and the American
+            way of life?</content>
+        <answer>Eagle</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What body is the policy making body for national FBLA-PBL, Inc.?</content>
+        <answer>National Board of Directors</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What do the initials NBEA stand for?</content>
+        <answer>National Business Education Association</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What are the four divisions of FBLA-PBL?</content>
+        <answer>FBLA-Middle Level, FBLA, PBL, and
+            Professional Division</answer>
+    </question>
+    <question catagory="" type="">
+        <content>How is FBLA-PBL, Inc. primarily funded?</content>
+        <answer>Membership dues</answer>
+    </question>
+    <question catagory="" type="">
+        <content>The largest room at the National Center is the Conference room. It was a gift from what
+            state?</content>
+        <answer>Arkansas</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What do the initials USDE stand for?</content>
+        <answer>United States Department of Education</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What do the initials LIFT in Mission LIFT stand for?</content>
+        <answer>Leading Into the Future Together</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What is the name of the national publication for FBLA and FBLA-Middle Level members?</content>
+        <answer>Tomorrow's Business Leader</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What is the national publication for FBLA and FBLA-Middle level advisers called?</content>
+        <answer>Hotline</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What is the name of the publication that each local chapter receives that contains all the information about FBLA—national constitution and bylaws, national programs, national
+            organization, etc.?</content>
+        <answer>Chapter Management Handbook</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What is the national program called that encourages chapters from all divisions to team
+            up to leverage their potential for success?</content>
+        <answer>Connecting Chapters</answer>
+    </question>
+    <question catagory="" type="">
+        <content>The national recognition program that recognized local FBLA chapters who either maintain or increase their local chapter membership over last year's total?</content>
+        <answer>Membership Achievement Award</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What is meant by the statement that FBLA-PBL membership is unified?</content>
+        <answer>Must be a member at local, state, and national levels</answer>
+    </question>
+    <question catagory="" type="">
+        <content>When is FBLA-PBL week?</content>
+        <answer>Second week in February</answer>
+    </question>
+    <question catagory="" type="">
+        <content>Which officer presides over and conducts meetings according to Parliamentary Procedure?</content>
+        <answer>President</answer>
+    </question>
+    <question catagory="" type="">
+        <content>When is a local chapter considered inactive?</content>
+        <answer>After failing to pay dues for one year</answer>
+    </question>
+    <question catagory="" type="">
+        <content>There are how many FBLA goals?</content>
+        <answer>9</answer>
+    </question>
+    <question catagory="" type="">
+        <content>The national dues for FBLA are how much annually?</content>
+        <answer>$6.00</answer>
+    </question>
+    <question catagory="" type="">
+        <content>Excluding the three division presidents, what is the term of office for National Board of Director members?</content>
+        <answer>Three years</answer>
+    </question>
+    <question catagory="" type="">
+        <content>Who is the FBLA-PBL Communications Coordinator?</content>
+        <answer>Kamal Clark</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What officer counts the votes and then records them during an election?</content>
+        <answer>Secretary</answer>
+    </question>
+    <question catagory="" type="">
+        <content>Who determines national dues?</content>
+        <answer>National Board of Directors</answer>
+    </question>
+    <question catagory="" type="">
+        <content>Which month is National Education for Business month?</content>
+        <answer>November</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What is the official parliamentary procedure reference record for FBLA?</content>
+        <answer>Robert's Rules of Order, Newly Revised</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What does the initials NASSP stand for?</content>
+        <answer>National Association of Secondary School Principals</answer>
+    </question>
+    <question catagory="" type="">
+        <content>A community service project that focuses FBLA-PBL members on practicing leadership and management skills they have learned to raise funds and awareness for the March of Dimes.</content>
+        <answer>Mission LIFT</answer>
+    </question>
+    <question catagory="" type="">
+        <content>Who needs to approve a new chapter application before it is forwarded to the National office?</content>
+        <answer>State chairman</answer>
+    </question>
+    <question catagory="" type="">
+        <content>How many administrative regions does National FBLA-PBL have?</content>
+        <answer>Five</answer>
+    </question>
+    <question catagory="" type="">
+        <content>How long does the FBLA-PBL Board of Directors Chairman serve in that office?</content>
+        <answer>One Year</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What year did FBLA gain independent status?</content>
+        <answer>1969</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What year was FBLA-Middle Level division established at the national level?</content>
+        <answer>1994</answer>
+    </question>
+    <question catagory="" type="">
+        <content>When is American Enterprise Day observed each year?</content>
+        <answer>November 15</answer>
+    </question>
+    <question catagory="" type="">
+        <content>FBLA-PBL Week is planned every February to coincide with what other celebration?</content>
+        <answer>National Career and Technical Education Week</answer>
+    </question>
+    <question catagory="" type="">
+        <content>The national event that recognizes FBLA chapters that successfully implement a project to serve the citizens of their community.</content>
+        <answer>Community service Project</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What officer should appoint the committee chairman?</content>
+        <answer>President</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What is the national recognition program that recognizes local chapters who recruit 100% of a single course as chapter members called?</content>
+        <answer>100% Class Participation Award</answer>
+    </question>
+    <question catagory="" type="">
+        <content>The year national FBLA-PBL membership topped the 200,000 mark for the first time?</content>
+        <answer>1987</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What organization sponsored FBLA before it gained its independent status?</content>
+        <answer>National Council for Business Education (now known as National Business Education Association—FBLA)</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What is the national event that recognizes FBLA chapters that successfully implement an education program to promote free enterprise?</content>
+        <answer>American Enterprise Project</answer>
+    </question>
+    <question catagory="" type="">
+        <content>The national program that allows FBLA members to invest a hypothetical $100,000 in NASDAQ, AMEX, and NYSE-listed common stock is called?</content>
+        <answer>Stock Market Game</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What is FBLA's Membership year?</content>
+        <answer>August 1- July 31</answer>
+    </question>
+    <question catagory="" type="">
+        <content>What are the Five Regions of FBLA?</content>
+        <answer>Western, Mountain Plains, North Central, Southern and Eastern</answer>
+    </question>
+</question_db>

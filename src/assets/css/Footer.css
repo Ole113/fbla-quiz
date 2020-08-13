@@ -1,16 +1,20 @@
 .footer-copyright {
     background-color: #004480;
-    padding: 10px;
+    color: white;
+    padding: 10px 0 10px 20px;
 }
 
 .page-footer .row {
-    background-color: #00529b;
     padding: 25px;
     text-align: center;
 }
 
-.page-footer {
+.page-footer a {
     color: white;
+}
+
+.page-footer {
+    background-color: #00529b;
 }
 
 .logo-image img {
@@ -22,8 +26,10 @@
     display: inline;
 }
 
+.logo-image a {
+    text-decoration: none;
+}
+
 .links a {
-    color: white;
-    display: inline-block;
-    padding-right: 30px;
+    padding: 0 15px 0 15px;
 }
