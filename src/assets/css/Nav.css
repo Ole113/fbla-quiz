@@ -1,0 +1,60 @@
+.cta-row {
+    position: absolute;
+    top: 10%;
+}
+
+.nav-card {
+    padding: 40px 40px 200px 40px;
+    margin: 0 200px 0 -150px;
+    border: 0;
+    height: 100%;
+    -webkit-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+.nav-tabs a {
+    color: blue;
+}
+
+.tab-pane {
+    padding: 20px 20px 0 20px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 17px;
+}
+
+.nav-tabs {
+    font-size: 15px;
+}
+
+.tab-pane button {
+    font-size: 15px;
+}
+.main-btn {
+    font-weight: 600;
+    background: linear-gradient(to right, #aaffa9, #11ffbd); 
+    color: white;
+    width: 180px;
+    height: 60px;
+    border-radius: 50px;
+    border: none;
+    font-size: 25px;
+}
+
+.main-btn:hover {
+    opacity: 0.9;
+}
+.cta {
+    color: white;
+    margin: 0 0 0 230px;
+}
+
+.cta h1 {
+    font-size: 110px;
+    font-family: "Kanit", sans-serif;
+}
+
+.tab-pane h5 {
+    padding-bottom: 10px;
+    font-size: 25px;
+}

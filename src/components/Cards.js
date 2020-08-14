@@ -4,7 +4,7 @@ import Card from "./Card.js";
 
 export default function Cards(props) {
     return (
-        <div className="row card-group">
+        <div id = "learnMore" className="row card-group">
             <div className="col-lg-4">
                 <Card links = {props.links[0]} image = {props.images[0]} title = {props.titles[0]} contents = {props.contents[0]} linkTitle = {props.linkTitles[0]}/>
             </div>

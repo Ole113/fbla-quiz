@@ -1,29 +1,29 @@
 @media (max-width: 575.98px) {
     .card {
-        margin: 65px 20px 40px 20px;
+        margin: 0 20px 40px 20px;
     }
 }
 
 @media (min-width: 576px) {
     .card {
-        margin: 80px 40px 50px 40px;
+        margin: 0 40px 50px 40px;
     }
 }
 
 @media (min-width: 768px) {
     .card { 
-        margin: 100px 80px 100px 80px;
+        margin: 0 80px 100px 80px;
     }
 }
 
 @media (min-width: 992px) {
     .card {
-        margin: 100px 12.5px 75px 12.5px;
+        margin: 0 12.5px 75px 12.5px;
     }
 }
 
 @media (min-width: 1200px) {
     .card {
-        margin: 100px 30px 100px 30px;
+        margin: 0 30px 100px 30px;
     }
 }

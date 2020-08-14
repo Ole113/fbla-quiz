@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
     return (
-        <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light">
+        <nav className="navbar fixed-top navbar-expand-lg navbar-custom">
 
             <a className="navbar-brand" href={props.links[0]}>
                 <img src={props.image} width="30" height="30" className="d-inline-block align-top" alt="" />

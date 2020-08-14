@@ -1,0 +1,19 @@
+#gradient {
+    width: 100%;
+    height: 850px;
+    background: linear-gradient(
+        rgb(53, 73, 206, 0.3), 
+        rgb(47, 52, 154, 0.3)
+    ),
+    url("../images/test.jpg");
+    background-repeat: no-repeat;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 60%, 0% 76%);
+}
+
+@media(min-width: 1378px) {
+    #gradient { background-size: 100%; }
+}
+
+@media (max-width: 1377px) {
+    #gradient { background-size: 100% 100%; }
+}
