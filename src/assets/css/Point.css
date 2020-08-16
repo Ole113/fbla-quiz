@@ -1,0 +1,28 @@
+.point {
+    text-align: center;
+    display: inline-block;
+    width: 250px;
+    color: #595959;
+}
+
+@media(min-width: 917px) {
+    .point {
+        margin: 100px 100px 100px 100px;
+    }
+}
+
+@media (max-width: 916px) {
+    .point {
+        margin: 40px 100px 40px 100px;
+    }
+}
+
+.point h5 {
+    font-size: 25px;
+}
+
+.point img {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 25px;
+}

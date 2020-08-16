@@ -8,7 +8,10 @@
     position: absolute;
     font-size: 18px;
 }
-
+.active-tab {
+    font-weight: bold;
+    color: #e6e6e6;
+}
 .nav-item a, .navbar-brand {
     color: white;
 }
@@ -18,6 +21,6 @@
 }
 
 .navbar-brand:hover, .nav-item a:hover {
-    font-weight: bold;
-    color: white;
+    color:  #d9d9d9;
 }
+

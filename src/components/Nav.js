@@ -3,15 +3,14 @@ import "../assets/css/Nav.css";
 import { Link } from "react-router-dom";
 
 export default function Nav(props) {
-
     return (
         <div className="container-fluid">
             <div className="row cta-row">
                 <div className="col cta">
                     <h1>TAKE THE <br />QUIZ <br />TODAY!</h1>
-                    <Link to ={props.links[0]}><button className="main-btn">Start</button></Link>
+                    <Link to={props.links[0]}><button className="main-btn">Start</button></Link>
                 </div>
-                <div className="col">
+                <div className="col col-card">
                     <div className="card nav-card">
                         <nav>
                             <div className="nav nav-tabs" id="nav-tab" role="tablist">
@@ -22,17 +21,21 @@ export default function Nav(props) {
                         </nav>
                         <div className="tab-content" id="nav-tabContent">
                             <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                <h5>With over 60 quiz questions, an interactive practice section, and more, FBLA Quiz wants to help you succeed!</h5>
-                                <p>With customizable quiz options and advanced output reports allowing users to customize and analyze information FBLA Quiz has all the tools that you need to succeed.</p>
+                                <h5>Lorem ipsum dolor sit amet, hendrerit tellus ligula tortor pellentesque eget ante. Justo praesent, amet ullamcorper proin, viverra sem, quidem et a. Est fermentum tristique nec diam. Morbi etiam wisi eu aliquet laoreet, fames eros nibh.</h5>
+                                <p>Lorem ipsum dolor sit amet, hendrerit tellus ligula tortor pellentesque eget ante. Justo praesent, amet ullamcorper proin, viverra sem, quidem et a. Est fermentum tristique nec diam. Morbi etiam wisi eu aliquet laoreet, fames eros nibh.</p>
                                 <br />
-                                <Link className = "btn btn-primary" to ={props.links[1]}>Start Today</Link>
+                                <Link className="btn btn-primary" to={props.links[1]}>Start Today</Link>
                             </div>
                             <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                With over 60 quiz questions, an interactive practice section, and more FBLA Quiz wants to help you succeed!
-                            </div>
+                                <h5>Lorem ipsum dolor sit amet, hendrerit tellus ligula tortor pellentesque eget ante. Justo praesent, amet ullamcorper proin, viverra sem, quidem et a. Est fermentum tristique nec diam. Morbi etiam wisi eu aliquet laoreet, fames eros nibh.</h5>
+                                <p>Lorem ipsum dolor sit amet, hendrerit tellus ligula tortor pellentesque eget ante. Justo praesent, amet ullamcorper proin, viverra sem, quidem et a. Est fermentum tristique nec diam. Morbi etiam wisi eu aliquet laoreet, fames eros nibh.</p>
+                                <br />
+                                <Link className="btn btn-primary" to={props.links[1]}>Start Today</Link>                            </div>
                             <div className="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                With over 60 quiz questions, an interactive practice section, and more FBLA Quiz wants to help you succeed!
-                            </div>
+                                <h5>Lorem ipsum dolor sit amet, hendrerit tellus ligula tortor pellentesque eget ante. Justo praesent, amet ullamcorper proin, viverra sem, quidem et a. Est fermentum tristique nec diam. Morbi etiam wisi eu aliquet laoreet, fames eros nibh.</h5>
+                                <p>Lorem ipsum dolor sit amet, hendrerit tellus ligula tortor pellentesque eget ante. Justo praesent, amet ullamcorper proin, viverra sem, quidem et a. Est fermentum tristique nec diam. Morbi etiam wisi eu aliquet laoreet, fames eros nibh.</p>
+                                <br />
+                                <Link className="btn btn-primary" to={props.links[1]}>Start Today</Link>                            </div>
                         </div>
                     </div>
                 </div>

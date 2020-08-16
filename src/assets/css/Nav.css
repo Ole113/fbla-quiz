@@ -4,13 +4,52 @@
 }
 
 .nav-card {
-    padding: 40px 40px 200px 40px;
-    margin: 0 200px 0 -150px;
     border: 0;
     height: 100%;
     -webkit-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 985px) {
+    .col-card {
+        display: none;
+    }
+
+    .cta-row {
+        text-align: center;
+        width: 100%;
+    }
+}
+
+@media (min-width: 1561px) {
+    .nav-card {
+        padding: 40px 40px 200px 40px;
+        margin: 0 200px 0 -150px;
+    }
+
+    .cta {
+        margin: 0 0 0 230px;
+    }
+
+    .cta h1 {
+        font-size: 110px;
+    }
+}
+
+@media (max-width: 1560px) {
+    .nav-card {
+        padding: 40px 40px 100px 40px;
+        margin: 0 100px 0 -80px;
+    }
+
+    .cta {
+        margin: 0 0 0 50px;
+    }
+
+    .cta h1 {
+        font-size: 80px;
+    }
 }
 
 .nav-tabs a {
@@ -46,11 +85,9 @@
 }
 .cta {
     color: white;
-    margin: 0 0 0 230px;
 }
 
 .cta h1 {
-    font-size: 110px;
     font-family: "Kanit", sans-serif;
 }
 
