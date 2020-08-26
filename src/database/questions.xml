@@ -6,7 +6,7 @@
         true/false
 -->
 <question_db>
-    <question catagory="history" type="mutli">
+    <question catagory="history" type="">
         <content>What are the official colors of FBLA?</content>
         <answer>Blue and gold</answer>
     </question>

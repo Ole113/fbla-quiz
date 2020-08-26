@@ -20,7 +20,18 @@
         parser = new DOMParser();
         xmlDoc = parser.parseFromString(text, "text/xml");
 
-        console.log(xmlDoc.getElementsByTagName("title")[0].innerHTML);
+        //console.log(xmlDoc.getElementsByTagName("title")[0].innerHTML);
+
+
+        var xhttp;
+        if (window.XMLHttpRequest) { 
+            xhttp = new XMLHttpRequest();
+        }
+
+        xhttp.open("GET", "questions.xml", false);
+        xhttp.send();
+        var xmlDoc = xhttp.responseXML;
+        console.log(xmlDoc.getElementsByTagName("content")[0].innerHTML)
     </script>
     <div></div>
     <style>
@@ -30,6 +41,8 @@
             background: linear-gradient(#64a1e2, #24b7bf);
         }
     </style>
+
+
 </body>
 
 </html>

@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 
 export default function Navbar(props) {
     return (
-        <nav className={`navbar fixed-top navbar-expand-lg ${props.active === "landing" ? "navbar-custom" : "navbar-light bg-light"}`}>
-
+        <nav className={`navbar fixed-top navbar-expand-sm ${props.active === "landing" ? window.innerWidth <= 576 ? "navbar-custom navbar-light bg-light" : "navbar-custom" : "navbar-light bg-light"}`}>
             <a className="navbar-brand" href={props.links[0]}>
                 <img src={props.image} width="30" height="30" className="d-inline-block align-top" alt="" />
                 FBLA Quiz

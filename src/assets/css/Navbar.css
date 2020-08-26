@@ -3,24 +3,22 @@
 }
 
 .navbar-custom {
-    z-index: 2;
-    background-color: rgba(212, 212, 212, 0);
     position: absolute;
-    font-size: 18px;
 }
+
 .active-tab {
     font-weight: bold;
     color: #e6e6e6;
 }
+
 .nav-item a, .navbar-brand {
     color: white;
-}
-
-.navbar-brand {
-    font-size: 25px;
 }
 
 .navbar-brand:hover, .nav-item a:hover {
     color:  #d9d9d9;
 }
 
+.navbar-toggler {
+    background-color: rgb(242, 242, 242, 0.4);
+}
