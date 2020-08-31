@@ -1,3 +1,4 @@
-    1. Make it so the Learn More button on the home page scrolls to the cards.    
-    2. Make it so the different questions render right.
-    3. USE SQLITE
+1. Make it so the learn more button on the home page scrolls to the cards.
+2. Make it so on the quiz page it doesn't automatically default to 1 when choosing # of questions.
+3. Add a submit button to the quiz that checks if the answers are correct.
+4. Once quiz is 100% all working maybe look into a different choice than using XML because it seems hard to parse the XML with something that isn't deprecated.

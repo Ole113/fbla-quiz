@@ -6,7 +6,7 @@ import QuizOptions from "../components/QuizOptions.js";
 export default class Quiz extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { type : "random", number: "5" };
+        this.state = { type: "Random", number: "5" };
     }
 
     handleOption = (data) => this.setState({ type: data.type, number: data.number });
@@ -16,10 +16,10 @@ export default class Quiz extends React.Component {
             <div className="container">
                 <div className="row quizRow">
                     <div className="col-2">
-                        <QuizOptions onChangeOption = {this.handleOption}/>
+                        <QuizOptions onChangeOption={this.handleOption} />
                     </div>
                     <div className="col-10">
-                        <QuizForm type = {this.state.type} number = {this.state.number}/>
+                        <QuizForm type={this.state.type} number={this.state.number} />
                     </div>
                 </div>
             </div>

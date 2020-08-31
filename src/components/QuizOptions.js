@@ -4,7 +4,7 @@ import "../assets/css/Quiz.css";
 export default class QuizOptions extends React.Component {
     constructor(props) {
         super(props);
-        this.state = { type: "random", number: "5" };
+        this.state = { type: "Random", number: "5" };
     }
 
     handleOption = () => this.props.onChangeOption({ type: this.state.type, number: this.state.number });
@@ -30,7 +30,7 @@ export default class QuizOptions extends React.Component {
                     <br />
                     <div className="form-group">
                         <label htmlFor="numberQuestions">Number of Questions</label>
-                        <input name = "number" onChange = {this.onChange} type="number" className="form-control" id="numberQuestions" aria-describedby="numberQuestions" placeholder="5" />
+                        <input name = "number" onChange = {this.onChange} type="number" className="form-control" id="numberQuestions" aria-describedby="numberQuestions" min = "1" placeholder="5" />
                     </div>
                 </form>
             </div>
