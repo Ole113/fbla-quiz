@@ -1,0 +1,14 @@
+<svg id="SvgjsSvg1018" width="288" height="288" xmlns="http://www.w3.org/2000/svg" version="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:svgjs="http://svgjs.com/svgjs">
+    <defs id="SvgjsDefs1019">
+        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" style="stop-color:rgb(42, 42, 114);stop-opacity:1" />
+            <stop offset="100%" style="stop-color:rgb(0, 159, 253);stop-opacity:1" />
+        </linearGradient>
+    </defs>
+    <g id="SvgjsG1020">
+        <svg xmlns="http://www.w3.org/2000/svg" width="288" height="288" viewBox="0 0 24 24">
+            <path fill="none" d="M0 0h24v24H0z"></path>
+            <path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z" fill="url(#grad1)" class="svgShape"></path>
+        </svg>
+    </g>
+</svg>

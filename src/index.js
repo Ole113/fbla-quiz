@@ -26,6 +26,7 @@ ReactDOM.render(
       <App />
     </React.StrictMode>
   </BrowserRouter>,
+  //The element that we want to render App to which is the div in index.html.
   document.getElementById("root")
 );
 

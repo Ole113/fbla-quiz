@@ -15,6 +15,10 @@ import Error from "./pages/Error.js";
 	paths have been rendered then as long as the path starts with / (which it always will) then the Error page will be rendered.
 	The error will be from a 404 error page not found.
 */
+
+/**
+ * The main component that is rendered by index.js which is rendered into the index.html div.
+ */
 export default function App() {
   return (
     <div className="App">
