@@ -5,7 +5,7 @@
         rgb(53, 73, 206, 0.3), 
         rgb(47, 52, 154, 0.3)
     ),
-    url("../images/parallax.jpg");
+    url("../images/gradient.jpg");
     background-repeat: no-repeat;
     clip-path: polygon(0% 0%, 100% 0%, 100% 60%, 0% 76%);
 }

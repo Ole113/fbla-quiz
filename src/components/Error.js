@@ -3,6 +3,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../assets/css/Error.css";
 
+/**
+ * 
+ * @param {Any} props 
+ */
 export default function Error(props) {
     return (
         <div className="containererror">

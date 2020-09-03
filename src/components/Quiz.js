@@ -3,7 +3,14 @@ import QuizForm from "../components/QuizForm.js";
 import "../assets/css/Quiz.css";
 import QuizOptions from "../components/QuizOptions.js";
 
+/**
+ * 
+ */
 export default class Quiz extends React.Component {
+    /**
+     * Sets the default state of the quiz.
+     * @param {Any} props The properties passed in by the parent class
+     */
     constructor(props) {
         super(props);
         this.state = { type: "Random", number: "5" };

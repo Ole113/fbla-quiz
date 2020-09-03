@@ -2,8 +2,9 @@ import React from "react";
 import "../assets/css/Navbar.css";
 import { Link } from "react-router-dom";
 
-/*
+/**
  * Renders the Navbar using the supplied props.
+ * @param {Any} props The properties passed in by the parent class
  */
 export default function Navbar(props) {
     return (

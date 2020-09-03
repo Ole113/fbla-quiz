@@ -2,8 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../assets/css/Footer.css";
 
-/*
+/**
  * The Footer that's used on every page.
+ * @param {Any} props The properties passed in by the parent class
  */
 export default function Footer(props) {
     return (
