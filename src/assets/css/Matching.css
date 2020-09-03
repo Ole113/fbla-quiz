@@ -1,0 +1,11 @@
+.form-group {
+    padding: 0;
+}
+
+.letters span {
+    padding: 0 0 0 125px;
+}
+
+.select-col select {
+    margin: 0 0 12.5px 0;
+}

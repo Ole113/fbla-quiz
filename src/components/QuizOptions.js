@@ -30,7 +30,7 @@ export default class QuizOptions extends React.Component {
                     <br />
                     <div className="form-group">
                         <label htmlFor="numberQuestions">Number of Questions</label>
-                        <input name = "number" onChange = {this.onChange} type="number" className="form-control" id="numberQuestions" aria-describedby="numberQuestions" min = "1" placeholder="5" />
+                        <input name = "number" onChange = {this.onChange} type="number" className="form-control" id="numberQuestions" aria-describedby="numberQuestions" defaultValue = "5" min = "1"/>
                     </div>
                 </form>
             </div>

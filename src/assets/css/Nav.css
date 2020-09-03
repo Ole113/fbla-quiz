@@ -69,6 +69,7 @@
 .tab-pane button {
     font-size: 15px;
 }
+
 .main-btn {
     font-weight: 600;
     background: linear-gradient(to right, #aaffa9, #11ffbd); 
@@ -83,6 +84,7 @@
 .main-btn:hover {
     opacity: 0.9;
 }
+
 .cta {
     color: white;
 }
