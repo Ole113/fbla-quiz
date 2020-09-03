@@ -1,14 +1,32 @@
 ## Main: Appropriate identifiers used for variables, constants, arrays, objects, etc<br />
 Max Points: Identifiers exhibit an advanced knowledge of programming<br />
     - Name varaibles with explanitory names<br /><br />
-
+    - If possible name the variable name something more advanced that only someone who understands the language.
 ## Main: Commentary provided is readable, useful, and complete <br />
 Max Points: Commentary assists the user throughout the demonstration<br />
-    - Documentation and JS Doc
+    - Have documentation show the path that components take to be rendered Ex. in words and drawings explain:
+        index.js
+            App.js
+                Landing.js
+                    Navbar.js
+                    Nav.js
+                    ...
+    - Documentation and JS Doc<br /><br />
 
 ## Main: Program documentation is readable, useful, and complete<br />
 Max Points: Program documentation invites use of advanced features<br />
-    - ??? maybe something that lets the user use an API of the DB?<br /><br />
+    - Make the repo public and make it so the user can download it and run the server along with the backend server. Let the user upload their own questions
+    - Make a "compiler" folder with a Readme.md that takes a text file with the format:
+        host: //user SQL hostname
+        user: //user username
+        password: //user password
+        database: //user SQL database
+        This is the question
+        [option1, option2, option3, option4]
+        multi
+        and so forth...
+    - In the compiler folder then have a compile.js and do the same thing as in Antiquity and upload all of the questions to the database using a for loop. Have correct error handeling. In Readme.md have a common errors section(db not connecting etc..)
+<br /><br />
 
 ## Main: Program is concise and does not contain unnecessary complexity<br />
 Program incorporates at least one if-then sequence that saves the user steps<br />
