@@ -1,6 +1,10 @@
 import React from "react";
 import "../../assets/css/Matching.css";
 
+/**
+ * 
+ * @param {*} props 
+ */
 export default function Matching(props) {
     return (
         <div className="form-group container">

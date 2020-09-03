@@ -1,4 +1,17 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<img src = "/src/assets/images/fblaLogo.png" width = "100px" >
+<h1 style = "display: inline" >FBLA Quiz 2021</h1><br /><br />
+Created by Alex Elbel for the FBLA Coding and Programming 2020-2021 Competition.
+<br /><br />
+This project was bootstrapped with Create React App.
+
+## Building
+Clone the repo and then install the node modules with `npm install`<br />
+Start the backend server `nodemon server.js`<br />
+Either:
+1. Start the app in development mode `npm start`<br />
+2. Build the app for production `npm run build`
+
+# Injected by Create React App:
 
 ## Available Scripts
 

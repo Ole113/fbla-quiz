@@ -2,6 +2,10 @@ import React from "react";
 import "../assets/css/Quiz.css";
 
 export default class QuizOptions extends React.Component {
+    /**
+     * 
+     * @param {Any} props 
+     */
     constructor(props) {
         super(props);
         this.state = { type: "Random", number: "5" };

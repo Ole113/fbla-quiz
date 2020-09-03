@@ -2,6 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../assets/css/Card.css";
 
+/**
+ * The singlular card element with a image header, a title, body text, and a button.
+ * @param {Any} props The properties passed in by the parent class
+ */
 export default function Card(props) {
     return (
         <div className="card">

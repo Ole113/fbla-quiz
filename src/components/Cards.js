@@ -2,6 +2,11 @@ import React from "react";
 import "../assets/css/Card.css";
 import Card from "./Card.js";
 
+/**
+ * Renders the 3 cards on the home page using props passed from App.js.
+ * Sets the styles and positioning of the individual cards.
+ * @param {Any} props The properties passed in by the parent class
+ */
 export default function Cards(props) {
     return (
         <div id = "learnMore" className="row card-group">

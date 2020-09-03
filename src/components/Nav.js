@@ -2,19 +2,17 @@ import React from "react";
 import "../assets/css/Nav.css";
 import { Link } from "react-router-dom";
 
+/**
+ * The Nav component is the main title, the button below that and the cards to right of it.
+ * Nav is ontop of the Gradient background.
+ */
 export default class Nav extends React.Component {
+    /**
+     * 
+     * @param {Any} props 
+     */
     constructor(props) {
         super(props)
-        this.goToCards = React.createRef()
-    }
-
-    handleOnClick = (event) => {
-        if(this.myDivToFocus.current){
-            this.myDivToFocus.current.scrollIntoView({ 
-               behavior: "smooth", 
-               block: "nearest"
-            })
-        }
     }
 
     render() {
@@ -22,11 +20,13 @@ export default class Nav extends React.Component {
             <div className="container-fluid">
                 <div className="row cta-row">
                     <div className="col cta">
+                        { /* The main title with the gradient button */ }
                         <h1>TAKE THE <br />QUIZ <br />TODAY!</h1>
                         <Link to={this.props.links[0]}><button className="main-btn">Start</button></Link>
                     </div>
                     <div className="col col-card">
                         <div className="card nav-card">
+                            { /* The cards on the right of the screen that have some additional information and a button that brings you to the Cards */ }
                             <nav>
                                 <div className="nav nav-tabs" id="nav-tab" role="tablist">
                                     <a className="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Quiz</a>

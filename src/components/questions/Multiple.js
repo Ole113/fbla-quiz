@@ -1,5 +1,9 @@
 import React from "react";
 
+/**
+ * 
+ * @param {*} props 
+ */
 export default function Multiple(props) {
     return (
         <div className="form-group">

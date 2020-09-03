@@ -1,0 +1,14 @@
+.home-btn {
+    font-weight: 600;
+    background: linear-gradient(to right, #aaffa9, #11ffbd); 
+    color: white;
+    width: 180px;
+    height: 60px;
+    border-radius: 50px;
+    border: none;
+    font-size: 25px;
+}
+
+.home-btn:hover {
+    opacity: 0.9;
+}

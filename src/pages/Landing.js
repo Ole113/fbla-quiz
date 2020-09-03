@@ -2,7 +2,7 @@ import React from "react";
 
 import Navbar from "../components/Navbar.js";
 import Footer from "../components/Footer.js";
-import Parallax from "../components/Parallax.js";
+import Gradient from "../components/Gradient.js";
 import Cards from "../components/Cards.js";
 import Nav from "../components/Nav.js";
 import Points from "../components/Points.js";
@@ -11,7 +11,7 @@ export default function Landing() {
   return (
     <div className="Landing">
       <Navbar active = "landing" links = {["/", "/quiz", "/practice", "/qa"]} image = {require("../assets/images/fblaFlag.png")}/>
-      <Parallax />
+      <Gradient />
       <Nav links = {["/quiz", "#learnMore"]}/>
       <Points contents = {["Customizable reports allows users to analyze information.", "More than 50 questions to study from.", "An intelligent and interactive Q&A section."]} icons = {[require("../assets/images/analytics.svg"), require("../assets/images/questions.svg"), require("../assets/images/forum.svg")]}/>
       <hr style = {{width: "60%", paddingBottom: "100px"}}/>

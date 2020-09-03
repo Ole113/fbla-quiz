@@ -1,3 +1,8 @@
+/*
+ * Code boostraped by create-react-app
+ * Sets up the development server when running `npm start`
+ */
+
 // This optional code is used to register a service worker.
 // register() is not called by default.
 
