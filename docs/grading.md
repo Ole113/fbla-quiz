@@ -1,38 +1,38 @@
-Main: Appropriate identifiers used for variables, constants, arrays, objects, etc
-Max Points: Identifiers exhibit an advanced knowledge of programming
-    - Name varaibles with explanitory names
+## Main: Appropriate identifiers used for variables, constants, arrays, objects, etc<br />
+Max Points: Identifiers exhibit an advanced knowledge of programming<br />
+    - Name varaibles with explanitory names<br /><br />
 
-Main: Commentary provided is readable, useful, and complete 
-Max Points: Commentary assists the user throughout the demonstration
+## Main: Commentary provided is readable, useful, and complete <br />
+Max Points: Commentary assists the user throughout the demonstration<br />
     - Documentation and JS Doc
 
-Main: Program documentation is readable, useful, and complete
-Max Points: Program documentation invites use of advanced features
-    - ??? maybe something that lets the user use an API of the DB?
+## Main: Program documentation is readable, useful, and complete<br />
+Max Points: Program documentation invites use of advanced features<br />
+    - ??? maybe something that lets the user use an API of the DB?<br /><br />
 
-Main: Program is concise and does not contain unnecessary complexity
-Program incorporates at least one if-then sequence that saves the user steps
-    - 
+## Main: Program is concise and does not contain unnecessary complexity<br />
+Program incorporates at least one if-then sequence that saves the user steps<br />
+    - <br /><br />
 
-Main: Data storage is appropriate
-Max Points: Data storage includes dynamic backup feature
-    - ??? (google this to see if it says anthing)
+## Main: Data storage is appropriate<br />
+Max Points: Data storage includes dynamic backup feature<br />
+    - ??? (google this to see if it says anthing)<br /><br />
 
-Main: Program use follows a logical sequence
-Max Points: Program sequence is logical, error free, and incorporates if-then sequences
-    - ???
-Main: Program use and navigation
-Max Points: Program use also includes an intelligent feature such as an interactive Q&A
-    - Have a forum along with FAQ's
+## Main: Program use follows a logical sequence<br />
+Max Points: Program sequence is logical, error free, and incorporates if-then sequences<br />
+    - ???<br />
+## Main: Program use and navigation<br />
+Max Points: Program use also includes an intelligent feature such as an interactive Q&A<br />
+    - Have a forum along with FAQ's<br /><br />
 
-Main: Program results
-Max Points: Program results update dynamically and are error free
-    - Don't reload the page when updating the quiz results
+## Main: Program results<br />
+Max Points: Program results update dynamically and are error free<br />
+    - Don't reload the page when updating the quiz results<br /><br />
 
-Main: Output reports
-Max Points: Reports allow user to customize and analyze information
-    - Sections they need to study, which section are strongest/weakest
-    - Customize ???
+## Main: Output reports<br />
+Max Points: Reports allow user to customize and analyze information<br />
+    - Sections they need to study, which section are strongest/weakest<br />
+    - Customize ???<br /><br />
 
 Main: Statements are wellorganized and clearly stated
 Max Points: Demonstration flowed in a logical sequence; statements were well organized
