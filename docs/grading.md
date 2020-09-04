@@ -42,7 +42,7 @@ Max Points: Program results update dynamically and are error free<br />
 ## Main: Output reports<br />
 Max Points: Reports allow user to customize and analyze information<br />
     - Sections they need to study, which section are strongest/weakest<br />
-    - Customize ???<br /><br />
+    - For customize maybe let the user see info in pi chart, graphs, etc...
 
 Main: Statements are well organized and clearly stated
 Max Points: Demonstration flowed in a logical sequence; statements were well organized

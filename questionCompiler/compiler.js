@@ -1,25 +1,25 @@
-const readline = require("readline");
-const mysql = require("mysql");
+const READLINE = require("readline");
+const MYSQL = require("mysql");
 
 let configFileName = "default.json";
 
-const rl = readline.createInterface({
+const RL = READLINE.createInterface({
 	input: process.stdin,
 	output: process.stdout
 });
 
-rl.question("Example config file name: \"config.json\". \nType \"exit\" to quit. \nLeave the input blank for the default file \"default.json\".\n\n  Config File: ", file => {
+RL.question("Example config file name: \"config.json\". \nType \"exit\" to quit. \nLeave the input blank for the default file \"default.json\".\n\n  Config File: ", file => {
 	if (file !== "") configFileName = file;
-	if (file == "exit") rl.close();
+	if (file == "exit") RL.close();
 	configFile = require(`./${configFileName}`);
 
 	queryQuestions(configFile)
 });
 
-rl.on("close", () => { process.exit(0); });
+RL.on("close", () => { process.exit(0); });
 
 function queryQuestions(res) {
-	let connection = mysql.createConnection({
+	let connection = MYSQL.createConnection({
 		host: res.host,
 		user: res.user,
 		password: res.password,
