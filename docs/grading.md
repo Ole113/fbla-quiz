@@ -1,6 +1,6 @@
 ## Main: Appropriate identifiers used for variables, constants, arrays, objects, etc<br />
 Max Points: Identifiers exhibit an advanced knowledge of programming<br />
-    - Name varaibles with explanitory names<br /><br />
+    - Name variables with explanatory names<br /><br />
     - If possible name the variable name something more advanced that only someone who understands the language.
 ## Main: Commentary provided is readable, useful, and complete <br />
 Max Points: Commentary assists the user throughout the demonstration<br />
@@ -13,28 +13,20 @@ Max Points: Commentary assists the user throughout the demonstration<br />
                     and so forth...<br />
     - Documentation and JS Doc<br /><br />
 
-## Main: Program documentation is readable, useful, and complete<br />
+### Main: Program documentation is readable, useful, and complete<br />
 Max Points: Program documentation invites use of advanced features<br />
-    - Make the repo public and make it so the user can download it and run the server along with the backend server. Let the user upload their own questions<br />
-    - Make a "compiler" folder with a Readme.md that takes a text file with the format:<br />
-        host: //user SQL hostname<br />
-        user: //user username<br />
-        password: //user password<br />
-        database: //user SQL database<br />
-        This is the question content<br />
-        [option1, option2, option3, option4]<br />
-        multi<br />
-        and so forth...<br />
-    - In the compiler folder then have a compile.js and do the same thing as in Antiquity and upload all of the questions to the database using a for loop. Have correct error handeling. In Readme.md have a common errors section(db not connecting etc..)
+    1. Make the repo public.
+    2. Make it so when the info is fetched it is a parameter and if someone downloads the code have in the main read me that custom questions can be added with either question compiler or by changing the fetch URL to a different API.
 <br /><br />
 
 ## Main: Program is concise and does not contain unnecessary complexity<br />
 Program incorporates at least one if-then sequence that saves the user steps<br />
-    - <br /><br />
+    - 
+<br /><br />
 
 ## Main: Data storage is appropriate<br />
 Max Points: Data storage includes dynamic backup feature<br />
-    - ??? (google this to see if it says anthing)<br /><br />
+    - ??? (google this to see if it says anything)<br /><br />
 
 ## Main: Program use follows a logical sequence<br />
 Max Points: Program sequence is logical, error free, and incorporates if-then sequences<br />
@@ -52,7 +44,7 @@ Max Points: Reports allow user to customize and analyze information<br />
     - Sections they need to study, which section are strongest/weakest<br />
     - Customize ???<br /><br />
 
-Main: Statements are wellorganized and clearly stated
+Main: Statements are well organized and clearly stated
 Max Points: Demonstration flowed in a logical sequence; statements were well organized
     - Make it so the know about Reacts Virtual DOM and the advantages of that.
     - Emphasize how components are small and simple for reusability, and that makes it easier to debug and maintain.
