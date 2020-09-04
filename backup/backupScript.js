@@ -1,5 +1,7 @@
 const MYSQLDUMP = require("mysqldump");
-console.log(1);
+
+const DATE = new Date();
+
 MYSQLDUMP({
     connection: {
         host: "localhost",
@@ -7,5 +9,5 @@ MYSQLDUMP({
         password: "aelb8362580",
         database: "questions"
     },
-    dumpToFile: `/dump.sql`,
+    dumpToFile: `/backups/backup-${String(DATE.getDate()).padStart(2, "0")}-${String(DATE.getMonth() + 1).padStart(2, "0")}-${DATE.getFullYear()}-${DATE.getHours()}.sql`
 });
