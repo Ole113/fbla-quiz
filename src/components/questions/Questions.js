@@ -25,10 +25,13 @@ export default class Questions extends React.Component {
 
             }))
         .catch(err => console.error(err));
+        console.log(this.state + "FF")
     }
 
     getQuestionInfo(id) {
-        return this.state;
+        return {
+            content: "this.state.data"
+        }
     }
 
     /**
@@ -37,7 +40,6 @@ export default class Questions extends React.Component {
      * @param {Integer} id  the id of the question to get
      */
     getQuestionTag(id) {
-        console.log(this.state);
         if (this.props.type === "Random") {
             let randomNumber = Math.floor(Math.random() * 4);
             return randomNumber === 0 ? <Blank key={id} content={this.getQuestionInfo(id)} />
@@ -65,7 +67,11 @@ export default class Questions extends React.Component {
 
 
     render() {
-        this.setQuestionState();
-        return this.setOutput();
+        if(this.state.data === null) {
+            this.setQuestionState();
+        } else {
+            return this.setOutput();
+        }
+        return "";
     }
 }

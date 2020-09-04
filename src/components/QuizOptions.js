@@ -1,6 +1,9 @@
 import React from "react";
 import "../assets/css/Quiz.css";
 
+/**
+ * 
+ */
 export default class QuizOptions extends React.Component {
     /**
      * 

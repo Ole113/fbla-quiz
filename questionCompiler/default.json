@@ -1,0 +1,10 @@
+{
+	"host": "localhost",
+	"user": "root",
+	"password": "password123",
+	"database": "questions",
+	"questions": [
+		["Question title", "multi", ["Option One", "Option Two", "Option Three", "Option Four"]],
+		["A True/False question", "tf", "The answer to the true false question"]
+	]
+}
