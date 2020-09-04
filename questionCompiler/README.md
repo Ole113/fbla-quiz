@@ -75,7 +75,7 @@ Leave the input blank for the default file "default.json".
 ```
 The user specifies the config file next to where it says "Config File: ". If the user presses enter without entering anything the default file name will be used which is default.json. To exit the prompt the user types "exit".
 
-Once the user inputs the config file name or uses the default config file name the compiler will output any errors that occurred. If you encounter an error see [Common Errors](#common-errors)
+Once the user inputs the config file name or uses the default config file name the compiler will output any errors that occurred. If you encounter an error see the Common Errors section below.
 
 If no errors occur every question that was added to the database will output a message: `Successfully inserted question.`
 
