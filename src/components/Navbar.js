@@ -20,7 +20,7 @@ export default function Navbar(props) {
             </button>
             { /* The Navbar elements that link to the specified pages */ }
             <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav">
+                <ul className="navbar-nav mr-auto">
                     <li className={`nav-item${props.active === "landing" ? " active-tab" : ""}`}>
                         <Link className="nav-link" to={props.links[0]}>Home<span className="sr-only">(current)</span></Link>
                     </li>
@@ -34,7 +34,14 @@ export default function Navbar(props) {
                         <Link className="nav-link" to={props.links[3]}>Q&amp;A</Link>
                     </li>
                 </ul>
+                <ul className = "navbar-nav ml-auto">
+                    <li className="nav-item nav-item-help">
+                        <button type="button" className="modal-button" data-toggle="modal" data-target="#helpModal" >
+                            <img className = "nav-link" src = {props.color === "dark" ? require("../assets/images/helpDark.svg") : require("../assets/images/helpWhite.svg")} alt = "question mark icon" />
+                        </button>
+                    </li>
+                </ul>
             </div>
-        </nav>
+        </nav>  
     );
 }

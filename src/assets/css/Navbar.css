@@ -22,3 +22,16 @@
 .navbar-toggler {
     background-color: rgb(242, 242, 242, 0.4);
 }
+
+.nav-item-help {
+    cursor: pointer;
+}
+
+.nav-item-help img {
+    padding-top: 8px;
+}
+
+.modal-button {
+    background-color: transparent;
+    border: none;
+}

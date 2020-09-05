@@ -1,7 +1,7 @@
 Boiler plate with create-react-app (is boiler plate the right term?)
 
 Librarys:
-Used Boostrap
+Used Boostrap, maybe add all NPM librarys used here
 
 
 Picture Attributions:

@@ -5,14 +5,14 @@ const CRON = require("node-cron");
 
 const APP = EXPRESS();
 
-//Schedules a CRON job every 3 hours(180 minutes) to backup the database to the backups folder.
-CRON.schedule("*/180 * * * *", () => {
+//Schedules a CRON job every 3 hours) to backup the database to the backups folder.
+CRON.schedule("* */3 * * *", () => {
     let exec = require("child_process").exec, child;
 
-    child = exec("node backup/backupScript.js", (error, stdout, stderr) => {
-        console.log("stdout: " + stdout);
-        console.log("stderr: " + stderr);
+    child = exec("node src/database/backup/backupScript.js", (error, stdout, stderr) => {
+        console.log(stdout + stderr);
         if (error) console.log("Exec Error: " + error);
+        console.log("Successfully backed up.");
     });
 });
 
