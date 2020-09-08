@@ -1,5 +1,5 @@
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
-VALUES ("What are the official colors of FBLA?", "Blue and gold", "multi", "Blue and gold", "Orange and yellow", "Yellow and blue", "Gold and red");
+VALUES ("What are the official colors of FBLA?", "multi", "Blue and gold", "Orange and yellow", "Yellow and blue", "Gold and red");
 
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
 VALUES ("The FBLA creed contains how many stanzas?", "multi", "Seven", "Five", "Three", "Nine");
@@ -20,7 +20,7 @@ INSERT INTO questions(content, category, option_one, option_two, option_three, o
 VALUES ("In what year was Phi Beta Lambda created?", "multi", "1958", "1940", "1937", "1947");
 
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
-VALUES ("Who was the first executive director of FBLA-PBL?", “multi”, "Dr. Edward Miller", "Richard Bowen", "Lisa Frye Smothers", "Kelly Scholl");
+VALUES ("Who was the first executive director of FBLA-PBL?", "multi", "Dr. Edward Miller", "Richard Bowen", "Lisa Frye Smothers", "Kelly Scholl");
 
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
 VALUES ("Where is the National FBLA-PBL Center located?", "multi", "Reston, Virginia", "Little Rock, Arkansas", "Richmond, Virginia", "Chicago, Illinois");
