@@ -9,18 +9,20 @@ Strong text means they haven't been added yet.
 ## Demonstration flowed in a logical sequence; statements were well organized
     - Make sure to include the key words for every point in presentation.
 
-## Reports allow user to customize and analyze information
+## Reports allow user to customize and analyze information, Generate a printable report on quiz results
     - **Let users change data graph to pie chart, bar chart, etc...**
     - **Use localstorage to save the result of each quiz. The user can customize the graph to show their average scores over x amount of time.**
+    - **ALLOW PRINTABLE REPORT**
 
 ## Program results update dynamically and are error free
     - Quiz questions are added dynamically
     - Pages load dynamically
 
-## Program use also includes an intelligent feature such as an interactive Q&A, Interface contains no spelling errors, has interactive help menu, and has no navigation errors
+## Program use also includes an intelligent feature such as an interactive Q&A, Interface contains no spelling errors, has interactive help menu, and has no navigation errors, All data entry must be validated with appropriate user notifications and error messages including the use of required fields.
     - Navbar to easily navigate around website along with footer links.
     - Right side of navbar has a interactive help menu.
     - **NEED INTERACTICE Q&A**
+    - **VALIDATE DATE ENTRY**
 
 ## Program sequence is logical, error free, and incorporates if-then sequences
 
