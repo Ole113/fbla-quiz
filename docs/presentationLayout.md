@@ -4,6 +4,7 @@ Strong text means they haven't been added yet.
     - Reusable UI components such as the navbar
     - Single-page applications, can update the page without reloading
     - When new components are rendered only that node is updated not the whole page.
+    - Make it so the know about Reacts Virtual DOM and the advantages of that. - Emphasize how components are small and simple for reusability, and that makes it easier to debug and maintain.
 
 ## Demonstration flowed in a logical sequence; statements were well organized
     - Make sure to include the key words for every point in presentation.
