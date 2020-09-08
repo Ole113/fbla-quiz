@@ -1,7 +1,7 @@
-Boiler plate with create-react-app (is boiler plate the right term?)
+Project was bootstraped with create-react-app.
 
 Librarys:
-Used Boostrap, maybe add all NPM librarys used here
+Used Boostrap, google fonts, react, **INSERT NPM LIBRARIES HERE**
 
 
 Picture Attributions:
