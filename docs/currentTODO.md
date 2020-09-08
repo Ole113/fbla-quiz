@@ -1,16 +1,19 @@
 ## Home
 1. Make it so the learn more button on the home page scrolls to the cards.
-2. Fix fetching from the API, maybe look up an example of someone else doing it and see how they set state.
+2. Fix fetching from the API, maybe look up an example of someone else doing it and see how they set state. Maybe try using this https://reactjs.org/docs/hooks-overview.html and control find "Loading".
+3. Help menu has to be interactive, add a collapse to drop down to the info.
+4. Allow user to choose what api link the data is being fetched from using node input line, let default be the "localhost...".
+5. Fix it so the crontab actually backs up at the right time.
+6. Add it so there is a config file for the server file connecting to the DB with the SQL values and is in .gitignore
 
 ## School
-1. Add documentation for the CSS.
-2. Write up the help menu.
 3. Write up the text for the home page cards and the Nav text
 4. Double check rubric and make sure everything needed is accounted for(even elements that aren't max points).
 5. Make sure that grading.md and presentationLayout.md have all relevant points on them.
 6. Start thinking of a layout of the output reports and what elements it'll contain.
 7. Think of a layout of QA and how it'll work.
-8. Quiz inputs cannot be blank.(required tag maybe)
+8. Quiz inputs cannot be blank.(required tag maybe).
+9. Write a FAQ section which can be added to QA.
 
 http://minifycode.com/html-minifier/
 
