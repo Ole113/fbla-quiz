@@ -27,11 +27,16 @@
     cursor: pointer;
 }
 
-.nav-item-help img {
-    padding-top: 8px;
-}
-
 .modal-button {
     background-color: transparent;
     border: none;
+}
+
+.modal-button:hover {
+    opacity: 0.9;
+}
+
+/* Overwrites the default padding set by Bootstraps modal to compensate for scroll bars. */
+.modal-open {
+    padding-right: 0 !important;
 }

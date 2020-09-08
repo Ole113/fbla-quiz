@@ -7,6 +7,9 @@ import { Link } from "react-router-dom";
  * @param {Any} props The properties passed in by the parent class
  */
 export default function Navbar(props) {
+    
+    let hideButton = () => document.getElementsByClassName("modal-button")[0].style.display = "none";
+
     return (
         <nav className={`navbar fixed-top navbar-expand-sm ${props.active === "landing" ? window.innerWidth <= 576 ? "navbar-custom navbar-light bg-light" : "navbar-custom" : "navbar-light bg-light"}`}>
             { /* The logo and main title of the Navbar */ }
@@ -37,11 +40,11 @@ export default function Navbar(props) {
                 <ul className = "navbar-nav ml-auto">
                     <li className="nav-item nav-item-help">
                         <button type="button" className="modal-button" data-toggle="modal" data-target="#helpModal" >
-                            <img className = "nav-link" src = {props.color === "dark" ? require("../assets/images/helpDark.svg") : require("../assets/images/helpWhite.svg")} alt = "question mark icon" />
+                            <img onClick = {hideButton} className = "nav-link" src = {props.color === "dark" ? require("../assets/images/helpDark.svg") : require("../assets/images/helpWhite.svg")} alt = "question mark icon" />
                         </button>
                     </li>
                 </ul>
             </div>
-        </nav>  
+        </nav>
     );
 }
