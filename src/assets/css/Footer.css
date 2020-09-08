@@ -1,35 +1,43 @@
+/* Sets the footer copyright section(the darker section at the very bottom) to be a darker blue than the rest of the footer along with some padding. */
 .footer-copyright {
     background-color: #004480;
     color: white;
     padding: 10px 0 10px 20px;
 }
 
+/* Aligns the content of the footer rows to the center and gives some padding to separate the rows. */
 .page-footer .row {
     padding: 25px;
     text-align: center;
 }
 
+/* Sets the links colors to white, the default color of links are a light blue. */
 .page-footer a {
     color: white;
 }
 
+/* Sets the color of the footer(excluding the footer copyright section). */
 .page-footer {
     background-color: #00529b;
 }
 
+/* Sets the width and the height of the footer image. */
 .logo-image img {
     width: 80px;
     height: 80px;
 }
 
+/* Sets the main footer title to display inline so the image will be right next to the h1 instead of above/below it. */
 .logo-image h1 {
     display: inline;
 }
 
+/* Gets rid of the default underline under links */
 .logo-image a {
     text-decoration: none;
 }
 
+/* Gives the links some padding so they are not grouped so close together. */
 .links a {
     padding: 0 15px 0 15px;
 }

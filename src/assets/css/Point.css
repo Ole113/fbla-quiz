@@ -1,3 +1,4 @@
+/* Sets the default styles of every point such as the color, width, and text align. */
 .point {
     text-align: center;
     display: inline-block;
@@ -5,22 +6,26 @@
     color: #595959;
 }
 
+/* Bootstrap media query if the screen size if greater than 917px the margin of the points are updated. */
 @media(min-width: 917px) {
     .point {
         margin: 100px 100px 100px 100px;
     }
 }
 
+/* If the screen size is less than 916px then a different margin style is applied. */
 @media (max-width: 916px) {
     .point {
         margin: 40px 100px 40px 100px;
     }
 }
 
+/* Sets the font size for the point text header. */
 .point h5 {
     font-size: 25px;
 }
 
+/* Sets the width, height, and margin of the points' image. */
 .point img {
     width: 100px;
     height: 100px;

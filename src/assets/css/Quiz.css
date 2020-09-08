@@ -1,19 +1,24 @@
+/* Overrides Bootstraps implementation and sets the max width of the container to impossibly large size. */
 .container {
     max-width: 10000px;
 }
 
+/* Sets the padding for the quiz form's container. */
 .quiz-form-container {
     padding: 100px 150px 100px 150px;
 }
 
+/* Gives the form a width of 100%. */
 form {
     width: 100%;
 }
 
+/* Sets the quiz row to 100%. */
 .quizRow {
     width: 100%;
 }
 
+/* Sets the background color of the quiz options(right side), the height, width, padding. */
 .quiz-options {
     background-color: #e6e6e6;
     width: 100%;
@@ -22,14 +27,17 @@ form {
     border-bottom-right-radius: 2.5px;
 }
 
+/* Makes it so quiz options column has no padding. */
 .col-2 {
     padding: 0;
 }
 
+/* Gives the quiz column a margin top value. */
 .col-10 {
     margin-top: 150px;
 }
 
+/* Gives the submit quiz button a gradient background, a color, width, height, and more. */
 .submit-quiz {
     font-weight: 600;
     background-color: #2a2a72;
@@ -43,6 +51,7 @@ form {
     margin-top: 100px;
 }
 
+/* Gives the button a slight opacity when the users mouse is over it, is stylistic to help user know that the button is clickable. */
 .submit-quiz:hover {
     opacity: 0.9;
 }

@@ -85,6 +85,6 @@ To exit the application press `CTRL + C` which will exit to a default terminal l
 ## Checking The Database
 To confirm that the questions were correctly written to the database go to query panel and run the query `SELECT * FROM questions;`. The query results will have the questions that were just added with the compiler.
 
-## Common Errors {#common-errors}
+## Common Errors
 `Access denied for user 'root'@'localhost' (using password: YES)`  Most likely the config file has an incorrect value in it.<br />
 `MODULE_NOT_FOUND`  Mostly likely the specified config file was not found. The file path could be incorrect or the file could not exist.

@@ -1,20 +1,25 @@
+/* Gives the navbar image aka the navbar brand some space on the left and right sides. */
 .navbar-brand img {
     margin: 0 15px 0 15px;
 }
 
+/* Sets the position of the custom navbar. */
 .navbar-custom {
     position: absolute;
 }
 
+/* Bootstrap sets the active link to a different color, this is a override of that setting it so a custom color and to bold, the active tab is determined by a variable passed in by the props. */
 .active-tab {
     font-weight: bold;
     color: #e6e6e6;
 }
 
+/* Sets the color of the text of the navbar links to white(is initially set to black by Bootstrap) */
 .nav-item a, .navbar-brand {
     color: white;
 }
 
+/* Sets a different color when the mouse is hovering over nav bar links to let the user know that they are clickable. */
 .navbar-brand:hover, .nav-item a:hover {
     color:  #d9d9d9;
 }
@@ -23,15 +28,18 @@
     background-color: rgb(242, 242, 242, 0.4);
 }
 
+/* Sets the cursor to a pointer when the mouse is above the help button to let users know that it is a clickable button */
 .nav-item-help {
     cursor: pointer;
 }
 
+/*Buttons have a default background and border, this removes that background and border(Bootstrap will set its own border). */
 .modal-button {
     background-color: transparent;
     border: none;
 }
 
+/* Gives the button a slight opacity when the users mouse is over it, is stylistic to help user know that the button is clickable. */
 .modal-button:hover {
     opacity: 0.9;
 }

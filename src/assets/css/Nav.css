@@ -1,8 +1,10 @@
+/* Sets the position of the nav row. */
 .cta-row {
     position: absolute;
     top: 10%;
 }
 
+/* Sets the height and box shadow of the card on nav. */
 .nav-card {
     border: 0;
     height: 100%;
@@ -11,6 +13,7 @@
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
 }
 
+/* Bootstrap media query if screen width is less than 985px hide the nav card(it's too big to fit and will look weird if set below). */
 @media (max-width: 985px) {
     .col-card {
         display: none;
@@ -22,6 +25,7 @@
     }
 }
 
+/* If the screen width is <= 1561 then the padding, margin, and font sizes are adjusted. */
 @media (min-width: 1561px) {
     .nav-card {
         padding: 40px 40px 200px 40px;
@@ -37,6 +41,7 @@
     }
 }
 
+/* If the screen size is not less than 985px and is not greater than or equal to 1561px then this query is executed which sets padding, margin, and the font size. */
 @media (max-width: 1560px) {
     .nav-card {
         padding: 40px 40px 100px 40px;
@@ -52,24 +57,29 @@
     }
 }
 
+/* Sets the color of the links in the nav tabs to blue(default is black). */
 .nav-tabs a {
     color: blue;
 }
 
+/* Sets padding to each tab section, a font size, and a font family. */
 .tab-pane {
     padding: 20px 20px 0 20px;
     font-family: "Open Sans", sans-serif;
     font-size: 17px;
 }
 
+/* Sets the font size of the navigation tabs on the card. */
 .nav-tabs {
     font-size: 15px;
 }
 
+/* Sets the font size of the learn more button the tab pane. */
 .tab-pane button {
     font-size: 15px;
 }
 
+/* Gives the main button below the main title to have a gradient, width, height, and font size. */
 .main-btn {
     font-weight: 600;
     background: linear-gradient(to right, #aaffa9, #11ffbd); 
@@ -81,18 +91,22 @@
     font-size: 25px;
 }
 
+/* Gives the button a slight opacity when the users mouse is over it, is stylistic to help user know that the button is clickable. */
 .main-btn:hover {
     opacity: 0.9;
 }
 
+/* Sets the text color of the cta(call to action) to white. */
 .cta {
     color: white;
 }
 
+/* Sets the font family of the call to action main title. */
 .cta h1 {
     font-family: "Kanit", sans-serif;
 }
 
+/* Adds some padding to the bottom of the learn more button in the tab panes along with its font size. */
 .tab-pane h5 {
     padding-bottom: 10px;
     font-size: 25px;

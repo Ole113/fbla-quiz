@@ -1,5 +1,4 @@
 import React from "react";
-import "../assets/css/Modal.css";
 
 /**
  * Renders a Modal component.
@@ -12,7 +11,7 @@ export default function Modal(props) {
 
     return (
         <div className="modal fade" id="helpModal" tabIndex="-1" role="dialog" aria-labelledby="helpModal" aria-hidden="true">
-          <div className="modal-dialog" role="document">
+          <div className="modal-dialog modal-lg" role="document">
             <div className="modal-content">
               <div className="modal-header">
                 <h5 className="modal-title" id="helpModalTitle">{props.title}</h5>

@@ -1,27 +1,32 @@
+/* Media breakpoint if the screen size is less than 575.98px. */
 @media (max-width: 575.98px) {
     .card {
         margin: 0 20px 40px 20px;
     }
 }
 
+/* Media breakpoint if the screen size is at least 576px. */
 @media (min-width: 576px) {
     .card {
         margin: 0 40px 50px 40px;
     }
 }
 
+/* Media breakpoint if the screen size is at least 768px. */
 @media (min-width: 768px) {
     .card { 
         margin: 0 80px 100px 80px;
     }
 }
 
+/* Media breakpoint if the screen size is at least 992px. */
 @media (min-width: 992px) {
     .card {
         margin: 0 12.5px 75px 12.5px;
     }
 }
 
+/* Media breakpoint if the screen size is at least 1200px. */
 @media (min-width: 1200px) {
     .card {
         margin: 0 30px 200px 30px;

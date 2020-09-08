@@ -1,3 +1,4 @@
+/* Sets the home button to a gradient. Additionally sets the font size, width, and height of the button. */
 .home-btn {
     font-weight: 600;
     background: linear-gradient(to right, #aaffa9, #11ffbd); 
@@ -9,6 +10,7 @@
     font-size: 25px;
 }
 
+/* Gives the button a slight opacity when the users mouse is over it, is stylistic to help user know that the button is clickable. */
 .home-btn:hover {
     opacity: 0.9;
 }
