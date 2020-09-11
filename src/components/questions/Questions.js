@@ -1,10 +1,13 @@
-import React from 'react';
+import React from "react";
 
 import Matching from "./Matching.js";
 import TF from "./TF.js";
 import Multiple from "./Multiple.js";
 import Blank from "./Blank.js";
 
+/**
+ *
+ */
 export default class Questions extends React.Component {
     constructor(props) {
         super(props);
@@ -19,7 +22,7 @@ export default class Questions extends React.Component {
      * 
      */
     componentDidMount() {
-        fetch("http://localhost:5000/questions")
+        fetch(this.props.apiURL)
         .then(response => response.json())
         .then(data => this.setState({ data: data}))
         .catch(err => console.error(err + ", most likely the server hasn't been started yet. Start the server with \"node server.js\"."));
