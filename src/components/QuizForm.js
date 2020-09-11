@@ -7,7 +7,7 @@ export default function QuizForm(props) {
     return (
         <div className="card quiz-form-container">
             <form>
-                <Questions type={props.type} number={props.number} />
+                <Questions apiURL = {props.apiURL} type={props.type} number={props.number} />
                 <button type="submit" className="submit-quiz">Submit</button>
             </form>
         </div>
