@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useRef } from "react";
 import "../assets/css/Card.css";
 import Card from "./Card.js";
+
+const scrollToRef = (ref) => window.scrollTo(0, ref.current.offsetTop)   
 
 /**
  * Renders the 3 cards on the home page using props passed from App.js.
@@ -8,8 +10,12 @@ import Card from "./Card.js";
  * @param {Any} props The properties passed in by the parent class
  */
 export default function Cards(props) {
+
+    const ref = useRef(null);
+    if(props.handleClick) () => scrollToRef(ref);
+
     return (
-        <div id = "learnMore" className="row card-group">
+        <div ref = {ref} id = "learnMore" className="row card-group">
             <div className="col-lg-4">
                 <Card links = {props.links[0]} image = {props.images[0]} title = {props.titles[0]} contents = {props.contents[0]} linkTitle = {props.linkTitles[0]}/>
             </div>

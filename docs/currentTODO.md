@@ -1,17 +1,18 @@
 ## Home
 1. Make it so the learn more button on the home page scrolls to the cards.
-2. Help menu has to be interactive, add a collapse to drop down to the info.
 3. Add it so there is a config file for the server file connecting to the DB with the SQL values and is in .gitignore
-
+4. Make it so there is another option for multiple that has it so there's also multiple questions, should be questions that can all have years or dates as answers etc...
+5. Make sure that when on the quiz page the user is prompted before they go to a new page or go back.
 ## School
 3. Write up the text for the home page cards and the Nav text
 4. Fix it so the crontab actually backs up at the right time.
 5. Allow user to choose what api link the data is being fetched from using node input line, let default be the "localhost...".
 6. Start thinking of a layout of the output reports and what elements it'll contain.
 7. Think of a layout of QA and how it'll work.
-8. Quiz inputs cannot be blank.(required tag maybe).
-9.  Write a FAQ section which can be added to QA.
-10. Rewrite using react hooks https://reactjs.org/docs/hooks-overview.html
+8.  Write a FAQ section which can be added to QA.
+9.  Rewrite using react hooks https://reactjs.org/docs/hooks-overview.html
+10. Update docs for new question type multiple.
+11. Help menu has to be interactive, add a collapse to drop down to the info.
 
 http://minifycode.com/html-minifier/
 
