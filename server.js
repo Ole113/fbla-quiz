@@ -5,6 +5,8 @@ const CRON = require("node-cron");
 
 const APP = EXPRESS();
 
+// *********************** const CONFIG = require("./src/database/questionCompiler/config.json");
+
 //Schedules a CRON job every 3 hours) to backup the database to the backups folder.
 CRON.schedule("* */3 * * *", () => {
     let exec = require("child_process").exec, child;

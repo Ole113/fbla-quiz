@@ -7,15 +7,15 @@ import { Link } from "react-router-dom";
  * Nav is on top of the Gradient background.
  */
 export default function Nav(props) {
-    this.state = { clicked: false };
+    // this.state = { clicked: false };
 
-    const handleOption = () => this.props.onChangeOption({ type: this.state.type, number: this.state.number });
+    // const handleOption = () => this.props.onChangeOption({ type: this.state.type, number: this.state.number });
 
-    onChange = e => {
-        this.setState({ [e.target.name]: e.target.value }, ()=> {
-            this.handleOption();
-        });
-    }
+    // const onChange = e => {
+    //     this.setState({ [e.target.name]: e.target.value }, ()=> {
+    //         this.handleOption();
+    //     });
+    // }
 
     return (
         <div className="container-fluid">

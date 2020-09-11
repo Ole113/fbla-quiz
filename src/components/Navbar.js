@@ -24,16 +24,16 @@ export default function Navbar(props) {
             { /* The Navbar elements that link to the specified pages */ }
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav mr-auto">
-                    <li className={`nav-item${props.active === "landing" ? " active-tab" : ""}`}>
+                    <li className={`nav-item nav-item-navbar${props.active === "landing" ? " active-tab" : ""}`}>
                         <Link className="nav-link" to={props.links[0]}>Home<span className="sr-only">(current)</span></Link>
                     </li>
-                    <li className={`nav-item${props.active === "quiz" ? " active-tab" : ""}`}>
+                    <li className={`nav-item nav-item-navbar${props.active === "quiz" ? " active-tab" : ""}`}>
                         <Link className="nav-link" to={props.links[1]}>Quiz</Link>
                     </li>
-                    <li className={`nav-item${props.active === "practice" ? " active-tab" : ""}`}>
+                    <li className={`nav-item nav-item-navbar${props.active === "practice" ? " active-tab" : ""}`}>
                         <Link className="nav-link" to={props.links[2]}>Practice</Link>
                     </li>
-                    <li className={`nav-item${props.active === "qa" ? " active-tab" : ""}`}>
+                    <li className={`nav-item nav-item-navbar${props.active === "qa" ? " active-tab" : ""}`}>
                         <Link className="nav-link" to={props.links[3]}>Q&amp;A</Link>
                     </li>
                 </ul>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import Matching from "./Matching.js";
 import TF from "./TF.js";
@@ -30,7 +30,7 @@ export default class Questions extends React.Component {
      * @param {Number} id 
      * @param {Array} res The response from the fetch call.
      */
-    getQuestionInfo(id, res) {
+    _getQuestionInfo(id, res) {
         /* 
         need to randomize the questions and the options.
         option_one will always originally be the correct one but when its returned the options need to be randomized.
@@ -54,8 +54,8 @@ export default class Questions extends React.Component {
      * Each element needs to have a key or it will throw a warning: "Warning: Each child in a list should have a unique "key" prop."
      * @param {Integer} id The id of the question to get
      */
-    getQuestionTag(id, res) {
-        let questionInfo = this.getQuestionInfo(id, res);
+    _getQuestionTag(id, res) {
+        let questionInfo = this._getQuestionInfo(id, res);
         if (this.props.type === "Random") {
             let randomNumber = Math.floor(Math.random() * 4);
             return randomNumber === 0 ? <Blank key={id} content={questionInfo.content} />
@@ -73,12 +73,12 @@ export default class Questions extends React.Component {
      * Returns the questions instance variable value and appropriately removes/adds to the questions variable.
      * @param {Array} res The response from the fetch call.
      */
-    setOutput(res) {
+    _setOutput(res) {
         if (this.currentType !== this.props.type) {
             this.questions = [];
             this.currentType = this.props.type;
         }
-        if (this.props.number > this.questions.length) for (let key = this.questions.length; key < this.props.number; key++) this.questions.push(this.getQuestionTag(key, res));
+        if (this.props.number > this.questions.length) for (let key = this.questions.length; key < this.props.number; key++) this.questions.push(this._getQuestionTag(key, res));
         else if (this.props.number < this.questions.length) for (let i = 0; i < this.questions.length - this.props.number + 1; i++) this.questions.pop();
 
         return this.questions;
@@ -89,6 +89,6 @@ export default class Questions extends React.Component {
      */
     render() {
         if(this.state.data == null) return <h1>Loading...</h1>
-        return this.setOutput(this.state.data);
+        return this._setOutput(this.state.data);
     }
 }

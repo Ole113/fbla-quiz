@@ -15,7 +15,7 @@
 }
 
 /* Sets the color of the text of the navbar links to white(is initially set to black by Bootstrap) */
-.nav-item a, .navbar-brand {
+.nav-item-navbar a, .navbar-brand {
     color: white;
 }
 
@@ -31,20 +31,4 @@
 /* Sets the cursor to a pointer when the mouse is above the help button to let users know that it is a clickable button */
 .nav-item-help {
     cursor: pointer;
-}
-
-/*Buttons have a default background and border, this removes that background and border(Bootstrap will set its own border). */
-.modal-button {
-    background-color: transparent;
-    border: none;
-}
-
-/* Gives the button a slight opacity when the users mouse is over it, is stylistic to help user know that the button is clickable. */
-.modal-button:hover {
-    opacity: 0.9;
-}
-
-/* Overwrites the default padding set by Bootstraps modal to compensate for scroll bars. */
-.modal-open {
-    padding-right: 0 !important;
 }

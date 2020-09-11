@@ -10,15 +10,12 @@
 6. Start thinking of a layout of the output reports and what elements it'll contain.
 7. Think of a layout of QA and how it'll work.
 8.  Write a FAQ section which can be added to QA.
-9.  Rewrite using react hooks https://reactjs.org/docs/hooks-overview.html
-10. Update docs for new question type multiple.
-11. Help menu has to be interactive, add a collapse to drop down to the info.
+9.  Update docs for new question type multiple.
+10. Help menu has to be interactive, add a collapse to drop down to the info.
 
 http://minifycode.com/html-minifier/
 
 
-<h3>Landing Page</h3>
-The landing page of FBLA Quiz contains basic information to help the user understand the function of FBLA Quiz and to help the user easily navigate the site.  The navigation bar at the top helps to achieve this task.
 <br /><br />
 <h3>Quiz Page</h3>
 FBLA Quiz's <em>Quiz</em> section is where you can put your skills to practice and test your knowledge. The Quiz Section is split into 2 parts, the options part and the quiz part.<br />

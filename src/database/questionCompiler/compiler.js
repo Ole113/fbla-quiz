@@ -1,7 +1,7 @@
 const READLINE = require("readline");
 const MYSQL = require("mysql");
 
-let configFileName = "default.json";
+let configFileName = "config.json";
 
 const RL = READLINE.createInterface({
 	input: process.stdin,

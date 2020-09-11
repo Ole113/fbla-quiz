@@ -1,0 +1,15 @@
+/*Buttons have a default background and border, this removes that background and border(Bootstrap will set its own border). */
+.modal-button {
+    background-color: transparent;
+    border: none;
+}
+
+/* Gives the button a slight opacity when the users mouse is over it, is stylistic to help user know that the button is clickable. */
+.modal-button:hover {
+    opacity: 0.9;
+}
+
+/* Overwrites the default padding set by Bootstraps modal to compensate for scroll bars. */
+.modal-open {
+    padding-right: 0 !important;
+}
