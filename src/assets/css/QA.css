@@ -1,0 +1,43 @@
+ul.nav-pills {
+    position: fixed;
+    margin-left: 2%;
+    margin-top: 85px;
+}
+
+.nav-link {
+    color: #00529b
+}
+
+.nav-link:hover {
+    color: #00294d;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #00529b;
+}
+
+@media (max-width: 1400px) {
+    #scrollspy {
+        display: none;
+    }
+}
+
+.navigate-icon {
+    vertical-align: -8px;
+    width: 40px;
+    height: 40px;
+}
+
+.title {
+    margin-bottom: 40px;
+}
+
+.title h1 {
+    display: inline-block;
+    font-weight: 700;
+}
+
+.qa-card {
+    height: 800px;
+    padding-bottom: 0;
+}

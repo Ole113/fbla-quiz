@@ -4,14 +4,13 @@ const MYSQL = require("mysql");
 const CRON = require("node-cron");
 
 const APP = EXPRESS();
+const CONFIG = require("./questionCompiler/config.json");
 
-// *********************** const CONFIG = require("./src/database/questionCompiler/config.json");
-
-//Schedules a CRON job every 3 hours) to backup the database to the backups folder.
-CRON.schedule("* */3 * * *", () => {
+//Schedules a CRON job every 3 hours to backup the database to the backups folder.
+CRON.schedule("* * * * *", () => {
     let exec = require("child_process").exec, child;
 
-    child = exec("node src/database/backup/backupScript.js", (error, stdout, stderr) => {
+    child = exec("node backup/backupScript.js", (error, stdout, stderr) => {
         console.log(stdout + stderr);
         if (error) console.log("Exec Error: " + error);
         console.log("Successfully backed up.");
@@ -20,10 +19,10 @@ CRON.schedule("* */3 * * *", () => {
 
 //Sets up the connection info to the MySQL database.
 let connection = MYSQL.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "aelb8362580",
-    database: "Questions"
+    host: CONFIG.host,
+    user: CONFIG.user,
+    password: CONFIG.password,
+    database: CONFIG.database
 });
 
 //Connects to the MySQL database.

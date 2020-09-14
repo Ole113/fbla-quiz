@@ -7,4 +7,4 @@
 4. Fix it so the crontab actually backs up at the right time.
 6. Start thinking of a layout of the output reports and what elements it'll contain.
 7. Think of a layout of QA and how it'll work.
-9.  Update docs for new question type multiple.
+9. Update docs for new question type multiple.

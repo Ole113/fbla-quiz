@@ -20,7 +20,7 @@
 }
 
 /* Sets a different color when the mouse is hovering over nav bar links to let the user know that they are clickable. */
-.navbar-brand:hover, .nav-item a:hover {
+.navbar-brand:hover, .nav-item-navbar a:hover {
     color:  #d9d9d9;
 }
 

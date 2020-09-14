@@ -13,10 +13,10 @@ export default function Navbar(props) {
     return (
         <nav className={`navbar fixed-top navbar-expand-sm ${props.active === "landing" ? window.innerWidth <= 576 ? "navbar-custom navbar-light bg-light" : "navbar-custom" : "navbar-light bg-light"}`}>
             { /* The logo and main title of the Navbar */ }
-            <a className="navbar-brand" href={props.links[0]}>
+            <Link className = "navbar-brand" to={props.links[0]}>
                 <img src={props.image} width="30" height="30" className="d-inline-block align-top" alt="" />
                 FBLA Quiz
-            </a>
+            </Link>
             { /* The Navbar toggler when the screen size is mobile to see the Navbar */ }
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>

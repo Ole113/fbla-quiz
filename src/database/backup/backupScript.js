@@ -1,14 +1,13 @@
 const MYSQLDUMP = require("mysqldump");
-
-const DATE = new Date();
+const CONFIG = require("../questionCompiler/config.json");
 
 //Uses the NPM module mysqldump to connect to the database and backup the information into the backups folder.
 MYSQLDUMP({
     connection: {
-        host: "localhost",
-        user: "root",
-        password: "aelb8362580",
-        database: "questions"
+        host: CONFIG.host,
+        user: CONFIG.user,
+        password: CONFIG.password,
+        database: CONFIG.database
     },
-    dumpToFile: `src/database/backup/questionsBackup.sql`
+    dumpToFile: CONFIG.dumpFile
 });
