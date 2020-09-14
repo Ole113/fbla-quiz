@@ -16,6 +16,7 @@ export default class Questions extends React.Component {
         this.state = {
             data: null,
         }
+        this.renderedIDs = [];
     }
 
     /**
@@ -41,6 +42,9 @@ export default class Questions extends React.Component {
         already been rendered and what can still be rendered
         if theres not enough content in the DB to render any more questions then appropriate error messages need to be applied.
         */
+
+
+
         let question = res[id];
         return {
             content: question.content,

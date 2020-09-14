@@ -41,7 +41,6 @@ Adding questions to the config file goes right below the database config.
  1. If the question is phrased to have multiple solutions(that aren't true or false) `["Question title", "Question type", ["Option One", "Option Two", "Option Three", "Option Four"] ]`
  2. If the question is phrased to have only 1 answer(true or false) `["Question Title", "tf", "Question answer(either true or false)"]`
 
- 
 
 **Question type can be 1 of 2 values:**
  1. "multi", which can be rendered as any type of question except for a True/False question.
