@@ -1,12 +1,10 @@
 import "bootstrap/dist/css/bootstrap.css";
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-
-import Landing from "./pages/Landing.js";
-import Practice from "./pages/Practice"
-import QA from "./pages/QA.js";
-import Quiz from "./pages/Quiz.js";
-import Error from "./pages/Error.js";
+import LandingPage from "./pages/LandingPage.js";
+import QAPage from "./pages/QAPage.js";
+import QuizPage from "./pages/QuizPage.js";
+import ErrorPage from "./pages/ErrorPage.js";
 /*
   Switch tag makes it so that only one Route component can be rendered at one time.
   
@@ -19,15 +17,14 @@ import Error from "./pages/Error.js";
 /**
  * The main component that is rendered by index.js which is rendered into the index.html div.
  */
-export default function App() {
+export default function App() {  
   return (
     <div className="App">
       <Switch>
-        <Route component={Landing} exact path="/" />
-        <Route component={Practice} exact path="/practice" />
-        <Route component={QA} exact path="/qa" />
-        <Route component={Quiz} exact path="/quiz" />
-        <Route component={Error} path="/" />
+        <Route component={LandingPage} exact path="/" />
+        <Route component={QAPage} exact path="/qa" />
+        <Route component={QuizPage} exact path="/quiz" />
+        <Route component={ErrorPage} path="/" />
       </Switch>
     </div>
   );

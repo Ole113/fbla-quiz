@@ -24,7 +24,6 @@ export default function Footer(props) {
                     <Link to={props.links[0]}>{props.linkTitles[0]}</Link>
                     <Link to={props.links[1]}>{props.linkTitles[1]}</Link>
                     <Link to={props.links[2]}>{props.linkTitles[2]}</Link>
-                    <Link to={props.links[3]}>{props.linkTitles[3]}</Link>
                 </div>
             </div>
             <div className="footer-copyright">

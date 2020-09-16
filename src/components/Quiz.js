@@ -4,7 +4,7 @@ import "../assets/css/Quiz.css";
 import QuizOptions from "../components/QuizOptions.js";
 
 /**
- * 
+ * The Quiz component that renders the quiz form and quiz options on the quiz page.
  */
 export default class Quiz extends React.Component {
     /**

@@ -30,11 +30,8 @@ export default function Navbar(props) {
                     <li className={`nav-item nav-item-navbar${props.active === "quiz" ? " active-tab" : ""}`}>
                         <Link className="nav-link" to={props.links[1]}>Quiz</Link>
                     </li>
-                    <li className={`nav-item nav-item-navbar${props.active === "practice" ? " active-tab" : ""}`}>
-                        <Link className="nav-link" to={props.links[2]}>Practice</Link>
-                    </li>
                     <li className={`nav-item nav-item-navbar${props.active === "qa" ? " active-tab" : ""}`}>
-                        <Link className="nav-link" to={props.links[3]}>Q&amp;A</Link>
+                        <Link className="nav-link" to={props.links[2]}>Q&amp;A</Link>
                     </li>
                 </ul>
                 <ul className = "navbar-nav ml-auto">

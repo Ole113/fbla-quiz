@@ -24,9 +24,9 @@ export default class Questions extends React.Component {
      */
     componentDidMount() {
         fetch(this.props.apiURL)
-        .then(response => response.json())
-        .then(data => this.setState({ data: data}))
-        .catch(err => console.error(err + ", most likely the server hasn't been started yet. Start the server with \"node server.js\"."));
+            .then(response => response.json())
+            .then(data => this.setState({ data: data }))
+            .catch(err => console.error(err + ", most likely the server hasn't been started yet. Start the server with \"node server.js\"."));
     }
 
     /**
@@ -42,17 +42,67 @@ export default class Questions extends React.Component {
         already been rendered and what can still be rendered
         if theres not enough content in the DB to render any more questions then appropriate error messages need to be applied.
         */
+       let type = "matching";
+        if (type === "matching") {
+            let IDs = [];
+            for (let i = 0; i < 4; i++) {
+                IDs.push(this.findTypeID(res, id, type));
+            }
+            return IDs;
+        } else return this.findTypeID(res, id, type);
 
+    }
 
-
-        let question = res[id];
-        return {
-            content: question.content,
-            answer: question.answer,
-            option_one: question.option_one,
-            option_two: question.option_two,
-            option_three: question.option_three,
-            option_four: question.option_four,
+    /**
+     * 
+     * @param {Number} id 
+     * @param {String} type 
+     */
+    findTypeID(res, id, type) {
+        if (this.renderedIDs.contains(id)) {
+            //id has not been rendered yet.
+            if (type === res[id].type) {
+                //question id is the right type
+                let question = res[id];
+                return {
+                    content: question.content,
+                    answer: question.answer,
+                    option_one: question.option_one,
+                    option_two: question.option_two,
+                    option_three: question.option_three,
+                    option_four: question.option_four,
+                }
+            } else {
+                //question id is the wrong type
+                let i = 0;
+                while (res[i].type !== type) {
+                    i++;
+                }
+                let question = res[i];
+                return {
+                    content: question.content,
+                    answer: question.answer,
+                    option_one: question.option_one,
+                    option_two: question.option_two,
+                    option_three: question.option_three,
+                    option_four: question.option_four,
+                }
+            }
+        } else {
+            //array doesn't contain the id(id has already been rendered)
+            let i = 0;
+            while (res[i].type !== type) {
+                i++;
+            }
+            let question = res[i];
+            return {
+                content: question.content,
+                answer: question.answer,
+                option_one: question.option_one,
+                option_two: question.option_two,
+                option_three: question.option_three,
+                option_four: question.option_four,
+            }
         }
     }
 
@@ -95,7 +145,7 @@ export default class Questions extends React.Component {
      * Renders the questions.
      */
     render() {
-        if(this.state.data == null) return <h1>Loading...</h1>
+        if (this.state.data == null) return <h1>Loading...</h1>
         return this._setOutput(this.state.data);
     }
 }

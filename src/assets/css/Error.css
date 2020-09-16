@@ -4,7 +4,7 @@
     background: linear-gradient(to right, #aaffa9, #11ffbd); 
     color: white;
     width: 180px;
-    height: 60px;
+    height: 65px;
     border-radius: 50px;
     border: none;
     font-size: 25px;
@@ -13,4 +13,26 @@
 /* Gives the button a slight opacity when the users mouse is over it, is stylistic to help user know that the button is clickable. */
 .home-btn:hover {
     opacity: 0.9;
+}
+
+.error-container .message-col {
+    padding: 400px 0 400px 150px;
+}
+
+.error-container img {
+    width: 400px;
+    height: 400px;
+    margin-top: 262.5px;
+}
+
+@media(max-width: 1450px) {
+    .error-container .logo-col{
+        display: block;
+    }
+}
+
+@media(min-width: 1451px) {
+    .error-container .logo-col {
+        display: inline-block;
+    }
 }
