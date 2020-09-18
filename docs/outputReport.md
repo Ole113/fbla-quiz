@@ -1,6 +1,8 @@
 *Output reports allow user to customize and analyze information need to show which questions were right/wrong*
-When the user submits the quiz at the very top have the score the user got with a gradient button next to it that says "Retake".
-Then have a "hr" below it seperating them.
-Below that have a couple pie charts(maybe 2 or so) of what scores the user got on the left and then on the right side have the users scores for that session. Store this information
-in local storage.
+
+For top section look at this: https://colorlib.com/wp/free-bootstrap-admin-dashboard-templates/
+At the very top of the output report have a card, use one of the cards that have a title then the hr beneath that then body... then have in the title Quiz Results.
+The three sections will be % score, x/total score, and time taken. (Have the print button next to the title or have it in the card footer like in the link)
+Beneath the scores have green ^ or red downward ^ and then the change from the last time.
+
 **On this score history have the ability to see scores over last x time period this allows users to customize information**
