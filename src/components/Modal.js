@@ -11,14 +11,14 @@ export default function Modal(props) {
 	let showButton = () => setTimeout(function () { document.getElementsByClassName("modal-button")[0].style.display = "block"; }, 300);
 
 	return (
-		<div className="modal fade" id="helpModal" tabIndex="-1" role="dialog" aria-labelledby="helpModal" aria-hidden="true">
+		<div className="modal fade" id="helpModal" tabIndex="-1" role="dialog" aria-labelledby="helpModal" aria-hidden="true" data-backdrop="static">
 			<div className="modal-dialog modal-lg" role="document">
 				<div className="modal-content">
 					<div className="modal-header">
 						<h5 className="modal-title" id="helpModalTitle">{props.title}</h5>
 						<button onClick={showButton} type="button" className="close" data-dismiss="modal" aria-label="Close">
 							<span aria-hidden="true">&times;</span>
-						</button>
+						</button>	
 					</div>
 					<div className="modal-body">
 						{props.body}

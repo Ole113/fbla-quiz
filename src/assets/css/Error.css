@@ -12,27 +12,38 @@
 
 /* Gives the button a slight opacity when the users mouse is over it, is stylistic to help user know that the button is clickable. */
 .home-btn:hover {
-    opacity: 0.9;
+    opacity: 0.8;
 }
 
-.error-container .message-col {
-    padding: 400px 0 400px 150px;
+/* Sets the width and the height of the FBLA logo image. */
+.error-container .col-xl-6 img {
+    width: 30vw;
+    height: 30vw;
 }
 
-.error-container img {
-    width: 400px;
-    height: 400px;
-    margin-top: 262.5px;
-}
-
-@media(max-width: 1450px) {
-    .error-container .logo-col{
-        display: block;
+/* Sets the padding and margin of the image column if the screen width is less than 1999px. */
+@media(max-width: 1999px) {
+    .error-container .d-flex {
+        padding-bottom: 150px;
+        margin: 0;
     }
 }
 
-@media(min-width: 1451px) {
-    .error-container .logo-col {
-        display: inline-block;
+/* Sets the margin of the image column if the screen width is greater than 1200px. */
+@media(min-width: 1200px) {
+    .error-container .d-flex {
+        margin: 22.5vh 0 22.5vh 0;
     }
+}
+
+/* Sets the padding and margin of the error text. */
+.error-container .error-text {
+    padding-left: 12.5vw;
+    margin: 30vh 0 30vh 0;
+}
+
+/* Changes the font size and font weight of the main ERROR 404 text. */
+.error-container .error-text span {
+    font-size: 120px;
+    font-weight: 700;
 }
