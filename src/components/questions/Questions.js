@@ -50,7 +50,6 @@ export default class Questions extends React.Component {
             }
             return IDs;
         } else return this.findTypeID(res, id, type);
-
     }
 
     /**

@@ -32,7 +32,11 @@ Strong text means they haven't been added yet.
     - If the user has clicked on button scroll to points.
     - If the user has clicked the button to add more quiz questions then add another quiz question.
     - remove quiz question, change quiz type...
-    
+
+## Program incorporates at least one if-then sequence that saves the user steps, Program does not contain unnecessary steps or complexity
+    - Button on the home page that scrolls down to the points maybe.
+    - 
+
 ## Data storage includes dynamic backup feature, Data storage is clear, and storage is secure 
     - Data is stored in MySQL database.
     - The CRON tab updates the backup file every 3 hours.

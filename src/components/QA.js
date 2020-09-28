@@ -1,5 +1,5 @@
 import React from "react";
-import ScrollSpy from "./Scrollspy.js";
+import ScrollSpy from "./ScrollspyVertical.js";
 import QASections from "./QASection.js";
 
 import "../assets/css/QA.css";

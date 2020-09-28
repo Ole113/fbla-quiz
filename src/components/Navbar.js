@@ -8,7 +8,8 @@ import { Link } from "react-router-dom";
  */
 export default function Navbar(props) {
     
-    let hideButton = () => document.getElementsByClassName("modal-button")[0].style.display = "none";
+    //Hides the help menu button while the help menu is open.
+    const HIDE_BUTTON = () => document.getElementsByClassName("modal-button")[0].style.display = "none";
 
     return (
         <nav className={`navbar fixed-top navbar-expand-sm ${props.active === "landing" ? window.innerWidth <= 576 ? "navbar-custom navbar-light bg-light" : "navbar-custom" : "navbar-light bg-light"}`}>
@@ -36,8 +37,9 @@ export default function Navbar(props) {
                 </ul>
                 <ul className = "navbar-nav ml-auto">
                     <li className="nav-item nav-item-help">
+                        { /* The help menu button that when clicked the funtion HIDE_BUTTON is called */ }
                         <button type="button" className="modal-button" data-toggle="modal" data-target="#helpModal" >
-                            <img onClick = {hideButton} className = "nav-link" src = {props.color === "dark" ? require("../assets/images/helpDark.svg") : require("../assets/images/helpWhite.svg")} alt = "question mark icon" />
+                            <img onClick = {HIDE_BUTTON} className = "nav-link" src = {props.color === "dark" ? require("../assets/images/helpDark.svg") : require("../assets/images/helpWhite.svg")} alt = "question mark icon" />
                         </button>
                     </li>
                 </ul>
