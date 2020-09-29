@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar.js";
 import Footer from "../components/Footer.js";
 import Modal from "../components/Modal.js";
 import QA from "../components/QA.js";
+import HelpMenu from "../components/HelpMenu.js";
 
 /**
  * Renders the question and answers page with all its corresponding elements.

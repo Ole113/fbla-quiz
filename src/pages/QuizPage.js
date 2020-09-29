@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar.js";
 import Footer from "../components/Footer.js";
 import Quiz from "../components/Quiz.js";
 import Modal from "../components/Modal.js";
+import HelpMenu from "../components/HelpMenu.js";
 
 /**
  * Renders the quiz page with all its corresponding elements.
