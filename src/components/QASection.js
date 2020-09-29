@@ -9,7 +9,7 @@ export default function QASection(props) {
             <br /><br /><br />
             <div className="title animated fadeIn slower">
                 <h1 style={{ textTransform: "none" }}>{props.title}</h1>
-                <img className = "navigate-icon" src = {require("../assets/images/navigate_next.svg")} alt = ""/>
+                <img className = "navigate-icon" src = {require("../assets/images/navigateNext.svg")} alt = ""/>
             </div>
             {props.body}
         </div>

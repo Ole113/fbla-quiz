@@ -7,7 +7,7 @@ import Cards from "../components/Cards.js";
 import Nav from "../components/Nav.js";
 import Points from "../components/Points.js";
 import Modal from "../components/Modal.js";
-import ScrollspyHorizontal from "../components/ScrollspyHorizontal.js";
+import HelpMenu from "../components/HelpMenu.js";
 
 /**
  * Renders the landing page with all its corresponding elements.
@@ -21,7 +21,7 @@ export default function LandingPage() {
 				image={require("../assets/images/fblaFlag.png")}
 			/>
 			<Modal title="FBLA Quiz Help Menu"
-				body={ <ScrollspyHorizontal /> }
+				body={ <HelpMenu /> }
 			/>
 			<Gradient />
 			<Nav 
@@ -36,9 +36,9 @@ export default function LandingPage() {
 				icons={[require("../assets/images/analytics.svg"), require("../assets/images/questions.svg"), require("../assets/images/forum.svg")]}
 			/>
 			<hr style={{ width: "60%", paddingBottom: "100px" }} />
-			<Cards images={[require("../assets/images/quizImage.jpg"), require("../assets/images/ferns.jpg")]}
+			<Cards images={[require("../assets/images/quizImageCopy.jpg"), require("../assets/images/fblaStage.jpg")]}
 				contents={[
-					"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+					"The FBLA Quiz Page allows users to take a quiz with questions from the quiz database. The questions pertain to FBLA material. On the left side of the quiz page is the quiz options. These allow the user to change the types of question and number of questions being tested on.  There are 50+ questions in the database and more can be added using custom quiz questions. See the help menu to learn more.  On the right side of the quiz page there are the quiz questions. The default values is question type Random and 5 quiz questions. Questions are added/removed dynamically along with the result of the quiz using React.  The output report of the quiz contains information such as right/wrong questions, previous test results, and more!",
 					"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 				]}
 				links={["/quiz", "/qa"]}

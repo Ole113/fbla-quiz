@@ -1,0 +1,13 @@
+.helpSection h3 {
+    display: inline-block;
+}
+
+.helpSectionInfo {
+    padding: 15px 50px 30px 50px;
+}
+
+.helpSection img {
+    vertical-align: -10px;
+    width: 35px;
+    height: 35px;
+}
