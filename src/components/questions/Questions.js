@@ -34,21 +34,13 @@ export default class Questions extends React.Component {
      * @param {Number} id 
      * @param {Array} res The response from the fetch call.
      */
-    _getQuestionInfo(id, res) {
-        /* 
-        need to randomize the questions and the options.
-        option_one will always originally be the correct one but when its returned the options need to be randomized.
-        multiple questions cannot be rendered more than once so once a question is rendered its id needs to be added to a list to keep count of what has
-        already been rendered and what can still be rendered
-        if theres not enough content in the DB to render any more questions then appropriate error messages need to be applied.
-        */
-       let type = "matching";
+    _getQuestionInfo(id, res, type) {
         if (type === "matching") {
-            let IDs = [];
+            let ids = [];
             for (let i = 0; i < 4; i++) {
-                IDs.push(this.findTypeID(res, id, type));
+                ids.push(this.findTypeID(res, id, type));
             }
-            return IDs;
+            return ids;
         } else return this.findTypeID(res, id, type);
     }
 
@@ -111,7 +103,7 @@ export default class Questions extends React.Component {
      * @param {Integer} id The id of the question to get
      */
     _getQuestionTag(id, res) {
-        let questionInfo = this._getQuestionInfo(id, res);
+        let questionInfo = this.props.type == "True/False" ? this._getQuestionInfo(id, res, "tf") : this._getQuestionInfo(id, res, "matching");
         if (this.props.type === "Random") {
             let randomNumber = Math.floor(Math.random() * 4);
             return randomNumber === 0 ? <Blank key={id} content={questionInfo.content} />
