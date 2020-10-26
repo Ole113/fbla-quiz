@@ -20,32 +20,36 @@ export default class Questions extends React.Component {
     }
 
     /**
-     * 
+     * When the component mounts the data is fetched from the API and the component's state is set to the data returned from the fetch call.
      */
     componentDidMount() {
         fetch(this.props.apiURL)
             .then(response => response.json())
             .then(data => this.setState({ data: data }))
-            .catch(err => console.error(err + ", most likely the server hasn't been started yet. Start the server with \"node server.js\"."));
+            .catch(err => console.error(`An error occurred. ${err}, most likely the server hasn't been started yet. Start the server with \"node server.js\" in the database directory.`));
     }
 
     /**
-     * 
-     * @param {Number} id 
+     * Calls the _findTypeID method with the correct type.
+     * @param {Number} id The question id/number.
      * @param {Array} res The response from the fetch call.
      */
     _getQuestionInfo(id, res, type) {
+        //Matching question types needs to have 4 questions returned not just 1 like the other question types.
         if (type === "matching") {
             let ids = [];
             for (let i = 0; i < 4; i++) {
                 ids.push(this._findTypeID(res, id, type));
             }
             return ids;
-        } else if(isNaN(Number(type))) {
-            console.log(type);
+        } 
+        //If the question needs to be random a number will be passed in which represents the question type.
+        else if(isNaN(Number(type))) {
             return type === 2 ? this._findTypeID(res, id, "tf")
                 : this._findTypeID(res, id, "multi");
-        } else return this._findTypeID(res, id, type);
+        }
+        //If the type is not matching or a random question then the type will be either True/False or Multi.
+        else return this._findTypeID(res, id, type);
     }
 
     /**
@@ -125,11 +129,17 @@ export default class Questions extends React.Component {
     /**
      * Gets the question to be added to the array in setOutput.
      * Each element needs to have a key or it will throw a warning: "Warning: Each child in a list should have a unique "key" prop."
-     * @param {Integer} id The id of the question to get
+     * @param {Integer} id The id of the question to get.
      */
     _getQuestionTag(id, res) {
-        let questionInfo = this.props.type === "True/False" ? this._getQuestionInfo(id, res, "tf") : this.props.type === "Matching" ? this._getQuestionInfo(id, res, "matching") : this.props.type === "Multiple choice" ? this._getQuestionInfo(id, res, "multiple") : this._getQuestionInfo(id, res, "blank");
+        //Sets the value of question info using conditionals.
+        let questionInfo = this.props.type === "True/False" ? this._getQuestionInfo(id, res, "tf") : this.props.type === "Matching" ? this._getQuestionInfo(id, res, "matching") : this._getQuestionInfo(id, res, "multi");
+        
         if (this.props.type === "Random") {
+            /*
+            If the question type is random then _getQuestionInfo doesn't know what information it should return because question types like TF or Matching require different info than the other question types of multi.
+            If _getQuestionInfo knows the random number and knows what types of questions will be rendered corresponding to the number then the method is able to return the correct information for the random question.
+            */
             let randomNumber = Math.floor(Math.random() * 4);
             questionInfo = this._getQuestionInfo(id, res, randomNumber);
             return randomNumber === 0 ? <Blank key={id} content={questionInfo.content} />
@@ -137,6 +147,7 @@ export default class Questions extends React.Component {
                     : randomNumber === 2 ? <TF key={id} content={questionInfo.content} />
                         : <Matching key={id} content={questionInfo.content} option_one={questionInfo.option_one} option_two={questionInfo.option_two} option_three={questionInfo.option_three} option_four={questionInfo.option_four} />;
         }
+
         else if (this.props.type === "Multiple choice") return <Multiple key={id} content={questionInfo.content} option_one={questionInfo.option_one} option_two={questionInfo.option_two} option_three={questionInfo.option_three} option_four={questionInfo.option_four} />;
         else if (this.props.type === "Fill in the blank") return <Blank key={id} content={questionInfo.content} />;
         else if (this.props.type === "True/False") return <TF key={id} content={questionInfo.content} />;
