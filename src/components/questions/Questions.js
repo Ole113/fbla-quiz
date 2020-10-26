@@ -38,10 +38,14 @@ export default class Questions extends React.Component {
         if (type === "matching") {
             let ids = [];
             for (let i = 0; i < 4; i++) {
-                ids.push(this.findTypeID(res, id, type));
+                ids.push(this._findTypeID(res, id, type));
             }
             return ids;
-        } else return this.findTypeID(res, id, type);
+        } else if(isNaN(Number(type))) {
+            console.log(type);
+            return type === 2 ? this._findTypeID(res, id, "tf")
+                : this._findTypeID(res, id, "multi");
+        } else return this._findTypeID(res, id, type);
     }
 
     /**
@@ -49,10 +53,10 @@ export default class Questions extends React.Component {
      * @param {Number} id 
      * @param {String} type 
      */
-    findTypeID(res, id, type) {
-        if (this.renderedIDs.contains(id)) {
-            //id has not been rendered yet.
-            if (type === res[id].type) {
+    _findTypeID(res, id, type) {
+        if(!this.renderedIDs.includes(id)) {
+            //id has not been rendered yet
+            if (type === res[id].category) {
                 //question id is the right type
                 let question = res[id];
                 return {
@@ -63,38 +67,59 @@ export default class Questions extends React.Component {
                     option_three: question.option_three,
                     option_four: question.option_four,
                 }
-            } else {
-                //question id is the wrong type
-                let i = 0;
-                while (res[i].type !== type) {
-                    i++;
-                }
-                let question = res[i];
-                return {
-                    content: question.content,
-                    answer: question.answer,
-                    option_one: question.option_one,
-                    option_two: question.option_two,
-                    option_three: question.option_three,
-                    option_four: question.option_four,
-                }
             }
-        } else {
-            //array doesn't contain the id(id has already been rendered)
-            let i = 0;
-            while (res[i].type !== type) {
-                i++;
-            }
-            let question = res[i];
-            return {
-                content: question.content,
-                answer: question.answer,
-                option_one: question.option_one,
-                option_two: question.option_two,
-                option_three: question.option_three,
-                option_four: question.option_four,
-            }
+            // else {
+            //     //question id is the wrong type
+            //     let i = 0;
+            //     while (res[i].type !== type) {
+            //         i++;
+            //     }
+            //     let question = res[i];
+            //     return {
+            //         content: question.content,
+            //         answer: question.answer,
+            //         option_one: question.option_one,
+            //         option_two: question.option_two,
+            //         option_three: question.option_three,
+            //         option_four: question.option_four,
+            //     }
+            // }
         }
+        else {
+            
+        }
+        return {
+            content: "question.content,",
+            answer: "question.content,",
+            option_one: "question.content,",
+            option_two: "question.content,",
+            option_three: "question.content,",
+            option_four: "question.content,",
+        }
+        // else {
+        //     if (type === res[id].type) {
+        //         //question id is the right type
+        //         let question = res[id];
+        //         return {
+        //             content: question.content,
+        //             answer: question.answer,
+        //             option_one: question.option_one,
+        //             option_two: question.option_two,
+        //             option_three: question.option_three,
+        //             option_four: question.option_four,
+        //         }
+        //     } else {
+        //         let question = res[id];
+        //         return {
+        //             content: question.content,
+        //             answer: question.answer,
+        //             option_one: question.option_one,
+        //             option_two: question.option_two,
+        //             option_three: question.option_three,
+        //             option_four: question.option_four,
+        //         }
+        //     }
+        // }
     }
 
     /**
@@ -103,9 +128,10 @@ export default class Questions extends React.Component {
      * @param {Integer} id The id of the question to get
      */
     _getQuestionTag(id, res) {
-        let questionInfo = this.props.type == "True/False" ? this._getQuestionInfo(id, res, "tf") : this._getQuestionInfo(id, res, "matching");
+        let questionInfo = this.props.type === "True/False" ? this._getQuestionInfo(id, res, "tf") : this.props.type === "Matching" ? this._getQuestionInfo(id, res, "matching") : this.props.type === "Multiple choice" ? this._getQuestionInfo(id, res, "multiple") : this._getQuestionInfo(id, res, "blank");
         if (this.props.type === "Random") {
             let randomNumber = Math.floor(Math.random() * 4);
+            questionInfo = this._getQuestionInfo(id, res, randomNumber);
             return randomNumber === 0 ? <Blank key={id} content={questionInfo.content} />
                 : randomNumber === 1 ? <Multiple key={id} content={questionInfo.content} option_one={questionInfo.option_one} option_two={questionInfo.option_two} option_three={questionInfo.option_three} option_four={questionInfo.option_four} />
                     : randomNumber === 2 ? <TF key={id} content={questionInfo.content} />
