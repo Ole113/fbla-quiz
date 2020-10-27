@@ -5,6 +5,8 @@ import TF from "./TF.js";
 import Multiple from "./Multiple.js";
 import Blank from "./Blank.js";
 
+import Modal from "../Modal.js";
+
 /**
  *
  */
@@ -26,7 +28,23 @@ export default class Questions extends React.Component {
         fetch(this.props.apiURL)
             .then(response => response.json())
             .then(data => this.setState({ data: data }))
-            .catch(err => console.error(`An error occurred. ${err}, most likely the server hasn't been started yet. Start the server with \"node server.js\" in the database directory.`));
+            .catch(err => console.error(`An error occurred. ${err}, most likely the server hasn't been started yet. Start the server with "node server.js" in the database directory.`));
+    }
+
+    _catchError(id, res) {
+        /*
+        If the numbers of questions in the database is less than the number of questions the user is requesting then an error will be thrown.
+        If this is true then the error is logged and a user friendly error message pops up.
+        */
+       try { let testVariable = res[id].category; }
+       catch(err) { 
+           console.error(`The number of questions that are requested to render is more questions than are in the database. ${err}`);
+           //Show modal here.
+           return <Modal 
+                   title = "An Error Occurred"
+                   body = "Error Body"
+                   />
+       }
     }
 
     /**
@@ -44,7 +62,8 @@ export default class Questions extends React.Component {
             return ids;
         } 
         //If the question needs to be random a number will be passed in which represents the question type.
-        else if(isNaN(Number(type))) {
+        else if(!isNaN(Number(type))) {
+            console.log(type);
             return type === 2 ? this._findTypeID(res, id, "tf")
                 : this._findTypeID(res, id, "multi");
         }
@@ -93,12 +112,12 @@ export default class Questions extends React.Component {
             
         }
         return {
-            content: "question.content,",
-            answer: "question.content,",
-            option_one: "question.content,",
-            option_two: "question.content,",
-            option_three: "question.content,",
-            option_four: "question.content,",
+            content: "An error occurred.",
+            answer: "An error occurred.",
+            option_one: "An error occurred.",
+            option_two: "An error occurred.",
+            option_three: "An error occurred.",
+            option_four: "An error occurred.",
         }
         // else {
         //     if (type === res[id].type) {
@@ -147,7 +166,6 @@ export default class Questions extends React.Component {
                     : randomNumber === 2 ? <TF key={id} content={questionInfo.content} />
                         : <Matching key={id} content={questionInfo.content} option_one={questionInfo.option_one} option_two={questionInfo.option_two} option_three={questionInfo.option_three} option_four={questionInfo.option_four} />;
         }
-
         else if (this.props.type === "Multiple choice") return <Multiple key={id} content={questionInfo.content} option_one={questionInfo.option_one} option_two={questionInfo.option_two} option_three={questionInfo.option_three} option_four={questionInfo.option_four} />;
         else if (this.props.type === "Fill in the blank") return <Blank key={id} content={questionInfo.content} />;
         else if (this.props.type === "True/False") return <TF key={id} content={questionInfo.content} />;
@@ -174,6 +192,19 @@ export default class Questions extends React.Component {
      */
     render() {
         if (this.state.data == null) return <h1>Loading...</h1>
+        try { let testVariable = this.state.data[this.props.number].category; }
+        catch(err) {
+            console.error(`The number of questions that are requested to render is more questions than are in the database. ${err}`);
+            //Show modal here.
+            return <Modal 
+                    id = "errorModal"
+                    type = "error"
+                    title = "An Error Occurred"
+                    body = "Error Body"
+                    />
+                    
+            
+        }
         return this._setOutput(this.state.data);
     }
 }

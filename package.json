@@ -10,6 +10,7 @@
     "bootstrap": "^4.5.0",
     "cors": "^2.8.5",
     "fs": "0.0.1-security",
+    "jquery": "^3.5.1",
     "mysql": "^2.18.1",
     "mysqldump": "^3.2.0",
     "node-cron": "^2.0.3",
