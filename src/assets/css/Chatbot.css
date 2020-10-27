@@ -1,0 +1,10 @@
+.chatbot-container {
+    width: 100%;
+    background-color: #f2f2f2;
+    padding-top: 50px;
+}
+
+.chatbot-container input {
+    width: 100%;
+    background-color: transparent;
+}
