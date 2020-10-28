@@ -3,7 +3,6 @@ import "../assets/css/Modal.css";
 
 import $ from 'jquery'; 
 
-
 /**
  * Renders a Modal component.
  * @param {Any} props The properties passed in by the parent class.

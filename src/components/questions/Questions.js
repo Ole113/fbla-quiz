@@ -145,6 +145,16 @@ export default class Questions extends React.Component {
         // }
     }
 
+
+    /**
+     * 
+     * @param {String} title 
+     * @param {String} body 
+     */
+    _renderError(title, body) {
+
+    }
+
     /**
      * Gets the question to be added to the array in setOutput.
      * Each element needs to have a key or it will throw a warning: "Warning: Each child in a list should have a unique "key" prop."
@@ -195,15 +205,12 @@ export default class Questions extends React.Component {
         try { let testVariable = this.state.data[this.props.number].category; }
         catch(err) {
             console.error(`The number of questions that are requested to render is more questions than are in the database. ${err}`);
-            //Show modal here.
             return <Modal 
-                    id = "errorModal"
+                    id = "helpModal"
                     type = "error"
                     title = "An Error Occurred"
                     body = "Error Body"
                     />
-                    
-            
         }
         return this._setOutput(this.state.data);
     }

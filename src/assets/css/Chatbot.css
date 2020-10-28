@@ -1,10 +1,43 @@
 .chatbot-container {
     width: 100%;
-    background-color: #f2f2f2;
-    padding-top: 50px;
+    padding-top: 25px;
+    -webkit-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 7px;
 }
 
-.chatbot-container input {
+#chatbot-input {
     width: 100%;
+    background-color: #f2f2f2;
+    border: 0;
+    padding: 12.5px;
+    margin-top: 150px;
+}
+
+#chatbot-submit {
+    margin-left: -45px;
+    width: 30px;
+    background-image: url(../images/sendMessage.svg);
+    background-repeat: no-repeat;
+    border: 0;
     background-color: transparent;
+    cursor: pointer;
+}
+
+.server-message {
+    padding-left: 30px;
+    color: white;
+}
+
+.server-message p {
+    border-radius: 50px;
+    background-color: blue;
+}
+
+.client-message {
+    color: black;
+    width: 100%;
+    text-align: right;
+    padding: 10px 30px 10px 0;
 }
