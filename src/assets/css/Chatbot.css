@@ -1,3 +1,4 @@
+/* The container of the chatbot which has a box shadow that surrounds it. */
 .chatbot-container {
     width: 1300px;
     -webkit-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
@@ -6,6 +7,7 @@
     border-radius: 7px;
 }
 
+/* The input where the user puts their message into. */
 #chatbot-input {
     width: 100%;
     background-color: #f2f2f2;
@@ -15,6 +17,7 @@
     border-top: 1px solid #d9d9d9;
 }
 
+/* The send message button, needs margin-left so its ontop of the input box. */
 #chatbot-submit {
     margin-left: -45px;
     width: 30px;
@@ -25,32 +28,31 @@
     cursor: pointer;
 }
 
+/* When the server sends a message these are the styles that are applied to them. */
 .server-message {
     padding-left: 22.5px;
     margin-right: 200px;
     color: black;
 }
 
+/* The paragraph inside of the server and client divs, sets the styles. */
 .server-message p, .client-message p {
     display: inline-block;
     padding: 8px 25px 8px 25px;
     border-radius: 100px;
 }
 
+/* Sets the color of the server messages. */
 .server-message p {
     background-color: #dfe9ef;
 }
 
-.client-message p {
-    display: inline-block;
-    padding: 8px 25px 8px 25px;
-    border-radius: 100px;
-}
-
+/*Sets the color of the color messages. */
 .client-message p {
     background-color: #3588eb;
 }
 
+/* Sets the styles of the client messages. */
 .client-message {
     color: white;
     width: 100%;
@@ -58,16 +60,19 @@
     padding: 5px 22.5px 5px 0;
 }
 
+/* Sets the styles of the server and client messages titles. */
 .server-message h6, .client-message h6 {
     display: inline-block;
     padding: 0 0 7px 10px;
     font-weight: bold;
 }
 
+/* Client messages have a default color of white but the h6 is not in the chat bubble so you wouldn't be able to see it unless the color was black. */
 .client-message h6 {
     color: black;
 }
 
+/* Sets the styles of the chatbot title. */
 .chatbot-title {
     width: 100%;
     background-color: white;
