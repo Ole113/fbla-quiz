@@ -12,7 +12,7 @@ export default function ScrollSpy() {
                         <a className="nav-link" href="#faq">FAQs</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link" href="#forum">Forum</a>
+                        <a className="nav-link" href="#qa">Q&amp;A</a>
                     </li>
                 </ul>
             </nav>

@@ -14,6 +14,7 @@ export default class Chatbot extends React.Component {
     constructor(props) {
         super(props);
         this.chatInput = null;
+        this.sendButton = null;
         this.state = { chatMessages: [] };
     }
 
@@ -22,20 +23,29 @@ export default class Chatbot extends React.Component {
      */
     componentDidMount() {
         this.chatInput = document.getElementById("chatbot-input");
+        this.sendButton = document.getElementById("chatbot-submit");
         //Sends the initial hello message.
         this._serverSendMessage();
         this._checkMessageSent();
     }
 
     /**
-     * Checks if the user has clicked the "Enter" key.
+     * Checks if the user has clicked the "Enter" key or has clicked the send button.
      * If the input is not empty the _addMessage(type, message) is called.
      * After the user has input something the message contents are checked for keywords in _serverSendMessage().
      */
     _checkMessageSent() {
+        this.sendButton.addEventListener("click", () => {
+            if(this.chatInput.value !== "") {
+                this._addMessage("client");
+                this._serverSendMessage();
+            }
+        });
         this.chatInput.addEventListener("keyup", (event) => {
-            if (this.chatInput.value !== "" && event.key === "Enter") this._addMessage("client");
-            this._serverSendMessage();
+            if (this.chatInput.value !== "" && event.key === "Enter") {
+                this._addMessage("client");
+                this._serverSendMessage();
+            }
         });
     }
 
@@ -65,10 +75,15 @@ export default class Chatbot extends React.Component {
         return Object.keys(this.state.chatMessages).map(key => {
             if (this.state.chatMessages[key].type === "server") {
                 return <div key={key} className="server-message">
+                    <img src = {require("../assets/images/userIcon.svg")} alt = "FBLA Logo" />
+                    <h6>Help Bot</h6>
+                    <br />
                     <p>{this.state.chatMessages[key].message}</p>
                 </div>
             } else if (this.state.chatMessages[key].type === "client") {
                 return <div key={key} className="client-message">
+                    <h6>You</h6>
+                    <br />
                     <p>{this.state.chatMessages[key].message}</p>
                 </div>
             } else console.error("The type passed into _addMessage was incorrect. Needs to be either client or server.");
@@ -81,14 +96,25 @@ export default class Chatbot extends React.Component {
      */
     _serverSendMessage() {
         //If nothing has been sent in the chat messages then chatMessages will be undefine which will throw an error.
-        const newestMessage = this.state.chatMessages.length > 0 ? this.state.chatMessages[this.state.chatMessages.length - 1].message : "";
+        const NEWEST_MESSAGE = this.state.chatMessages.length > 0 ? this.state.chatMessages[this.state.chatMessages.length - 1].message.toLowerCase() : "";
+        const MESSAGE_DELAY = 300;
         if (this.state.chatMessages.length === 0) {
-            this._addMessage("server", "Hello, what can I help you with today?");
-        }
-        else if (newestMessage.includes("hello")) {
+            this._addMessage("server", "Hello, welcome to FBLA Chat Bot Help! You can ask me anything about FBLA Quiz.");
+            this._addMessage("server", "For example if you don't know how to use the Quiz you can ask me \"How do I use the Quiz?\"");
+            this._addMessage("server", "What can I help you with today?");
+        } else if (NEWEST_MESSAGE.includes("hello") || NEWEST_MESSAGE.includes("hi")) {
             //Makes it so the response is not instant and seems more human but not so slow the user thinks the application is slow.
-            window.setTimeout(() => this._addMessage("server", "Hi!"), 250)
+            window.setTimeout(() => this._addMessage("server", "Hi!"), MESSAGE_DELAY)
+        } else if(NEWEST_MESSAGE.includes("thanks") || NEWEST_MESSAGE.includes("thank")) {
+            window.setTimeout(() => this._addMessage("server", "You're welcome! Have good day and thank you for using FBLA Quiz."), MESSAGE_DELAY)
+        } else if(NEWEST_MESSAGE.includes("goodbye") || NEWEST_MESSAGE.includes("bye")) {
+
+        } else if(NEWEST_MESSAGE.includes("help")) {
+
         }
+
+        //If no keywords are picked up then an error message is sent.
+        else window.setTimeout(() => this._addMessage("server", "I'm sorry, I don't understand what you're asking me. Try using more common keywords such as \"quiz, help, qa, frq, database, custom, questions\" and make sure your spelling is correct."), MESSAGE_DELAY);
     }
 
     /**
@@ -97,10 +123,13 @@ export default class Chatbot extends React.Component {
     render() {
         return (
             <div className="chatbot-container">
+                <div className = "chatbot-title">
+                    <h1>FBLA Chat Bot Help</h1>
+                </div>
                 <div className="chatbot-messages">
                     {this._getChatMessages()}
                 </div>
-                <input id="chatbot-input" type="text" placeholder="What is your question?" />
+                <input id="chatbot-input" type="text" placeholder="What do you need help with?" />
                 <input id = "chatbot-submit"/>
             </div>
         );

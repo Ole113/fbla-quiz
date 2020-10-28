@@ -1,6 +1,5 @@
 .chatbot-container {
-    width: 100%;
-    padding-top: 25px;
+    width: 1300px;
     -webkit-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
@@ -13,6 +12,7 @@
     border: 0;
     padding: 12.5px;
     margin-top: 150px;
+    border-top: 1px solid #d9d9d9;
 }
 
 #chatbot-submit {
@@ -26,18 +26,56 @@
 }
 
 .server-message {
-    padding-left: 30px;
-    color: white;
+    padding-left: 22.5px;
+    margin-right: 200px;
+    color: black;
+}
+
+.server-message p, .client-message p {
+    display: inline-block;
+    padding: 8px 25px 8px 25px;
+    border-radius: 100px;
 }
 
 .server-message p {
-    border-radius: 50px;
-    background-color: blue;
+    background-color: #dfe9ef;
+}
+
+.client-message p {
+    display: inline-block;
+    padding: 8px 25px 8px 25px;
+    border-radius: 100px;
+}
+
+.client-message p {
+    background-color: #3588eb;
 }
 
 .client-message {
-    color: black;
+    color: white;
     width: 100%;
     text-align: right;
-    padding: 10px 30px 10px 0;
+    padding: 5px 22.5px 5px 0;
+}
+
+.server-message h6, .client-message h6 {
+    display: inline-block;
+    padding: 0 0 7px 10px;
+    font-weight: bold;
+}
+
+.client-message h6 {
+    color: black;
+}
+
+.chatbot-title {
+    width: 100%;
+    background-color: white;
+    color: black;
+    margin-bottom: 25px;
+    text-align: center;
+    padding: 10px;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+    border-bottom: 1px solid gray;
 }

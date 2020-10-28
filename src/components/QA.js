@@ -31,8 +31,8 @@ export default function QA() {
                         } 
                     />
                     <QASections 
-                        id={"forum"} 
-                        title={"Forum"} 
+                        id={"qa"} 
+                        title={"QA"} 
                         body={
                             <Chatbot />
                         }
