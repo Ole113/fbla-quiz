@@ -1,4 +1,4 @@
-/* Gives a gradient to the background with a specified with, height, and background image. */
+/* Gives a gradient to the background with a specified width, height, and background image. */
 #gradient {
     width: 100%;
     height: 850px;
@@ -16,7 +16,7 @@
     #gradient { background-size: 100%; }
 }
 
-/* Bootstrap media breakpoint checking if the screen width id less than 1377px. */
+/* Bootstrap media breakpoint checking if the screen width is less than 1377px. */
 @media (max-width: 1377px) {
     #gradient { background-size: 100% 100%; }
 }
