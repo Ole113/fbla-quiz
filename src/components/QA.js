@@ -21,7 +21,7 @@ export default function QA() {
                         body={
                             <div>
                                 <i>Can custom questions be uploaded to FBLA Quiz?</i><br />
-                                To upload custom questions go to <a href = "https://github.com/Ole113/fbla-quiz-2021/tree/master/src/database/questionCompiler">Here</a> to learn more. <br /><br />
+                                To upload custom questions go <a href = "https://github.com/Ole113/fbla-quiz-2021/tree/master/src/database/questionCompiler">Here</a> to learn more. <br /><br />
                                 <i>What is the max number of questions on the quiz?</i><br />
                                 The number of questions that are in the question database. Excluding any custom questions there are 50 questions in the database. <br /><br />
                                 <i>what technologies does FBLA Quiz use?</i><br />
@@ -32,7 +32,7 @@ export default function QA() {
                     />
                     <QASections 
                         id={"qa"} 
-                        title={"QA"} 
+                        title={"Q&A"} 
                         body={
                             <Chatbot />
                         }

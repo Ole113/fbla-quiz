@@ -1,10 +1,13 @@
 /* The container of the chatbot which has a box shadow that surrounds it. */
 .chatbot-container {
     width: 1300px;
+    height: 550px;
     -webkit-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
     border-radius: 7px;
+    overflow-y: scroll;
+    padding-top: 50px;
 }
 
 /* The input where the user puts their message into. */
@@ -13,8 +16,7 @@
     background-color: #f2f2f2;
     border: 0;
     padding: 12.5px;
-    margin-top: 150px;
-    border-top: 1px solid #d9d9d9;
+    margin-top: 175px;
 }
 
 /* The send message button, needs margin-left so its ontop of the input box. */
@@ -70,17 +72,4 @@
 /* Client messages have a default color of white but the h6 is not in the chat bubble so you wouldn't be able to see it unless the color was black. */
 .client-message h6 {
     color: black;
-}
-
-/* Sets the styles of the chatbot title. */
-.chatbot-title {
-    width: 100%;
-    background-color: white;
-    color: black;
-    margin-bottom: 25px;
-    text-align: center;
-    padding: 10px;
-    border-top-left-radius: 7px;
-    border-top-right-radius: 7px;
-    border-bottom: 1px solid gray;
 }
