@@ -28,14 +28,14 @@ Strong text means they haven't been added yet.
     - **NEED INTERACTIVE Q&A**
 
 ## Program sequence is logical, error free, and incorporates if-then sequences
-    - If the home link has been clicked on then render home page...
-    - If the user has clicked on button scroll to points.
-    - If the user has clicked the button to add more quiz questions then add another quiz question.
-    - remove quiz question, change quiz type...
+    - **If** the home link has been clicked on **then** render home page...
+    - **If** the user has clicked on button **then** scroll to points.
+    - **If** the user has clicked the button to add more quiz questions **then** add another quiz question.
+    - remove quiz question, change quiz type... 
 
 ## Program incorporates at least one if-then sequence that saves the user steps, Program does not contain unnecessary steps or complexity
-    - Button on the home page that scrolls down to the points maybe.
-    - 
+    -  Program is split into components which increases the reusability and decreases the complexity because all of the code is not a jumbled mess.
+    - If the user clicks on the learn more butotn then it scrolls to the points. Saves the user from having to scroll to them. This is not a very good example. Think of something better.
 
 ## Data storage includes dynamic backup feature, Data storage is clear, and storage is secure 
     - Data is stored in MySQL database.
@@ -43,8 +43,9 @@ Strong text means they haven't been added yet.
     - The database config file is in the .gitignore and the database password is very secure(use a random password generator).
 
 ## Identifiers exhibit an advanced knowledge of programming and are accurate in all instances
-    - Keep variable names as advanced as possible even if it makes it harder to understand the program.
-    - Mention camel case / Snake case / all caps constants
+    - Snack case for constants
+    - Pascal case for classes
+    - Camel case for variables
     - Private methods have _ before them.
 
 ## Program documentation invites use of advanced features
