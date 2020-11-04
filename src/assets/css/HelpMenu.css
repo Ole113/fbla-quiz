@@ -1,11 +1,14 @@
+/* The title is make inline block so it can be next to the > symbol. */
 .helpSection h3 {
     display: inline-block;
 }
 
+/* Adds padding all around the help section. */
 .helpSectionInfo {
     padding: 15px 50px 30px 50px;
 }
 
+/* Changes the styles of the help section image. */
 .helpSection img {
     vertical-align: -10px;
     width: 35px;

@@ -1,37 +1,45 @@
+/* Changes the position of the nav bills and makes them fixed to the top left. */
 ul.nav-pills {
     position: fixed;
     margin-left: 2%;
     margin-top: 85px;
 }
 
+/* Overrides the default color of the link. */
 .nav-link {
     color: #00529b
 }
 
+/* Makes it so the link has a different hover color to improve the user experience. */
 .nav-link:hover {
     color: #00294d;
 }
 
+/* Changes the default color of the nav pills and the color of them when they are active. They are active when you are in their section. */
 .nav-pills .nav-link.active {
     background-color: #00529b;
 }
 
-@media (max-width: 1400px) {
-    #scrollspy {
+/* If the screen width is less than 900px then the pills will disappear. If they didn't disappear then they would get pushed on top of the other components. */
+@media (max-width: 900px) {
+    .col-2-qa {
         display: none;
     }
 }
 
+/* Changes the styles of the navigate icon which is the > symbol. */
 .navigate-icon {
     vertical-align: -8px;
     width: 40px;
     height: 40px;
 }
 
+/* Changes the bottom margin of all the elements with the title class. */
 .title {
     margin-bottom: 40px;
 }
 
+/* Makes it so the h1 of every title is inline block and has a bold font-weight. */
 .title h1 {
     display: inline-block;
     font-weight: 700;

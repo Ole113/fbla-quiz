@@ -91,7 +91,11 @@ export default class Chatbot extends React.Component {
                     <br />
                     <p>{this.state.chatMessages[key].message}</p>
                 </div>
-            } else console.error("The type passed into _addMessage was incorrect. Needs to be either client or server.");
+            } else {
+                //React throws a warning if a return isn't returned from a arrow function.
+                console.error("The type passed into _addMessage was incorrect. Needs to be either client or server.");
+                return "An error has occurred."
+            }
         });
     }
 

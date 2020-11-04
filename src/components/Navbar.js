@@ -12,7 +12,7 @@ export default function Navbar(props) {
     const HIDE_BUTTON = () => document.getElementsByClassName("modal-button")[0].style.display = "none";
 
     return (
-        <nav className={`navbar fixed-top navbar-expand-sm ${props.active === "landing" ? window.innerWidth <= 576 ? "navbar-custom navbar-light bg-light" : "navbar-custom" : "navbar-light bg-light"}`}>
+        <nav className={`navbar fixed-top navbar-expand ${props.active === "landing" ? window.innerWidth <= 576 ? "navbar-custom navbar-light bg-light" : "navbar-custom" : "navbar-light bg-light"}`}>
             { /* The logo and main title of the Navbar */ }
             <Link className = "navbar-brand" to={props.links[0]}>
                 <img src={props.image} width="30" height="30" className="d-inline-block align-top" alt="" />

@@ -1,6 +1,7 @@
 /* The container of the chatbot which has a box shadow that surrounds it. */
 .chatbot-container {
     width: 1300px;
+    max-width: 100%;
     height: 550px;
     -webkit-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
@@ -19,7 +20,7 @@
     margin-top: 175px;
 }
 
-/* The send message button, needs margin-left so its ontop of the input box. */
+/* The send message button, needs margin-left so its on top of the input box. */
 #chatbot-submit {
     margin-left: -45px;
     width: 30px;
@@ -40,7 +41,7 @@
 /* The paragraph inside of the server and client divs, sets the styles. */
 .server-message p, .client-message p {
     display: inline-block;
-    padding: 8px 25px 8px 25px;
+    padding: 8px 35px 8px 35px;
     border-radius: 100px;
 }
 
@@ -72,4 +73,11 @@
 /* Client messages have a default color of white but the h6 is not in the chat bubble so you wouldn't be able to see it unless the color was black. */
 .client-message h6 {
     color: black;
+}
+
+/* Checks if the window width is 900px and if it is the padding of the chat messages is changed because the default padding looks weird for mobile. */
+@media (max-width: 900px) {
+    .server-message p, .client-message p {
+        padding: 17.5px 50px 17.5px 50px;
+    }
 }

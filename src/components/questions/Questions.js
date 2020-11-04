@@ -36,15 +36,15 @@ export default class Questions extends React.Component {
         If the numbers of questions in the database is less than the number of questions the user is requesting then an error will be thrown.
         If this is true then the error is logged and a user friendly error message pops up.
         */
-       try { let testVariable = res[id].category; }
-       catch(err) { 
-           console.error(`The number of questions that are requested to render is more questions than are in the database. ${err}`);
-           //Show modal here.
-           return <Modal 
-                   title = "An Error Occurred"
-                   body = "Error Body"
-                   />
-       }
+        try { let testVariable = res[id].category; }
+        catch (err) {
+            console.error(`The number of questions that are requested to render is more questions than are in the database. ${err}`);
+            //Show modal here.
+            return <Modal
+                title="An Error Occurred"
+                body="Error Body"
+            />
+        }
     }
 
     /**
@@ -60,9 +60,9 @@ export default class Questions extends React.Component {
                 ids.push(this._findTypeID(res, id, type));
             }
             return ids;
-        } 
+        }
         //If the question needs to be random a number will be passed in which represents the question type.
-        else if(!isNaN(Number(type))) {
+        else if (!isNaN(Number(type))) {
             console.log(type);
             return type === 2 ? this._findTypeID(res, id, "tf")
                 : this._findTypeID(res, id, "multi");
@@ -77,7 +77,7 @@ export default class Questions extends React.Component {
      * @param {String} type 
      */
     _findTypeID(res, id, type) {
-        if(!this.renderedIDs.includes(id)) {
+        if (!this.renderedIDs.includes(id)) {
             //id has not been rendered yet
             if (type === res[id].category) {
                 //question id is the right type
@@ -109,7 +109,7 @@ export default class Questions extends React.Component {
             // }
         }
         else {
-            
+
         }
         return {
             content: "An error occurred.",
@@ -163,7 +163,7 @@ export default class Questions extends React.Component {
     _getQuestionTag(id, res) {
         //Sets the value of question info using conditionals.
         let questionInfo = this.props.type === "True/False" ? this._getQuestionInfo(id, res, "tf") : this.props.type === "Matching" ? this._getQuestionInfo(id, res, "matching") : this._getQuestionInfo(id, res, "multi");
-        
+
         if (this.props.type === "Random") {
             /*
             If the question type is random then _getQuestionInfo doesn't know what information it should return because question types like TF or Matching require different info than the other question types of multi.
@@ -203,14 +203,14 @@ export default class Questions extends React.Component {
     render() {
         if (this.state.data == null) return <h1>Loading...</h1>
         try { let testVariable = this.state.data[this.props.number].category; }
-        catch(err) {
+        catch (err) {
             console.error(`The number of questions that are requested to render is more questions than are in the database. ${err}`);
-            return <Modal 
-                    id = "helpModal"
-                    type = "error"
-                    title = "An Error Occurred"
-                    body = "Error Body"
-                    />
+            return <Modal
+                id="helpModal"
+                type="error"
+                title="An Error Occurred"
+                body="Error Body"
+            />
         }
         return this._setOutput(this.state.data);
     }

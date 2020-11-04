@@ -1,5 +1,5 @@
 import React from "react";
-import ScrollSpy from "./ScrollspyVertical.js";
+import ScrollSpy from "./Scrollspy.js";
 import QASections from "./QASection.js";
 import Chatbot from "./Chatbot.js";
 import "../assets/css/QA.css";
@@ -10,13 +10,23 @@ import "../assets/css/QA.css";
 export default function QA() {
     return (
         <div style = {{paddingBottom: "150px"}} className="container">
-            <div className="row">
-                <div className="col-2">
-                    <ScrollSpy />
+            <div className="row d-flex justify-content-center">
+                <div className="col-2 col-2-qa">
+                    <ScrollSpy 
+                    href = {["#qaSection", "#faqSection"]}
+                    titles = {["Q&A", "FAQ"]}
+                    />
                 </div>
-                <div className="col-10-qa">
+                <div className="col-10-qa col-10">
                     <QASections 
-                        id={"faq"} 
+                        id={"qaSection"} 
+                        title={"Q&A"} 
+                        body={
+                            <Chatbot />
+                        }
+                    /><br /><br /><br />
+                    <QASections 
+                        id={"faqSection"} 
                         title={"FAQs"} 
                         body={
                             <div>
@@ -24,18 +34,11 @@ export default function QA() {
                                 To upload custom questions go <a href = "https://github.com/Ole113/fbla-quiz-2021/tree/master/src/database/questionCompiler">Here</a> to learn more. <br /><br />
                                 <i>What is the max number of questions on the quiz?</i><br />
                                 The number of questions that are in the question database. Excluding any custom questions there are 50 questions in the database. <br /><br />
-                                <i>what technologies does FBLA Quiz use?</i><br />
+                                <i>What technologies does FBLA Quiz use?</i><br />
                                 FBLA Quiz uses a combination of Javascript and React with a Node.js backend. Question information uses MySQL. <br /><br />
                                 <i></i>
                             </div>
                         } 
-                    />
-                    <QASections 
-                        id={"qa"} 
-                        title={"Q&A"} 
-                        body={
-                            <Chatbot />
-                        }
                     />
                 </div>
             </div>

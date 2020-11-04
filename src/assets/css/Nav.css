@@ -112,6 +112,7 @@
     font-size: 25px;
 }
 
+/* Makes it so when the button is clicked the scroll style is a smooth animation and not an instant event. */
 html {
     scroll-behavior: smooth;
 }
