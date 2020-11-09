@@ -1,6 +1,6 @@
 /* Overrides Bootstraps implementation and sets the max width of the container to impossibly large size. */
 .container {
-    max-width: 10000px;
+    max-width: 90000px;
 }
 
 /* Sets the padding for the quiz form's container. */

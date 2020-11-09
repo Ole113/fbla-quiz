@@ -25,7 +25,7 @@ export default class Quiz extends React.Component {
                     <div className="col-2">
                         <QuizOptions onChangeOption={this.handleOption} />
                     </div>
-                    <div className="col-10-quiz">
+                    <div className="col-10 col-10-quiz">
                         <QuizForm apiURL={this.props.apiURL} type={this.state.type} number={this.state.number} />
                     </div>
                 </div>

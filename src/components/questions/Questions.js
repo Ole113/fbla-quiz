@@ -213,7 +213,12 @@ export default class Questions extends React.Component {
      */
     render() {
         //this.getQuestionContent();
-        if (this.state.data == null) return <h1>Loading...</h1>
+        if (this.state.data == null) return <div>
+            <h1>Loading...</h1><br />
+            <p>If this message persists then an error has occurred. Most likely the database server is not online.
+            <br/>To turn it on navigate to the database directory with <code>cd src/database</code> and run the command <code>node server.js</code>
+            </p>
+        </div>
         try { let testVariable = this.state.data[this.props.number].category; }
         catch (err) {
             console.error(`The number of questions that are requested to render is more questions than are in the database. ${err}`);
