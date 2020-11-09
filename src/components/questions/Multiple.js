@@ -2,7 +2,7 @@ import React from "react";
 
 /**
  * 
- * @param {*} props 
+ * @param {Any} props 
  */
 export default function Multiple(props) {
     return (

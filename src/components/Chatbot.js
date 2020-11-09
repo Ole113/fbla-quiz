@@ -43,13 +43,13 @@ export default class Chatbot extends React.Component {
                 this._serverSendMessage();
             }
         });
+
         this.chatInput.addEventListener("keyup", (event) => {
             if (this.chatInput.value !== "" && event.key === "Enter") {
                 this._addMessage("client");
                 this._serverSendMessage();
                 //Makes it so when the user sends a message the chatbot input is always at the bottom of the container.
                 this.chatbotContainer.scrollTop = this.chatbotContainer.scrollHeight;
-
             }
         });
     }
@@ -60,7 +60,6 @@ export default class Chatbot extends React.Component {
      * @param {String} message The message that was sent.
      */
     _addMessage(type, message) {
-
         /*
         When the questions are rendered if the bot or if the user has sent the messages needs to be known.
         After that is known the message and message type(client or server) is pushed to the state and the state is updated to force a refresh.

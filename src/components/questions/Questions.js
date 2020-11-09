@@ -16,9 +16,10 @@ export default class Questions extends React.Component {
         this.questions = [];
         this.currentType = "Random";
         this.state = {
-            data: null,
+            data: null
         }
         this.renderedIDs = [];
+        this.questionValues = [];
     }
 
     /**
@@ -171,15 +172,15 @@ export default class Questions extends React.Component {
             */
             let randomNumber = Math.floor(Math.random() * 4);
             questionInfo = this._getQuestionInfo(id, res, randomNumber);
-            return randomNumber === 0 ? <Blank key={id} content={questionInfo.content} />
-                : randomNumber === 1 ? <Multiple key={id} content={questionInfo.content} option_one={questionInfo.option_one} option_two={questionInfo.option_two} option_three={questionInfo.option_three} option_four={questionInfo.option_four} />
+            return randomNumber === 0 ? <Blank key={id} content={questionInfo.content} answer={questionInfo.answer} />
+                : randomNumber === 1 ? <Multiple key={id} content={questionInfo.content} option_one={questionInfo.option_one} option_two={questionInfo.option_two} option_three={questionInfo.option_three} option_four={questionInfo.option_four} answer={questionInfo.answer} />
                     : randomNumber === 2 ? <TF key={id} content={questionInfo.content} />
-                        : <Matching key={id} content={questionInfo.content} option_one={questionInfo.option_one} option_two={questionInfo.option_two} option_three={questionInfo.option_three} option_four={questionInfo.option_four} />;
+                        : <Matching key={id} content={questionInfo.content} option_one={questionInfo.option_one} option_two={questionInfo.option_two} option_three={questionInfo.option_three} option_four={questionInfo.option_four} answer={questionInfo.answer} />;
         }
-        else if (this.props.type === "Multiple choice") return <Multiple key={id} content={questionInfo.content} option_one={questionInfo.option_one} option_two={questionInfo.option_two} option_three={questionInfo.option_three} option_four={questionInfo.option_four} />;
-        else if (this.props.type === "Fill in the blank") return <Blank key={id} content={questionInfo.content} />;
+        else if (this.props.type === "Multiple choice") return <Multiple key={id} content={questionInfo.content} option_one={questionInfo.option_one} option_two={questionInfo.option_two} option_three={questionInfo.option_three} option_four={questionInfo.option_four} answer={questionInfo.answer} />;
+        else if (this.props.type === "Fill in the blank") return <Blank key={id} content={questionInfo.content} onChange = {this.props.onChange} sendQuestionValue={this.handleQuestionValue} />;
         else if (this.props.type === "True/False") return <TF key={id} content={questionInfo.content} />;
-        else if (this.props.type === "Matching") return <Matching key={id} content={questionInfo.content} option_one={questionInfo.option_one} option_two={questionInfo.option_two} option_three={questionInfo.option_three} option_four={questionInfo.option_four} />;
+        else if (this.props.type === "Matching") return <Matching key={id} content={questionInfo.content} option_one={questionInfo.option_one} option_two={questionInfo.option_two} option_three={questionInfo.option_three} option_four={questionInfo.option_four} answer={questionInfo.answer} />;
     }
 
     /**
@@ -197,10 +198,21 @@ export default class Questions extends React.Component {
         return this.questions;
     }
 
+    handleQuestionValue = (data) => {
+        this.questionValues.push({ data });
+        /*
+        TODO:
+        What needs to be done now is to make it so when the user updates their answer question
+        the questionValues index that has the correct id is updated and a new index isn't created.
+        
+        */
+    }
+
     /**
      * Renders the questions.
      */
     render() {
+        //this.getQuestionContent();
         if (this.state.data == null) return <h1>Loading...</h1>
         try { let testVariable = this.state.data[this.props.number].category; }
         catch (err) {

@@ -2,13 +2,33 @@ import React from "react";
 
 /**
  * The Blank question type.
- * @param {*} props The props passed in by the Questions.js file.
+ * @param {Any} props The props passed in by the Questions.js file.
  */
-export default function Blank(props) {
-    return (
-        <div className="form-group">
-            <label htmlFor="numberQuestions">{props.content}</label>
-            <input type="text" className="form-control" id="blankQuestion" aria-describedby="blankQuestion" placeholder="Type your answer here" required/>
-        </div>
-    );
+export default class Blank extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            id: "",
+            value: "",
+        };
+    }
+
+    sendQuestionValue = () => this.props.sendQuestionValue({ id: this.state.id, value: this.state.value});
+
+    handleChange = (event) => {
+        //There has to be a way to know which answer corresponds to which question
+        this.setState({ id: this.props.content, value: event.target.value }, () => {
+            this.sendQuestionValue();
+        });
+    }
+
+    render() {
+        return (
+            <div className="form-group">
+                <label htmlFor="numberQuestions">{this.props.content}</label>
+                <input type="text" className="form-control" id="blankQuestion" aria-describedby="blankQuestion" placeholder="Type your answer here" onChange = {this.handleChange} required/>
+            </div>
+        );
+    }
 }

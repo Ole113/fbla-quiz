@@ -17,7 +17,7 @@ export default class QuizOptions extends React.Component {
     handleOption = () => this.props.onChangeOption({ type: this.state.type, number: this.state.number });
 
     onChange = e => {
-        this.setState({ [e.target.name]: e.target.value }, ()=> {
+        this.setState({ [e.target.name]: e.target.value }, () => {
             this.handleOption();
         });
     }
