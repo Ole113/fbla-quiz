@@ -199,7 +199,19 @@ export default class Questions extends React.Component {
     }
 
     handleQuestionValue = (data) => {
-        this.questionValues.push({ data });
+        if(this.questionValues.length === 0) this.questionValues.push({ data });
+        for(let i = 0; i < this.questionValues.length; i++) {
+            if(data.id === this.questionValues[i].data.id) {
+                this.questionValues[i].data.value = data.value;
+                console.log(this.questionValues[i].data.value);
+                break;
+            } else {
+                this.questionValues.push({ data });
+                break;
+            }
+            //console.log(i)
+        }
+        console.log(this.questionValues)
         /*
         TODO:
         What needs to be done now is to make it so when the user updates their answer question
