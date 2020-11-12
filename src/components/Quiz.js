@@ -22,10 +22,10 @@ export default class Quiz extends React.Component {
         return (
             <div className="container">
                 <div className="row quizRow">
-                    <div className="col-2">
+                    <div className="col-2-sm">
                         <QuizOptions onChangeOption={this.handleOption} />
                     </div>
-                    <div className="col-10 col-10-quiz">
+                    <div className="col-10-lg col-10-quiz">
                         <QuizForm apiURL={this.props.apiURL} type={this.state.type} number={this.state.number} />
                     </div>
                 </div>

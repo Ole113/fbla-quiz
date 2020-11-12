@@ -1,6 +1,7 @@
 /* Overrides Bootstraps implementation and sets the max width of the container to impossibly large size. */
 .container {
     max-width: 90000px;
+    padding: 0;
 }
 
 /* Sets the padding for the quiz form's container. */
@@ -15,7 +16,7 @@ form {
 
 /* Sets the quiz row to 100%. */
 .quizRow {
-    width: 100%;
+    margin: 0;
 }
 
 /* Sets the background color of the quiz options(right side), the height, width, padding. */
@@ -28,7 +29,7 @@ form {
 }
 
 /* Makes it so quiz options column has no padding. */
-.col-2 {
+.col-2-lg {
     padding: 0;
 }
 
@@ -54,4 +55,24 @@ form {
 /* Gives the button a slight opacity when the users mouse is over it, is stylistic to help user know that the button is clickable. */
 .submit-quiz:hover {
     opacity: 0.9;
+}
+
+/* If the screen size is super small then the quiz question padding is too much. */
+@media(max-width: 890px) {
+    .quiz-form-container {
+        padding: 50px 75px 50px 75px;
+    }
+}
+
+/* If the screen width is small enough then a break point will be hit where the quiz options is on top of the page instead of on the side. I couldn't make the breakpoint any smaller because it messed up how it looked.*/
+@media(max-width: 1518px) {
+    .col-2-sm {
+        margin: 100px 50px 0 50px;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .col-10-lg {
+        width: 100%;
+    }
 }
