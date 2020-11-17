@@ -71,8 +71,9 @@ form {
         max-width: 100%;
         width: 100%;
     }
+}
 
-    .col-10-lg {
-        width: 100%;
-    }
+/* Changes the width of the right column. */
+.col-10-lg {
+    width: 85%;
 }

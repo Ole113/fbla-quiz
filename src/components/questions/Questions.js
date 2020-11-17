@@ -177,7 +177,7 @@ export default class Questions extends React.Component {
                     : randomNumber === 2 ? <TF key={id} content={questionInfo.content} />
                         : <Matching key={id} content={questionInfo.content} option_one={questionInfo.option_one} option_two={questionInfo.option_two} option_three={questionInfo.option_three} option_four={questionInfo.option_four} answer={questionInfo.answer} />;
         }
-        else if (this.props.type === "Multiple choice") return <Multiple key={id} content={questionInfo.content} option_one={questionInfo.option_one} option_two={questionInfo.option_two} option_three={questionInfo.option_three} option_four={questionInfo.option_four} answer={questionInfo.answer} />;
+        else if (this.props.type === "Multiple choice") return <Multiple id={id} key={id} content={questionInfo.content} option_one={questionInfo.option_one} option_two={questionInfo.option_two} option_three={questionInfo.option_three} option_four={questionInfo.option_four} answer={questionInfo.answer} />;
         else if (this.props.type === "Fill in the blank") return <Blank key={id} content={questionInfo.content} onChange = {this.props.onChange} sendQuestionValue={this.handleQuestionValue} />;
         else if (this.props.type === "True/False") return <TF key={id} content={questionInfo.content} />;
         else if (this.props.type === "Matching") return <Matching key={id} content={questionInfo.content} option_one={questionInfo.option_one} option_two={questionInfo.option_two} option_three={questionInfo.option_three} option_four={questionInfo.option_four} answer={questionInfo.answer} />;
