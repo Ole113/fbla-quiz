@@ -8,46 +8,45 @@ import "../../assets/css/Matching.css";
 export default function Matching(props) {
     return (
         <div className="form-group container">
-            <label htmlFor="numberQuestions">{props.content}</label>
+            {/* <label htmlFor="numberQuestions">{props.content}</label> */}
             <div className="row">
                 <div className="col select-col">
                     <select className="form-control" required>
-                        <option value = "">-----------------</option>
-                        <option>Small select</option>
-                        <option>Small select</option>
-                        <option>Small select</option>
-                        <option>Small select</option>
+                        <option>-----------------</option>
+                        <option>{props.answerOne}</option>
+                        <option>{props.answerTwo}</option>
+                        <option>{props.answerThree}</option>
+                        <option>{props.answerFour}</option>
                     </select>
                     <select className="form-control" required>
-                        <option value = "">-----------------</option>
-                        <option>Small select</option>
-                        <option>Small select</option>
-                        <option>Small select</option>
-                        <option>Small select</option>
+                        <option>-----------------</option>
+                        <option>{props.answerOne}</option>
+                        <option>{props.answerTwo}</option>
+                        <option>{props.answerThree}</option>
+                        <option>{props.answerFour}</option>
                     </select>
                     <select className="form-control" required>
-                        <option value = "">-----------------</option>
-                        <option>Small select</option>
-                        <option>Small select</option>
-                        <option>Small select</option>
-                        <option>Small select</option>
+                        <option>-----------------</option>
+                        <option>{props.answerOne}</option>
+                        <option>{props.answerTwo}</option>
+                        <option>{props.answerThree}</option>
+                        <option>{props.answerFour}</option>
                     </select>
                     <select className="form-control" required>
-                        <option value = "">-----------------</option>
-                        <option>Small select</option>
-                        <option>Small select</option>
-                        <option>Small select</option>
-                        <option>Small select</option>
+                        <option>-----------------</option>
+                        <option>{props.answerOne}</option>
+                        <option>{props.answerTwo}</option>
+                        <option>{props.answerThree}</option>
+                        <option>{props.answerFour}</option>
                     </select>
                 </div>
                 <div className="col letters">
-                    <span>A. {props.option_one} <br /></span>
-                    <span>B. {props.option_two} <br /></span>
-                    <span>C. {props.option_three} <br /></span>
-                    <span>D. {props.option_four} <br /></span>
+                    <span>A. {props.optionOne} <br /></span>
+                    <span>B. {props.optionTwo} <br /></span>
+                    <span>C. {props.optionThree} <br /></span>
+                    <span>D. {props.optionFour} <br /></span>
                 </div>
             </div>
-
         </div>
     );
 }
