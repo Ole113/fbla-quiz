@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `option_three` text,
   `option_four` text,
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 11 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: questions
@@ -224,6 +224,106 @@ VALUES
     'Leading Into the Future Together',
     'Connecting Together',
     'Leading and Connecting Together'
+  );
+INSERT INTO
+  `questions` (
+    `id`,
+    `content`,
+    `category`,
+    `option_one`,
+    `option_two`,
+    `option_three`,
+    `option_four`
+  )
+VALUES
+  (
+    11,
+    'Are the official colors of FBLA blue and gold?',
+    'tf',
+    'true',
+    '',
+    '',
+    ''
+  );
+INSERT INTO
+  `questions` (
+    `id`,
+    `content`,
+    `category`,
+    `option_one`,
+    `option_two`,
+    `option_three`,
+    `option_four`
+  )
+VALUES
+  (
+    12,
+    'Does the FBLA creed contain five stanzas?',
+    'tf',
+    'false',
+    '',
+    '',
+    ''
+  );
+INSERT INTO
+  `questions` (
+    `id`,
+    `content`,
+    `category`,
+    `option_one`,
+    `option_two`,
+    `option_three`,
+    `option_four`
+  )
+VALUES
+  (
+    13,
+    'Is the founder of FBLA Conrad N. Hilton?',
+    'tf',
+    'false',
+    '',
+    '',
+    ''
+  );
+INSERT INTO
+  `questions` (
+    `id`,
+    `content`,
+    `category`,
+    `option_one`,
+    `option_two`,
+    `option_three`,
+    `option_four`
+  )
+VALUES
+  (
+    14,
+    'Was FBLA founded in 1940?',
+    'tf',
+    'true',
+    '',
+    '',
+    ''
+  );
+INSERT INTO
+  `questions` (
+    `id`,
+    `content`,
+    `category`,
+    `option_one`,
+    `option_two`,
+    `option_three`,
+    `option_four`
+  )
+VALUES
+  (
+    15,
+    'Was the first FBLA charter chartered February 3rd, 1942?',
+    'tf',
+    'true',
+    '',
+    '',
+    ''
   );
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;

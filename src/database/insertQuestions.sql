@@ -1,4 +1,19 @@
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
+VAlUES ("Are the official colors of FBLA blue and gold?", "tf", "true", "", "", "");
+
+INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
+VAlUES ("Does the FBLA creed contain five stanzas?", "tf", "false", "", "", ""); 
+
+INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
+VAlUES ("Is the founder of FBLA Conrad N. Hilton?", "tf", "false", "", "", ""); 
+
+INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
+VAlUES ("Was FBLA founded in 1940?", "tf", "true", "", "", ""); 
+
+INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
+VAlUES ("Was the first FBLA charter chartered February 3rd, 1942?", "tf", "true", "", "", ""); 
+
+INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
 VALUES ("What are the official colors of FBLA?", "multi", "Blue and gold", "Orange and yellow", "Yellow and blue", "Gold and red");
 
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
