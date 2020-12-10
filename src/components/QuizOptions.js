@@ -2,11 +2,11 @@ import React from "react";
 import "../assets/css/Quiz.css";
 
 /**
- * 
+ * Handles the quiz options.
  */
 export default class QuizOptions extends React.Component {
     /**
-     * 
+     * Sets the state to an initial value and calls super on the props.
      * @param {Any} props 
      */
     constructor(props) {
@@ -14,14 +14,24 @@ export default class QuizOptions extends React.Component {
         this.state = { type: "Random", number: "5" };
     }
 
+    /**
+     * The callback function that passes data into the onChangeOption function.
+     */
     handleOption = () => this.props.onChangeOption({ type: this.state.type, number: this.state.number });
 
+    /**
+     * Checks when the quiz options have been changed and updates the state.
+     * @param {Object} e The event of the change, is set by the browser.
+     */
     onChange = e => {
         this.setState({ [e.target.name]: e.target.value }, () => {
             this.handleOption();
         });
     }
 
+    /**
+     * Renders the quiz options and deals with the changing quiz options.
+     */
     render() {
         return (
             <div className="quiz-options">

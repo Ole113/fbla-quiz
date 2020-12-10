@@ -24,18 +24,31 @@ form {
     background-color: #e6e6e6;
     width: 100%;
     height: 100%;
-    padding: 100px 40px 100px 40px;
     border-bottom-right-radius: 2.5px;
 }
 
-/* Makes it so quiz options column has no padding. */
-.col-2-lg {
-    padding: 0;
+/* Updates the options padding and quiz top margin. */
+@media(min-width: 951px) {
+    /* Makes it so the options has padding on left and right. */
+    .quiz-options {
+        padding: 100px 40px 100px 40px;
+    }
+    /* Gives the quiz column a margin top value. */
+    .col-10-quiz {
+        margin-top: 150px;
+    }
 }
 
-/* Gives the quiz column a margin top value. */
-.col-10-quiz {
-    margin-top: 150px;
+/* Changes the quiz options and right column when condition is hit. */
+@media(max-width: 950px) {
+    /* Makes it so the padding is less on the left and right is less so smaller screen won't make text overflow. */
+    .quiz-options {
+        padding: 100px 10px 100px 10px;
+    }
+    /* Makes it so the margin on the top and bottom are less. */
+    .col-10-quiz {
+        margin: 125px 0 50px 0;
+    }
 }
 
 /* Gives the submit quiz button a gradient background, a color, width, height, and more. */
@@ -64,16 +77,12 @@ form {
     }
 }
 
-/* If the screen width is small enough then a break point will be hit where the quiz options is on top of the page instead of on the side. I couldn't make the breakpoint any smaller because it messed up how it looked.*/
-@media(max-width: 1518px) {
-    .col-2-sm {
-        margin: 100px 50px 0 50px;
-        max-width: 100%;
-        width: 100%;
-    }
+/* Changes the width of the right column. */
+.col-10 {
+    width: 85%;
 }
 
-/* Changes the width of the right column. */
-.col-10-lg {
-    width: 85%;
+/* Makes it so the quiz options has no default left and right padding. */
+.col-2 {
+    padding: 0;
 }

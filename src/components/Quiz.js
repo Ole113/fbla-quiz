@@ -16,16 +16,23 @@ export default class Quiz extends React.Component {
         this.state = { type: "Random", number: "5" };
     }
 
+    /**
+     * Callback that is passed into quiz options that gets the information that the user has input for the quiz options.
+     * @param {Object} data 
+     */
     handleOption = (data) => this.setState({ type: data.type, number: data.number });
 
+    /**
+    * Renders the quiz options and the quiz.
+     */
     render() {
         return (
             <div className="container">
                 <div className="row quizRow">
-                    <div className="col-2-sm">
+                    <div className="col-2">
                         <QuizOptions onChangeOption={this.handleOption} />
                     </div>
-                    <div className="col-10-lg col-10-quiz">
+                    <div className="col-10 col-10-quiz">
                         <QuizForm apiURL={this.props.apiURL} type={this.state.type} number={this.state.number} />
                     </div>
                 </div>

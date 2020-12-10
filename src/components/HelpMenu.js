@@ -3,6 +3,10 @@ import React from "react";
 import "../assets/css/QA.css";
 import "../assets/css/HelpMenu.css";
 
+/**
+ * Renders the help menu content.
+ * @param {Any} props 
+ */
 export default function HelpMenu(props) {
     return (
         <div>

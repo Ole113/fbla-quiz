@@ -1,8 +1,8 @@
 import React from "react";
 
 /**
- * 
- * @param {Any} props 
+ * The Multiple question type.
+ * @param {Any} props The properties of the Multiple question type the contains all the question info.
  */
 export default function Multiple(props) {
     return (
