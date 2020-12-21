@@ -8,7 +8,7 @@ import Blank from "./Blank.js";
 import Modal from "../Modal.js";
 
 /**
- *
+ * Handles rendering the questions and getting the user answer from the questions.
  */
 export default class Questions extends React.Component {
     constructor(props) {
@@ -29,7 +29,7 @@ export default class Questions extends React.Component {
         fetch(this.props.apiURL)
             .then(response => response.json())
             .then(data => this.setState({ data: data }))
-            .catch(err => console.error(`An error occurred. ${err}, most likely the server hasn't been started yet. Start the server with "node server.js" in the database directory.`));
+            .catch(err => console.error(`An error occurred in Questions.js componentDidMount(). ${err}`));
     }
 
     _catchError(id, res) {
@@ -50,11 +50,11 @@ export default class Questions extends React.Component {
 
     /**
      * Calls the _findTypeID method with the correct type.
-     * @param {Number} id The question id/number.
      * @param {Array} res The response from the fetch call.
+     * @param {String} type The type of the question to be rendered.
      */
-    _getQuestionInfo(id, res, type) {
-
+    _getQuestionInfo(res, type) {
+        //A random id that is the length of the whole question array this is the random question that will be rendered unless it's already been rendered if this is the case then _findTypeID will find a new random question.
         const RANDOM_ID = Math.floor(Math.random() * res.length);
 
         /**
@@ -83,23 +83,33 @@ export default class Questions extends React.Component {
     }
 
     /**
-     * 
-     * @param {Object} res 
-     * @param {Number} id 
-     * @param {String} type 
+     * Returns all the information about the random question including the randomized options, the correct answer, and the question title.
+     * @param {Object} res The original res of the fetch API call.
+     * @param {Number} id The question id that will be rendered unless it's already been rendered.
+     * @param {String} type The type of the question which can be either multi, tf, or matching.
      */
     _findTypeID(res, id, type) {
-        //need to randomize the question answers.
-
+        /**
+         * Returns an object that contains all the information about the question that will be rendered with the question answers randomized.
+         * @param {Object} question The question object that has all the question information.
+         */
         const RENDER_ANSWER = (question) => {
             //Because the first option is always the right answer the correct value needs to be recorded before the answers are randomized.
             const QUESTION_ANSWER = question.option_one;
 
+            /**
+             * Randomizes the options that are in the question object.
+             */
             function randomizeOptions() {
-                let randomizedOptions = [];
+                let randomizedOptionsNumbers = [];
+                let randomizedOptionsStrings = [];
 
+                /**
+                 * Uses the number that is passed in to get the correct question answer from the question parameter.
+                 * @param {Number} randomNumber The random number to find the correct string for.
+                 */
                 const FIND_OPTION = (randomNumber) => {
-                    randomizedOptions.push(
+                    randomizedOptionsStrings.push(
                         randomNumber === 1
                         ? question.option_one
                         : randomNumber === 2
@@ -109,58 +119,61 @@ export default class Questions extends React.Component {
                                 : question.option_four
                     );
                 }
+
+                /**
+                 * Fills up the randomizedOptionsNumbers array with numbers that will never be the same as each other.
+                 */
                 for(let i = 0; i < 4; i++) {
                     let randomOptionNumber = Math.floor(Math.random() * 4) + 1;
-                    
-                    //problem is that randomOptions gets the strings added to it not the number
-                    if(!randomizedOptions.includes(randomOptionNumber)) {
-                        //console.log(FIND_OPTION(1))
-                        FIND_OPTION(randomOptionNumber);
-                        console.log(randomizedOptions);
-                    }
-                    else {
-                        console.log("ERR" + FIND_NEW_ID(4, randomizedOptions))
-                    }
 
+                    if(randomizedOptionsNumbers.includes(randomOptionNumber)) {
+                        FIND_NEW_ID(1, 4, randomizedOptionsNumbers);
+                    } else randomizedOptionsNumbers.push(randomOptionNumber);
+
+                    FIND_OPTION(randomizedOptionsNumbers[i]);
+                    
                 }
-                //console.log(FIND_OPTION(1));
-                //console.log(randomizedOptions);
-                return randomizedOptions;
+                return randomizedOptionsStrings;
             }
+
+            const randomAnswers = randomizeOptions();
 
             return {
                 content: question.content,
                 answer: QUESTION_ANSWER,
-                optionOne: randomizeOptions()[0],
-                optionTwo: randomizeOptions()[1],
-                optionThree: randomizeOptions()[2],
-                optionFour: randomizeOptions()[3],
+                optionOne: randomAnswers[0],
+                optionTwo: randomAnswers[1],
+                optionThree: randomAnswers[2],
+                optionFour: randomAnswers[3]
             }
         }
-                
+
         /**
-         * This method finds an id that hasn't been rendered yet and is the correct type.
-         * @param {Number} length The length of the item that a new id needs to be found for.
+         * Finds a new id that hasn't already been rendered in the arr parameter.
+         * @param {Number} min The min number that a new id can be found from.
+         * @param {Number} max The max number that a new id can be found from.
+         * @param {Object} arr The object that the new id will be pushed to.
          */
-        const FIND_NEW_ID = (length, object) => {
-            let i = 0;
-            for(; i < length; i++) {
-                if(!object.includes(i) && type === res[i].category) {
-                    object.push(i);
+        const FIND_NEW_ID = (min, max, arr) => {
+            let i = min;
+            for(; i < max; i++) {
+                if(!arr.includes(i) && type === res[i].category) {
+                    arr.push(i);
                     break;
                 }
             }
             return i;
         }
 
+        //Checks if the question has already been rendered, if so then a new question will be found.
         if (!this.renderedIDs.includes(id)) {
             if (type === res[id].category) {
                 this.renderedIDs.push(id);
                 return RENDER_ANSWER(res[id]);
             }
-            else return RENDER_ANSWER(res[FIND_NEW_ID(res.length - 1, this.renderedIDs)]);
+            else return RENDER_ANSWER(res[FIND_NEW_ID(0, res.length - 1, this.renderedIDs)]);
         }
-        else return RENDER_ANSWER(res[FIND_NEW_ID(res.length - 1, this.renderedIDs)]);
+        else return RENDER_ANSWER(res[FIND_NEW_ID(0, res.length - 1, this.renderedIDs)]);
     }
 
 
@@ -176,11 +189,12 @@ export default class Questions extends React.Component {
     /**
      * Gets the question to be added to the array in setOutput.
      * Each element needs to have a key or it will throw a warning: "Warning: Each child in a list should have a unique "key" prop."
-     * @param {Integer} id The id of the question to get.
+     * @param {Number} id The id of the question to get.
+     * @param {Object} res The api result.
      */
     _getQuestionTag(id, res) {
         //Sets the value of question info using conditionals.
-        let questionInfo = this.props.type === "True/False" ? this._getQuestionInfo(id, res, "tf") : this.props.type === "Matching" ? this._getQuestionInfo(id, res, "matching") : this._getQuestionInfo(id, res, "multi");
+        let questionInfo = this.props.type === "True/False" ? this._getQuestionInfo(res, "tf") : this.props.type === "Matching" ? this._getQuestionInfo(res, "matching") : this._getQuestionInfo(res, "multi");
 
         if (this.props.type === "Random") {
             /*
@@ -188,7 +202,7 @@ export default class Questions extends React.Component {
             If _getQuestionInfo knows the random number and knows what types of questions will be rendered corresponding to the number then the method is able to return the correct information for the random question.
             */
             let randomNumber = Math.floor(Math.random() * 4);
-            questionInfo = this._getQuestionInfo(id, res, randomNumber);
+            questionInfo = this._getQuestionInfo(res, randomNumber);
             return randomNumber === 0 ? <Blank key={id} content={questionInfo.content} answer={questionInfo.answer} />
                 : randomNumber === 1 ? <Multiple key={id} content={questionInfo.content} optionOne={questionInfo.optionOne} optionTwo={questionInfo.optionTwo} optionThree={questionInfo.optionThree} optionFour={questionInfo.optionFour} answer={questionInfo.answer} />
                     : randomNumber === 2 ? <TF key={id} content={questionInfo.content} />
