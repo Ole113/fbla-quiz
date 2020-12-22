@@ -14,11 +14,11 @@ export default class Blank extends React.Component {
         };
     }
 
-    sendQuestionValue = () => this.props.sendQuestionValue({ id: this.state.id, value: this.state.value});
+    sendQuestionValue = () => this.props.sendQuestionValue({ id: this.state.id, value: this.state.value, answer: this.props.answer });
 
     handleChange = (event) => {
         //There has to be a way to know which answer corresponds to which question
-        this.setState({ id: this.props.content, value: event.target.value }, () => {
+        this.setState({ id: this.props.content, value: event.target.value, answer: this.props.answer }, () => {
             this.sendQuestionValue();
         });
     }

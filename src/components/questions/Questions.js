@@ -16,7 +16,8 @@ export default class Questions extends React.Component {
         this.questions = [];
         this.currentType = "Random";
         this.state = {
-            data: null
+            data: null,
+            questionValues: []
         }
         this.renderedIDs = [];
         this.questionValues = [];
@@ -111,27 +112,27 @@ export default class Questions extends React.Component {
                 const FIND_OPTION = (randomNumber) => {
                     randomizedOptionsStrings.push(
                         randomNumber === 1
-                        ? question.option_one
-                        : randomNumber === 2
-                            ? question.option_two
-                            : randomNumber === 3
-                                ? question.option_three
-                                : question.option_four
+                            ? question.option_one
+                            : randomNumber === 2
+                                ? question.option_two
+                                : randomNumber === 3
+                                    ? question.option_three
+                                    : question.option_four
                     );
                 }
 
                 /**
                  * Fills up the randomizedOptionsNumbers array with numbers that will never be the same as each other.
                  */
-                for(let i = 0; i < 4; i++) {
+                for (let i = 0; i < 4; i++) {
                     let randomOptionNumber = Math.floor(Math.random() * 4) + 1;
 
-                    if(randomizedOptionsNumbers.includes(randomOptionNumber)) {
+                    if (randomizedOptionsNumbers.includes(randomOptionNumber)) {
                         FIND_NEW_ID(1, 4, randomizedOptionsNumbers);
                     } else randomizedOptionsNumbers.push(randomOptionNumber);
 
                     FIND_OPTION(randomizedOptionsNumbers[i]);
-                    
+
                 }
                 return randomizedOptionsStrings;
             }
@@ -156,8 +157,8 @@ export default class Questions extends React.Component {
          */
         const FIND_NEW_ID = (min, max, arr) => {
             let i = min;
-            for(; i < max; i++) {
-                if(!arr.includes(i) && type === res[i].category) {
+            for (; i < max; i++) {
+                if (!arr.includes(i) && type === res[i].category) {
                     arr.push(i);
                     break;
                 }
@@ -209,7 +210,7 @@ export default class Questions extends React.Component {
                         : <Matching key={id} optionOne={questionInfo[0].optionOne} optionTwo={questionInfo[1].optionTwo} optionThree={questionInfo[2].optionThree} optionFour={questionInfo[3].optionFour} answerOne={questionInfo[0].answer} answerTwo={questionInfo[1].answer} answerThree={questionInfo[2].answer} answerFour={questionInfo[3].answer} />;
         }
         else if (this.props.type === "Multiple choice") return <Multiple id={id} key={id} content={questionInfo.content} optionOne={questionInfo.optionOne} optionTwo={questionInfo.optionTwo} optionThree={questionInfo.optionThree} optionFour={questionInfo.optionFour} answer={questionInfo.answer} />;
-        else if (this.props.type === "Fill in the blank") return <Blank key={id} content={questionInfo.content} onChange={this.props.onChange} sendQuestionValue={this.handleQuestionValue} />;
+        else if (this.props.type === "Fill in the blank") return <Blank key={id} content={questionInfo.content} onChange={this.props.onChange} answer={questionInfo.answer} sendQuestionValue={this.handleQuestionValue} />;
         else if (this.props.type === "True/False") return <TF key={id} content={questionInfo.content} />;
         else if (this.props.type === "Matching") return <Matching key={id} optionOne={questionInfo[0].optionOne} optionTwo={questionInfo[1].optionTwo} optionThree={questionInfo[2].optionThree} optionFour={questionInfo[3].optionFour} answerOne={questionInfo[0].answer} answerTwo={questionInfo[1].answer} answerThree={questionInfo[2].answer} answerFour={questionInfo[3].answer} />;
     }
@@ -232,52 +233,66 @@ export default class Questions extends React.Component {
         return this.questions;
     }
 
+    /**
+     * Handles when the user updates their answer.
+     * @param {Object} data The object of the data.
+     */
     handleQuestionValue = (data) => {
+        //If theres isn't a value in the array then it's impossible for the new data to be a multiple.
         if (this.questionValues.length === 0) this.questionValues.push({ data });
+
+        //Loops through the questionValues array and if the data ID the same as an element already in the array then that element is updated, else a new array index is added.
         for (let i = 0; i < this.questionValues.length; i++) {
             if (data.id === this.questionValues[i].data.id) {
                 this.questionValues[i].data.value = data.value;
-                //console.log(this.questionValues[i].data.value);
                 break;
-            } else {
+            } else if (i === this.questionValues.length - 1) {
                 this.questionValues.push({ data });
                 break;
             }
         }
-        /*
-        TODO:
-        What needs to be done now is to make it so when the user updates their answer question
-        the questionValues index that has the correct id is updated and a new index isn't created.
-        
-        */
+    }
+
+    /**
+     * Checks if the form has been submitted.
+     * Originally this code was in the render method but this error occurred and the solution was to use componentDidUpdate()
+     * Cannot update during an existing state transition (such as within `render`). Render methods should be a pure function of props and state.
+     */
+    componentDidUpdate() {
+        if (this.props.submitStatus) {
+            this.props.sendUserAnswers(this.questionValues);
+            return <div>
+                <h1>Loading the quiz results...</h1>
+                <br />
+                <p>If this message persists then an error has occurred.</p>
+            </div>
+        }
     }
 
     /**
      * Renders the questions.
      */
     render() {
-        if(this.renderedIDs.length === 0) {
+        /**
+         * THIS NEEDS TO BE FIXED BECAUSE AT THE START OF THE PROGRAM THE RENDERED IDS WILL BE EMPTY
+         */
+        if (this.renderedIDs.length === 0) {
             this._renderError("There were either not enough True/False question types or not enough Multiple choice question types.", "")
         }
 
-        //this.getQuestionContent();
         if (this.state.data == null) return <div>
-            <h1>Loading...</h1><br />
+            <h1>Loading...</h1>
+            <br />
             <p>
                 If this message persists then an error has occurred. Most likely the database server is not online.
-                <br />To turn it on navigate to the database directory with <code>cd src/database</code> and run the command <code>node server.js</code>.
-            </p>
+                    <br />To turn it on navigate to the database directory with <code>cd src/database</code> and run the command <code>node server.js</code>.
+                </p>
         </div>
         try { let testVariable = this.state.data[this.props.number].category; }
         catch (err) {
             this._renderError("The number of questions that are requested to render is more questions than are in the database.", err);
-            // return <Modal
-            //     id="helpModal"
-            //     type="error"
-            //     title="An Error Occurred"
-            //     body="Error Body"
-            // />
         }
         return this._setOutput(this.state.data);
+
     }
 }

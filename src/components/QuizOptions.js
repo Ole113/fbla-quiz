@@ -23,8 +23,8 @@ export default class QuizOptions extends React.Component {
      * Checks when the quiz options have been changed and updates the state.
      * @param {Object} e The event of the change, is set by the browser.
      */
-    onChange = e => {
-        this.setState({ [e.target.name]: e.target.value }, () => {
+    onChange = (event) => {
+        this.setState({ [event.target.name]: event.target.value }, () => {
             this.handleOption();
         });
     }
