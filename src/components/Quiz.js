@@ -29,6 +29,8 @@ export default class Quiz extends React.Component {
 
     /**
      * Handles the user's answers that are passed from Questions.js to QuizForm.js to Quiz.js
+     * The state answers need to be checked beforehand because if not an error will be thrown:
+     * Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.
      * @param {Object} answers The answers the user submitted along with the right answer and the question itself.
      */
     handleUserAnswers = (answers) => {

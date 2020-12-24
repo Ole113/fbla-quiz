@@ -13,14 +13,13 @@ import Modal from "../Modal.js";
 export default class Questions extends React.Component {
     constructor(props) {
         super(props);
-        this.questions = [];
+        this.questions = []; //Questions is the array with all the html questions in it such as <TF /> or <Blank />
         this.currentType = "Random";
         this.state = {
-            data: null,
-            questionValues: []
+            data: null //The data is the data of all the questions returned by _findTypeID. It will be an array of all the questions.
         }
-        this.renderedIDs = [];
-        this.questionValues = [];
+        this.renderedIDs = []; //The IDs of all the questions that have already been rendered.
+        this.questionValues = []; //The values that the user has input for all the question answers.
     }
 
     /**
@@ -63,7 +62,7 @@ export default class Questions extends React.Component {
          */
         const RENDER_MATCHING = () => {
             let ids = [];
-            for (let i = 0; i < 4; i++) ids.push(this._findTypeID(res, RANDOM_ID, "matching"));
+            for (let i = 0; i < 4; i++) ids.push(this._findTypeID(res, RANDOM_ID, "multi"));
             return ids;
         }
 
@@ -177,7 +176,6 @@ export default class Questions extends React.Component {
         else return RENDER_ANSWER(res[FIND_NEW_ID(0, res.length - 1, this.renderedIDs)]);
     }
 
-
     /**
      * 
      * @param {String} title 
@@ -204,15 +202,15 @@ export default class Questions extends React.Component {
             */
             let randomNumber = Math.floor(Math.random() * 4);
             questionInfo = this._getQuestionInfo(res, randomNumber);
-            return randomNumber === 0 ? <Blank key={id} content={questionInfo.content} answer={questionInfo.answer} />
-                : randomNumber === 1 ? <Multiple key={id} content={questionInfo.content} optionOne={questionInfo.optionOne} optionTwo={questionInfo.optionTwo} optionThree={questionInfo.optionThree} optionFour={questionInfo.optionFour} answer={questionInfo.answer} />
-                    : randomNumber === 2 ? <TF key={id} content={questionInfo.content} />
-                        : <Matching key={id} optionOne={questionInfo[0].optionOne} optionTwo={questionInfo[1].optionTwo} optionThree={questionInfo[2].optionThree} optionFour={questionInfo[3].optionFour} answerOne={questionInfo[0].answer} answerTwo={questionInfo[1].answer} answerThree={questionInfo[2].answer} answerFour={questionInfo[3].answer} />;
+            return randomNumber === 0 ? <Blank key={id} content={questionInfo.content} answer={questionInfo.answer} sendQuestionValue={this.handleQuestionValue} />
+                : randomNumber === 1 ? <Multiple key={id} content={questionInfo.content} optionOne={questionInfo.optionOne} optionTwo={questionInfo.optionTwo} optionThree={questionInfo.optionThree} optionFour={questionInfo.optionFour} answer={questionInfo.answer} sendQuestionValue={this.handleQuestionValue} />
+                    : randomNumber === 2 ? <TF key={id} content={questionInfo.content} answer={questionInfo.answer} sendQuestionValue={this.handleQuestionValue} />
+                        : <Matching key={id} contentOne={questionInfo[0].content} contentTwo={questionInfo[1].content} contentThree={questionInfo[2].content} contentFour={questionInfo[3].content} answerOne={questionInfo[0].answer} answerTwo={questionInfo[1].answer} answerThree={questionInfo[2].answer} answerFour={questionInfo[3].answer} answer={questionInfo.answer} sendQuestionValue={this.handleQuestionValue} />;
         }
-        else if (this.props.type === "Multiple choice") return <Multiple id={id} key={id} content={questionInfo.content} optionOne={questionInfo.optionOne} optionTwo={questionInfo.optionTwo} optionThree={questionInfo.optionThree} optionFour={questionInfo.optionFour} answer={questionInfo.answer} />;
+        else if (this.props.type === "Multiple choice") return <Multiple id={id} key={id} content={questionInfo.content} optionOne={questionInfo.optionOne} optionTwo={questionInfo.optionTwo} optionThree={questionInfo.optionThree} optionFour={questionInfo.optionFour} answer={questionInfo.answer} sendQuestionValue={this.handleQuestionValue} />;
         else if (this.props.type === "Fill in the blank") return <Blank key={id} content={questionInfo.content} onChange={this.props.onChange} answer={questionInfo.answer} sendQuestionValue={this.handleQuestionValue} />;
-        else if (this.props.type === "True/False") return <TF key={id} content={questionInfo.content} />;
-        else if (this.props.type === "Matching") return <Matching key={id} optionOne={questionInfo[0].optionOne} optionTwo={questionInfo[1].optionTwo} optionThree={questionInfo[2].optionThree} optionFour={questionInfo[3].optionFour} answerOne={questionInfo[0].answer} answerTwo={questionInfo[1].answer} answerThree={questionInfo[2].answer} answerFour={questionInfo[3].answer} />;
+        else if (this.props.type === "True/False") return <TF key={id} content={questionInfo.content} answer={questionInfo.answer} sendQuestionValue={this.handleQuestionValue} />;
+        else if (this.props.type === "Matching") return <Matching key={id} contentOne={questionInfo[0].content} contentTwo={questionInfo[1].content} contentThree={questionInfo[2].content} contentFour={questionInfo[3].content} answerOne={questionInfo[0].answer} answerTwo={questionInfo[1].answer} answerThree={questionInfo[2].answer} answerFour={questionInfo[3].answer} answer={questionInfo.answer} sendQuestionValue={this.handleQuestionValue} />;
     }
 
     /**
@@ -275,6 +273,7 @@ export default class Questions extends React.Component {
     render() {
         /**
          * THIS NEEDS TO BE FIXED BECAUSE AT THE START OF THE PROGRAM THE RENDERED IDS WILL BE EMPTY
+         * Check in componentDidMount maybe
          */
         if (this.renderedIDs.length === 0) {
             this._renderError("There were either not enough True/False question types or not enough Multiple choice question types.", "")

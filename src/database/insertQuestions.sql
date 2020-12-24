@@ -79,6 +79,10 @@ VALUES ("Who needs to approve a new chapter application before it is forwarded t
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
 VALUES ("How many administrative regions does National FBLA-PBL have?", "multi", "Five", "Two", "Seven", "Three");
 
+--------------------------------------------------------
+--THE ONES BELOW THIS LINE HAVE NOT YET BEEN ENTERED
+--------------------------------------------------------
+
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
 VALUES ("What year did FBLA gain independent status?", "multi", "1969", "1947", "1937", "1958");
 

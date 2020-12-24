@@ -3,50 +3,99 @@ import "../../assets/css/Matching.css";
 
 /**
  * The Matching type of quiz question.
- * @param {*} props the props passed in by the Questions.js file.
+ * @param {Object} props the props passed in by the Questions.js file.
  */
-export default function Matching(props) {
-    return (
-        <div className="form-group container">
-            {/* <label htmlFor="numberQuestions">{props.content}</label> */}
-            <div className="row">
-                <div className="col select-col">
-                    <select className="form-control" required>
-                        <option>-----------------</option>
-                        <option>{props.answerOne}</option>
-                        <option>{props.answerTwo}</option>
-                        <option>{props.answerThree}</option>
-                        <option>{props.answerFour}</option>
-                    </select>
-                    <select className="form-control" required>
-                        <option>-----------------</option>
-                        <option>{props.answerOne}</option>
-                        <option>{props.answerTwo}</option>
-                        <option>{props.answerThree}</option>
-                        <option>{props.answerFour}</option>
-                    </select>
-                    <select className="form-control" required>
-                        <option>-----------------</option>
-                        <option>{props.answerOne}</option>
-                        <option>{props.answerTwo}</option>
-                        <option>{props.answerThree}</option>
-                        <option>{props.answerFour}</option>
-                    </select>
-                    <select className="form-control" required>
-                        <option>-----------------</option>
-                        <option>{props.answerOne}</option>
-                        <option>{props.answerTwo}</option>
-                        <option>{props.answerThree}</option>
-                        <option>{props.answerFour}</option>
-                    </select>
-                </div>
-                <div className="col letters">
-                    <span>A. {props.optionOne} <br /></span>
-                    <span>B. {props.optionTwo} <br /></span>
-                    <span>C. {props.optionThree} <br /></span>
-                    <span>D. {props.optionFour} <br /></span>
+export default class Matching extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            id: "",
+            value: ""
+        };
+    }
+
+    /**
+     * Sends the id and value back to the parent class with a callback.
+     */
+    sendQuestionValue = () => this.props.sendQuestionValue({ id: this.state.id, value: this.state.value, answer: this.props.answer });
+
+    /**
+     * Updates the Components state when the user updates their answer.
+     * @param {Object} event The update event.
+     */
+    handleChange = (event) => {
+        let eventID = event.target.id;
+
+        //Sets the value of content which is the question that the user has answered.
+        let content = eventID === "selectOne"
+            ? this.props.contentOne
+            : eventID === "selectTwo"
+                ? this.props.contentTwo
+                : eventID === "selectThree"
+                    ? this.props.contentThree
+                    : this.props.contentFour
+
+        //Sets the value of answer because which select that is being modified is unknown.
+        let answer = eventID === "selectOne"
+            ? this.props.answerOne
+            : eventID === "selectTwo"
+                ? this.props.answerTwo
+                : eventID === "selectThree"
+                    ? this.props.answerThree
+                    : this.props.answerFour
+
+        //Sets the state of the class.
+        this.setState({ id: content, value: event.target.value, answer: answer }, () => {
+            this.sendQuestionValue();
+        });
+    }
+
+    /**
+     * Renders the Matching question type.
+     */
+    render() {
+        return (
+            <div className="form-group container">
+                {/* <label htmlFor="numberQuestions">{props.content}</label> */}
+                <div className="row">
+                    <div className="col select-col">
+                        <select className="form-control" onChange={this.handleChange} id="selectOne" required>
+                            <option>-----------------</option>
+                            <option>{this.props.answerOne}</option>
+                            <option>{this.props.answerTwo}</option>
+                            <option>{this.props.answerThree}</option>
+                            <option>{this.props.answerFour}</option>
+                        </select>
+                        <select className="form-control" onChange={this.handleChange} id="selectTwo" required>
+                            <option>-----------------</option>
+                            <option>{this.props.answerOne}</option>
+                            <option>{this.props.answerTwo}</option>
+                            <option>{this.props.answerThree}</option>
+                            <option>{this.props.answerFour}</option>
+                        </select>
+                        <select className="form-control" onChange={this.handleChange} id="selectThree" required>
+                            <option>-----------------</option>
+                            <option>{this.props.answerOne}</option>
+                            <option>{this.props.answerTwo}</option>
+                            <option>{this.props.answerThree}</option>
+                            <option>{this.props.answerFour}</option>
+                        </select>
+                        <select className="form-control" onChange={this.handleChange} id="selectFour" required>
+                            <option>-----------------</option>
+                            <option>{this.props.answerOne}</option>
+                            <option>{this.props.answerTwo}</option>
+                            <option>{this.props.answerThree}</option>
+                            <option>{this.props.answerFour}</option>
+                        </select>
+                    </div>
+                    <div className="col letters">
+                        <span>A. {this.props.contentOne} <br /></span>
+                        <span>B. {this.props.contentTwo} <br /></span>
+                        <span>C. {this.props.contentThree} <br /></span>
+                        <span>D. {this.props.contentFour} <br /></span>
+                    </div>
                 </div>
             </div>
-        </div>
-    );
+        );
+    }
 }

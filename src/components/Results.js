@@ -9,13 +9,10 @@ export default class Results extends React.Component {
     }
 
     render() {
+        console.log(this.props.answers);
         return (
             <div className = "Results">
                 <h1>{this.props.answers[0].data.value}</h1>
-                <h1>{this.props.answers[1].data.value}</h1>
-                <h1>{this.props.answers[2].data.value}</h1>
-                <h1>{this.props.answers[3].data.value}</h1>
-                <h1>{this.props.answers[4].data.value}</h1>
             </div>
         );
     }
