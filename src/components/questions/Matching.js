@@ -66,6 +66,13 @@ export default class Matching extends React.Component {
                             <option>{this.props.answerThree}</option>
                             <option>{this.props.answerFour}</option>
                         </select>
+                    </div>
+                    <div className="col content-col">
+                        <span>A. {this.props.contentOne} <br /></span>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col select-col">
                         <select className="form-control" onChange={this.handleChange} id="selectTwo" required>
                             <option>-----------------</option>
                             <option>{this.props.answerOne}</option>
@@ -73,6 +80,13 @@ export default class Matching extends React.Component {
                             <option>{this.props.answerThree}</option>
                             <option>{this.props.answerFour}</option>
                         </select>
+                    </div>
+                    <div className="col content-col">
+                        <span>B. {this.props.contentTwo} <br /></span>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="col select-col">
                         <select className="form-control" onChange={this.handleChange} id="selectThree" required>
                             <option>-----------------</option>
                             <option>{this.props.answerOne}</option>
@@ -80,6 +94,13 @@ export default class Matching extends React.Component {
                             <option>{this.props.answerThree}</option>
                             <option>{this.props.answerFour}</option>
                         </select>
+                    </div>
+                    <div className="col content-col">
+                        <span>C. {this.props.contentThree} <br /></span>
+                    </div>
+                </div>
+                <div style = {{paddingBottom: "25px"}} className="row">
+                    <div className="col select-col">
                         <select className="form-control" onChange={this.handleChange} id="selectFour" required>
                             <option>-----------------</option>
                             <option>{this.props.answerOne}</option>
@@ -88,10 +109,7 @@ export default class Matching extends React.Component {
                             <option>{this.props.answerFour}</option>
                         </select>
                     </div>
-                    <div className="col letters">
-                        <span>A. {this.props.contentOne} <br /></span>
-                        <span>B. {this.props.contentTwo} <br /></span>
-                        <span>C. {this.props.contentThree} <br /></span>
+                    <div className="col content-col">
                         <span>D. {this.props.contentFour} <br /></span>
                     </div>
                 </div>
