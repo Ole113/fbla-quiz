@@ -17,7 +17,8 @@ export default class Quiz extends React.Component {
         this.state = {
             type: "Random",
             number: "5",
-            answers: ""
+            answers: "",
+            timer: ""
         };
     }
 
@@ -33,8 +34,8 @@ export default class Quiz extends React.Component {
      * Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.
      * @param {Object} answers The answers the user submitted along with the right answer and the question itself.
      */
-    handleUserAnswers = (answers) => {
-        if (!this.state.answers) this.setState({ answers: answers });
+    handleUserAnswers = (answers, timer) => {
+        if (!this.state.answers) this.setState({ answers: answers, timer: timer });
     }
 
     /**
@@ -42,7 +43,7 @@ export default class Quiz extends React.Component {
      */
     render() {
         if (this.state.answers) {
-            return <Results answers={this.state.answers} />
+            return <Results answers={this.state.answers} numberQuestions={this.state.number} />
         }
         return (
             <div className="container">

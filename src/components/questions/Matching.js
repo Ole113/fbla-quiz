@@ -17,13 +17,13 @@ export default class Matching extends React.Component {
     /**
      * Sends the id and value back to the parent class with a callback.
      */
-    sendQuestionValue = () => this.props.sendQuestionValue({ id: this.state.id, value: this.state.value, answer: this.props.answer });
+    _sendQuestionValue = () => this.props.sendQuestionValue({ id: this.state.id, value: this.state.value, answer: this.props.answer, type: "matching" });
 
     /**
      * Updates the Components state when the user updates their answer.
      * @param {Object} event The update event.
      */
-    handleChange = (event) => {
+    _handleChange = (event) => {
         let eventID = event.target.id;
 
         //Sets the value of content which is the question that the user has answered.
@@ -45,8 +45,8 @@ export default class Matching extends React.Component {
                     : this.props.answerFour
 
         //Sets the state of the class.
-        this.setState({ id: content, value: event.target.value, answer: answer }, () => {
-            this.sendQuestionValue();
+        this.setState({ id: content, value: event.target.value, answer: answer, type: "matching" }, () => {
+            this._sendQuestionValue();
         });
     }
 
@@ -59,7 +59,7 @@ export default class Matching extends React.Component {
                 {/* <label htmlFor="numberQuestions">{props.content}</label> */}
                 <div className="row">
                     <div className="col select-col">
-                        <select className="form-control" onChange={this.handleChange} id="selectOne" required>
+                        <select className="form-control" onChange={this._handleChange} id="selectOne" required>
                             <option>-----------------</option>
                             <option>{this.props.answerOne}</option>
                             <option>{this.props.answerTwo}</option>
@@ -73,7 +73,7 @@ export default class Matching extends React.Component {
                 </div>
                 <div className="row">
                     <div className="col select-col">
-                        <select className="form-control" onChange={this.handleChange} id="selectTwo" required>
+                        <select className="form-control" onChange={this._handleChange} id="selectTwo" required>
                             <option>-----------------</option>
                             <option>{this.props.answerOne}</option>
                             <option>{this.props.answerTwo}</option>
@@ -87,7 +87,7 @@ export default class Matching extends React.Component {
                 </div>
                 <div className="row">
                     <div className="col select-col">
-                        <select className="form-control" onChange={this.handleChange} id="selectThree" required>
+                        <select className="form-control" onChange={this._handleChange} id="selectThree" required>
                             <option>-----------------</option>
                             <option>{this.props.answerOne}</option>
                             <option>{this.props.answerTwo}</option>
@@ -101,7 +101,7 @@ export default class Matching extends React.Component {
                 </div>
                 <div style = {{paddingBottom: "25px"}} className="row">
                     <div className="col select-col">
-                        <select className="form-control" onChange={this.handleChange} id="selectFour" required>
+                        <select className="form-control" onChange={this._handleChange} id="selectFour" required>
                             <option>-----------------</option>
                             <option>{this.props.answerOne}</option>
                             <option>{this.props.answerTwo}</option>

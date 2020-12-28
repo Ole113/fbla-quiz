@@ -202,15 +202,15 @@ export default class Questions extends React.Component {
             */
             let randomNumber = Math.floor(Math.random() * 4);
             questionInfo = this._getQuestionInfo(res, randomNumber);
-            return randomNumber === 0 ? <Blank key={id} content={questionInfo.content} answer={questionInfo.answer} sendQuestionValue={this.handleQuestionValue} />
-                : randomNumber === 1 ? <Multiple key={id} content={questionInfo.content} optionOne={questionInfo.optionOne} optionTwo={questionInfo.optionTwo} optionThree={questionInfo.optionThree} optionFour={questionInfo.optionFour} answer={questionInfo.answer} sendQuestionValue={this.handleQuestionValue} />
-                    : randomNumber === 2 ? <TF key={id} content={questionInfo.content} answer={questionInfo.answer} sendQuestionValue={this.handleQuestionValue} />
-                        : <Matching key={id} contentOne={questionInfo[0].content} contentTwo={questionInfo[1].content} contentThree={questionInfo[2].content} contentFour={questionInfo[3].content} answerOne={questionInfo[0].answer} answerTwo={questionInfo[1].answer} answerThree={questionInfo[2].answer} answerFour={questionInfo[3].answer} answer={questionInfo.answer} sendQuestionValue={this.handleQuestionValue} />;
+            return randomNumber === 0 ? <Blank key={id} content={questionInfo.content} answer={questionInfo.answer} sendQuestionValue={this._handleQuestionValue} />
+                : randomNumber === 1 ? <Multiple key={id} content={questionInfo.content} optionOne={questionInfo.optionOne} optionTwo={questionInfo.optionTwo} optionThree={questionInfo.optionThree} optionFour={questionInfo.optionFour} answer={questionInfo.answer} sendQuestionValue={this._handleQuestionValue} />
+                    : randomNumber === 2 ? <TF key={id} content={questionInfo.content} answer={questionInfo.answer} sendQuestionValue={this._handleQuestionValue} />
+                        : <Matching key={id} contentOne={questionInfo[0].content} contentTwo={questionInfo[1].content} contentThree={questionInfo[2].content} contentFour={questionInfo[3].content} answerOne={questionInfo[0].answer} answerTwo={questionInfo[1].answer} answerThree={questionInfo[2].answer} answerFour={questionInfo[3].answer} answer={questionInfo.answer} sendQuestionValue={this._handleQuestionValue} />;
         }
-        else if (this.props.type === "Multiple choice") return <Multiple id={id} key={id} content={questionInfo.content} optionOne={questionInfo.optionOne} optionTwo={questionInfo.optionTwo} optionThree={questionInfo.optionThree} optionFour={questionInfo.optionFour} answer={questionInfo.answer} sendQuestionValue={this.handleQuestionValue} />;
-        else if (this.props.type === "Fill in the blank") return <Blank key={id} content={questionInfo.content} onChange={this.props.onChange} answer={questionInfo.answer} sendQuestionValue={this.handleQuestionValue} />;
-        else if (this.props.type === "True/False") return <TF key={id} content={questionInfo.content} answer={questionInfo.answer} sendQuestionValue={this.handleQuestionValue} />;
-        else if (this.props.type === "Matching") return <Matching key={id} contentOne={questionInfo[0].content} contentTwo={questionInfo[1].content} contentThree={questionInfo[2].content} contentFour={questionInfo[3].content} answerOne={questionInfo[0].answer} answerTwo={questionInfo[1].answer} answerThree={questionInfo[2].answer} answerFour={questionInfo[3].answer} answer={questionInfo.answer} sendQuestionValue={this.handleQuestionValue} />;
+        else if (this.props.type === "Multiple choice") return <Multiple id={id} key={id} content={questionInfo.content} optionOne={questionInfo.optionOne} optionTwo={questionInfo.optionTwo} optionThree={questionInfo.optionThree} optionFour={questionInfo.optionFour} answer={questionInfo.answer} sendQuestionValue={this._handleQuestionValue} />;
+        else if (this.props.type === "Fill in the blank") return <Blank key={id} content={questionInfo.content} onChange={this.props.onChange} answer={questionInfo.answer} sendQuestionValue={this._handleQuestionValue} />;
+        else if (this.props.type === "True/False") return <TF key={id} content={questionInfo.content} answer={questionInfo.answer} sendQuestionValue={this._handleQuestionValue} />;
+        else if (this.props.type === "Matching") return <Matching key={id} contentOne={questionInfo[0].content} contentTwo={questionInfo[1].content} contentThree={questionInfo[2].content} contentFour={questionInfo[3].content} answerOne={questionInfo[0].answer} answerTwo={questionInfo[1].answer} answerThree={questionInfo[2].answer} answerFour={questionInfo[3].answer} answer={questionInfo.answer} sendQuestionValue={this._handleQuestionValue} />;
     }
 
     /**
@@ -235,7 +235,7 @@ export default class Questions extends React.Component {
      * Handles when the user updates their answer.
      * @param {Object} data The object of the data.
      */
-    handleQuestionValue = (data) => {
+    _handleQuestionValue = (data) => {
         //If theres isn't a value in the array then it's impossible for the new data to be a multiple.
         if (this.questionValues.length === 0) this.questionValues.push({ data });
 
@@ -292,6 +292,5 @@ export default class Questions extends React.Component {
             this._renderError("The number of questions that are requested to render is more questions than are in the database.", err);
         }
         return this._setOutput(this.state.data);
-
     }
 }

@@ -1,5 +1,11 @@
 .Results {
-    padding-top: 20px;
-    width: 900px;
-    height: 400px;
+    padding-top: 100px;
+}
+
+.Results h6, .Results h5 {
+    font-weight: normal;
+}
+
+.Results h6 {
+    display: inline-block;
 }

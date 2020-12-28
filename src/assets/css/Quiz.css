@@ -6,7 +6,7 @@
 
 /* Sets the padding for the quiz form's container. */
 .quiz-form-container {
-    padding: 100px 150px 100px 150px;
+    padding: 25px 150px 100px 150px;
 }
 
 /* Gives the form a width of 100%. */
@@ -85,4 +85,9 @@ form {
 /* Makes it so the quiz options has no default left and right padding. */
 .col-2 {
     padding: 0;
+}
+
+.timer h2 {
+    float: right;
+    padding-bottom: 25px;
 }
