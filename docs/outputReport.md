@@ -6,3 +6,11 @@ The three sections will be % score, x/total score, and time taken. (Have the pri
 Beneath the scores have green ^ or red downward ^ and then the change from the last time.
 
 **On this score history have the ability to see scores over last x time period this allows users to customize information**
+
+On the right card:
+
+Pie graph of the total correct.
+Time per Question(total time divided by total number of questions).
+Time start and time ended.
+
+https://www.varsitytutors.com/act_math_diagnostic_1-problems-results-95b8e9c8-04eb-4d1c-9ca8-c945747d154e

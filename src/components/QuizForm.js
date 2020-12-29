@@ -36,7 +36,7 @@ export default class QuizForm extends React.Component {
      * Send the users answers to Quiz.js.
      * @param {Object} answers The users answer, the question content, and the correct answer.
      */
-    handleUserAnswers = (answers) => { this.props.sendUserAnswers(answers, this.state.currentTime); }
+    handleUserAnswers = (answers, startTime) => { this.props.sendUserAnswers(answers, this.state.currentTime, startTime); }
 
     /**
      * Updates the quiz time.

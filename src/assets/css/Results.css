@@ -2,10 +2,42 @@
     padding-top: 100px;
 }
 
-.Results h6, .Results h5 {
+.Results h6, .Results h6 {
     font-weight: normal;
 }
 
-.Results h6 {
-    display: inline-block;
+.card-results {
+    margin: 0 60px 30px 60px;
+}
+
+.print-button {
+    float: right;
+    background-color: #2a2a72;
+    background-image: linear-gradient(315deg, #2a2a72 0%, #009ffd 74%);    
+    color: white;
+    border: none;
+    border-radius: 3px;
+    height: 30px;
+    width: 75px;
+    font-size: 15px;
+}
+
+.print-button:hover {
+    opacity: 0.9;
+}
+
+.hr-result-title {
+    margin-top: 25px;
+}
+
+.gray-font {
+    color: #404040;
+}
+
+.result-question-info {
+    padding: 5px 0 50px 40px;
+}
+
+.result-icon {
+    margin-bottom: 3px;
 }

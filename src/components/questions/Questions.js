@@ -20,6 +20,7 @@ export default class Questions extends React.Component {
         }
         this.renderedIDs = []; //The IDs of all the questions that have already been rendered.
         this.questionValues = []; //The values that the user has input for all the question answers.
+        this.startTime = "";
     }
 
     /**
@@ -236,6 +237,10 @@ export default class Questions extends React.Component {
      * @param {Object} data The object of the data.
      */
     _handleQuestionValue = (data) => {
+        if(this.startTime === "") {
+            this.startTime = new Date().toLocaleTimeString();
+        }
+
         //If theres isn't a value in the array then it's impossible for the new data to be a multiple.
         if (this.questionValues.length === 0) this.questionValues.push({ data });
 
@@ -258,7 +263,7 @@ export default class Questions extends React.Component {
      */
     componentDidUpdate() {
         if (this.props.submitStatus) {
-            this.props.sendUserAnswers(this.questionValues);
+            this.props.sendUserAnswers(this.questionValues, this.startTime);
             return <div>
                 <h1>Loading the quiz results...</h1>
                 <br />
