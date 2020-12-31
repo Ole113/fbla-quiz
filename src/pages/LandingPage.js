@@ -18,7 +18,7 @@ export default function LandingPage() {
 			<Navbar
 				color="white" active="landing"
 				links={["/", "/quiz", "/qa"]}
-				image={require("../assets/images/fblaFlag.png")}
+				image={require("../assets/images/fblaFlag.png").default}
 			/>
 			<Modal title="FBLA Quiz Help Menu"
 				body={ <HelpMenu /> }
@@ -33,10 +33,10 @@ export default function LandingPage() {
 			/>
 			<Points
 				contents={["Customizable reports allows users to analyze information.", "More than 50 questions to study from.", "An intelligent and interactive Q&A section."]}
-				icons={[require("../assets/images/analytics.svg"), require("../assets/images/questions.svg"), require("../assets/images/forum.svg")]}
+				icons={[require("../assets/images/analytics.svg").default, require("../assets/images/questions.svg").default, require("../assets/images/forum.svg").default]}
 			/>
 			<hr style={{ width: "60%", paddingBottom: "100px" }} />
-			<Cards images={[require("../assets/images/quizImageCopy.jpg"), require("../assets/images/fblaStage.jpg")]}
+			<Cards images={[require("../assets/images/quizImageCopy.jpg").default, require("../assets/images/fblaStage.jpg").default]}
 				contents={[
 					"The FBLA Quiz Page allows users to take a quiz with questions from the quiz database. The questions pertain to FBLA material. On the left side of the quiz page is the quiz options. These allow the user to change the types of question and number of questions being tested on.  There are 50+ questions in the database and more can be added using custom quiz questions. See the help menu to learn more.  On the right side of the quiz page there are the quiz questions. The default values is question type Random and 5 quiz questions. Questions are added/removed dynamically along with the result of the quiz using React.  The output report of the quiz contains information such as right/wrong questions, previous test results, and more!",
 					"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
@@ -49,7 +49,7 @@ export default function LandingPage() {
 				mainTitle="FBLA Quiz"
 				copyright="&copy;2020 FBLA Quiz"
 				links={["/", "/quiz", "/qa"]}
-				image={require("../assets/images/fblaLogoGray.png")}
+				image={require("../assets/images/fblaLogoGray.png").default}
 				linkTitles={["Home", "Quiz", "Q&A"]}
 			/>
 		</div>

@@ -43,7 +43,7 @@ export default class Quiz extends React.Component {
      */
     render() {
         if (this.state.answers) {
-            return <Results startTime={this.state.startTime} timeSubmitted={new Date().toLocaleTimeString()} answers={this.state.answers} numberQuestions={this.state.number} />
+            return <Results startTime={this.state.startTime} submitTime={new Date().toLocaleTimeString()} answers={this.state.answers} numberQuestions={this.state.number} />
         }
         return (
             <div className="container">

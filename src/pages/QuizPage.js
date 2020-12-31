@@ -20,18 +20,23 @@ export default function QuizPage() {
 				color="dark"
 				active="quiz"
 				links={["/", "/quiz", "/qa"]}
-				image={require("../assets/images/fblaFlag.png")}
+				image={require("../assets/images/fblaFlag.png").default}
 			/>
 			<Modal title="FBLA Quiz Help Menu"
 				body={<HelpMenu />}
 			/>
-			<Quiz apiURL={API_URL} />
-			{/* <Results timeSubmitted={new Date().toLocaleTimeString()} totalQuestions = {5} time={"00:05:23"}/> */}
+			{/* <Quiz apiURL={API_URL} /> */}
+			<Results
+				startTime="7:12:02 PM"
+				submitTime="7:15:34 PM"
+				totalQuestions={5}
+				time={"00:05:23"}
+			/>
 			<Footer
 				mainTitle="FBLA Quiz"
 				copyright="&copy;2020 FBLA Quiz"
 				links={["/", "/quiz", "/qa"]}
-				image={require("../assets/images/fblaLogoGray.png")}
+				image={require("../assets/images/fblaLogoGray.png").default}
 				linkTitles={["Home", "Quiz", "Q&A"]}
 			/>
 		</div>

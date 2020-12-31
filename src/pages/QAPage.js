@@ -15,9 +15,10 @@ export default function QAPage() {
 				color="dark"
 				active="qa"
 				links={["/", "/quiz", "/qa"]}
-				image={require("../assets/images/fblaFlag.png")}
+				image={require("../assets/images/fblaFlag.png").default}
 			/>
-			<Modal title="FBLA Quiz Help Menu"
+			<Modal 
+				title="FBLA Quiz Help Menu"
 				body={<HelpMenu />}
 			/>
 			<QA />
@@ -25,7 +26,7 @@ export default function QAPage() {
 				mainTitle="FBLA Quiz"
 				copyright="&copy;2020 FBLA Quiz"
 				links={["/", "/quiz", "/qa"]}
-				image={require("../assets/images/fblaLogoGray.png")}
+				image={require("../assets/images/fblaLogoGray.png").default}
 				linkTitles={["Home", "Quiz", "Q&A"]}
 			/>
 		</div>

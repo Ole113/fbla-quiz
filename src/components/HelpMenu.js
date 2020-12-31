@@ -11,7 +11,7 @@ export default function HelpMenu(props) {
     return (
         <div>
             <div className="helpSection">
-                <img src={require("../assets/images/navigateNext.svg")} alt="navigation next icon" />
+                <img src={require("../assets/images/navigateNext.svg").default} alt="navigation next icon" />
                 <h3>Quiz Page</h3><br />
                 <div className="helpSectionInfo">
                     FBLA Quiz's <em>Quiz</em> section is where you can put your skills to practice and test your knowledge. The Quiz Section is split into 2 parts, the options part and the quiz part.<br />
@@ -24,14 +24,14 @@ export default function HelpMenu(props) {
                 </div>
             </div>
             <div className="helpSection">
-                <img src={require("../assets/images/navigateNext.svg")} alt="navigation next icon" />
+                <img src={require("../assets/images/navigateNext.svg").default} alt="navigation next icon" />
                 <h3>Q&amp;A Page</h3>
                 <div className="helpSectionInfo">
                     ...
                 </div>
             </div>
             <div className="helpSection">
-                <img src={require("../assets/images/navigateNext.svg")} alt="navigation next icon" />
+                <img src={require("../assets/images/navigateNext.svg").default} alt="navigation next icon" />
                 <h3>Custom Quiz Questions / Advanced Features</h3>
                 <div className="helpSectionInfo">
                     FBLA Quiz has custom quiz question integrations. To get started download the source code from the

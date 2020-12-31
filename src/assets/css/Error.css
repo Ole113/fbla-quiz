@@ -18,7 +18,7 @@
 /* Sets the width and the height of the FBLA logo image. */
 .error-container .col-xl-6 img {
     width: 30vw;
-    height: 30vw;
+    height: 25vw;
 }
 
 /* Sets the padding and margin of the image column if the screen width is less than 1999px. */
@@ -39,7 +39,7 @@
 /* Sets the padding and margin of the error text. */
 .error-container .error-text {
     padding-left: 12.5vw;
-    margin: 30vh 0 30vh 0;
+    margin: 15vh 0 30vh 0;
 }
 
 /* Changes the font size and font weight of the main ERROR 404 text. */

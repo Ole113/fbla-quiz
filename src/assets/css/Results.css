@@ -41,3 +41,7 @@
 .result-icon {
     margin-bottom: 3px;
 }
+
+#changeTime, #changeGraph {
+    margin-bottom: 10px;
+}

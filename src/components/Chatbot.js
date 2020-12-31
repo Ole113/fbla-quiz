@@ -79,7 +79,7 @@ export default class Chatbot extends React.Component {
         return Object.keys(this.state.chatMessages).map(key => {
             if (this.state.chatMessages[key].type === "server") {
                 return <div key={key} className="server-message">
-                    <img src={require("../assets/images/userIcon.svg")} alt="FBLA Logo" />
+                    <img src={require("../assets/images/userIcon.svg").default} alt="FBLA Logo" />
                     <h6>Help Bot</h6>
                     <br />
                     <p>{this.state.chatMessages[key].message}</p>
