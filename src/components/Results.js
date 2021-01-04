@@ -1,7 +1,9 @@
 import React from "react";
 
 import "../assets/css/Results.css";
+
 import Chart from "chart.js";
+import ErrorModal from "../components/ErrorModal.js";
 
 /**
  * Renders the results of the quiz.
@@ -12,7 +14,8 @@ export default class Results extends React.Component {
         super(props);
         this.state = {
             changeTime: "Today",
-            changeGraph: "Average Score (%)"
+            changeGraph: "Average Score (%)",
+            renderError: [false, ""]
         }
         this.answers = [
             {
@@ -126,7 +129,7 @@ export default class Results extends React.Component {
                 return [{ data: this._getLineChartDataNumbers() }];
             }
             catch (err) {
-                console.error("An error has happened in getLineChartData() in _renderCharts() in Results.js" + err);
+                //
             }
         }
 
@@ -170,11 +173,12 @@ export default class Results extends React.Component {
             else if (this.state.changeTime === "All Time") setData();
             //There were no elements in localStorage that were found to work with the conditions.
             else {
-                /********
-                renderErrorHere();
-                ********/
+                if(!this.state.renderError[0]) {
+                    this.setState({ renderError: [true, "There was no data that was found to match the chosen time.  _getLineChartDataNumbers() in Results.js"] });
+                }
                 console.error("There was no data that was found to match the chosen time.  _getLineChartDataNumbers() in Results.js");
             }
+
             i++;
         }
 
@@ -196,6 +200,7 @@ export default class Results extends React.Component {
         while (!(localStorage.getItem(`quiz${i}`) === null)) {
             i++;
         }
+
         localStorage.setItem(`quiz${i}`, json);
     }
 
@@ -215,8 +220,22 @@ export default class Results extends React.Component {
      * @param {Object} event The event passed into the function by the onChange.
      */
     _handleChangeTime(event) {
+        if(this.state.renderError[0]) {
+            if(event.target.value === "Yesterday") {
+                event.target.value = "Today";
+            }
+        }
+
         this.setState({ changeTime: event.target.value });
     }
+
+    /*******************
+     * 
+     * Need to make it so when the error message is rendered the value of the dropdown defaults back to its default values.
+     * 
+     ******************/
+
+
 
     /**
      * Handles the change of the graphs data.
@@ -276,12 +295,19 @@ export default class Results extends React.Component {
         return (this.answers.length / ((hours * 1000) + minutes + (seconds * 0.01))).toFixed(2);
     }
 
+    _renderError() {
+        if(this.state.renderError[0]) {
+            return <ErrorModal />;
+        }
+    }
+
     /**
      * Renders the quiz output report.
      */
     render() {
         return (
             <div className="Results">
+                {this._renderError()}
                 <div className="card card-results">
                     <div className="card-body">
                         <h5 className="card-title">Quiz Results<button className="print-button" onClick={function print() { window.print() }}>Print</button></h5>
@@ -316,11 +342,11 @@ export default class Results extends React.Component {
                                 <div className="card-body">
                                     <div id="line-chart">
                                         <select className="form-control" onChange={this._handleChangeTime.bind(this)} id="changeTime">
-                                            <option>Today</option>
-                                            <option>Yesterday</option>
-                                            <option>This Week</option>
-                                            <option>This Month</option>
-                                            <option>All Time</option>
+                                            <option value = "Today">Today</option>
+                                            <option value = "Yesterday">Yesterday</option>
+                                            <option value = "this week">This Week</option>
+                                            <option value = "This Month">This Month</option>
+                                            <option value = "All Time">All Time</option>
                                         </select>
                                         <select className="form-control" onChange={this._handleChangeGraph.bind(this)} id="changeGraph">
                                             <option>Average Score (%)</option>
