@@ -32,12 +32,20 @@ export default function QA() {
                         body={
                             <div>
                                 <i>Can custom questions be uploaded to FBLA Quiz?</i><br />
-                                To upload custom questions go <a href="https://github.com/Ole113/fbla-quiz-2021/tree/master/src/database/questionCompiler">Here</a> to learn more. <br /><br />
+                                Yes, to upload custom questions go <a href="https://github.com/Ole113/fbla-quiz-2021/tree/master/src/database/questionCompiler">Here</a> to learn more.
+                                <br /><br />
                                 <i>What is the max number of questions on the quiz?</i><br />
-                                The number of questions that are in the question database. Excluding any custom questions there are 50 questions in the database. <br /><br />
+                                The number of questions that are in the question database is the max number of questions that can be rendered.
+                                <br />Excluding any custom questions there are 50 total questions in the database.
+                                <br /><br />
                                 <i>What technologies does FBLA Quiz use?</i><br />
-                                FBLA Quiz uses a combination of Javascript and React with a Node.js backend. Question information uses MySQL. <br /><br />
-                                <i></i>
+                                FBLA Quiz uses a combination of Javascript and React with a Node.js backend. Question information uses MySQL.
+                                <br /><br />
+                                <i>What is the interval between the server backups?</i><br />
+                                The interval between the server backup is 3 hours. This delay can be changed by modifying <code>server.js</code> in the database folder.
+                                <br /><br />
+                                <i>What is the max number of custom questions?</i><br />
+                                There is no max number of questions as long as the SQL database will still hold the questions.
                             </div>
                         }
                     />

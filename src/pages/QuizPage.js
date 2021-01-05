@@ -12,7 +12,7 @@ import Results from "../components/Results.js";
  */
 export default function QuizPage() {
 
-	const API_URL = "http://localhost:5000/questions";
+	//const API_URL = "http://localhost:5000/questions";
 
 	return (
 		<div className="Quiz">

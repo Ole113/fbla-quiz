@@ -173,7 +173,7 @@ export default class Results extends React.Component {
             else if (this.state.changeTime === "All Time") setData();
             //There were no elements in localStorage that were found to work with the conditions.
             else {
-                if(!this.state.renderError[0]) {
+                if (!this.state.renderError[0]) {
                     this.setState({ renderError: [true, "There was no data that was found to match the chosen time.  _getLineChartDataNumbers() in Results.js"] });
                 }
                 console.error("There was no data that was found to match the chosen time.  _getLineChartDataNumbers() in Results.js");
@@ -220,8 +220,8 @@ export default class Results extends React.Component {
      * @param {Object} event The event passed into the function by the onChange.
      */
     _handleChangeTime(event) {
-        if(this.state.renderError[0]) {
-            if(event.target.value === "Yesterday") {
+        if (this.state.renderError[0]) {
+            if (event.target.value === "Yesterday") {
                 event.target.value = "Today";
             }
         }
@@ -254,14 +254,14 @@ export default class Results extends React.Component {
             return (
                 <div className="result-question-info">
                     <h5>{index + 1}. {this.answers[index].data.id}</h5>
-                    <h6><img className="result-icon" src={require("../assets/images/checkBox.svg").default} />{this.answers[index].data.answer}</h6>
+                    <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/checkBox.svg").default} />{this.answers[index].data.answer}</h6>
                 </div>
             );
         }
         return (
             <div className="result-question-info">
                 <h5>{index + 1}. {this.answers[index].data.id}</h5>
-                <h6><img className="result-icon" src={require("../assets/images/crossBox.svg").default} />Your answer: {this.answers[index].data.value}</h6>
+                <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/crossBox.svg").default} />Your answer: {this.answers[index].data.value}</h6>
                 <h6>Correct answer: {this.answers[index].data.answer}</h6>
             </div>
         );
@@ -296,7 +296,7 @@ export default class Results extends React.Component {
     }
 
     _renderError() {
-        if(this.state.renderError[0]) {
+        if (this.state.renderError[0]) {
             return <ErrorModal />;
         }
     }
@@ -342,11 +342,11 @@ export default class Results extends React.Component {
                                 <div className="card-body">
                                     <div id="line-chart">
                                         <select className="form-control" onChange={this._handleChangeTime.bind(this)} id="changeTime">
-                                            <option value = "Today">Today</option>
-                                            <option value = "Yesterday">Yesterday</option>
-                                            <option value = "this week">This Week</option>
-                                            <option value = "This Month">This Month</option>
-                                            <option value = "All Time">All Time</option>
+                                            <option value="Today">Today</option>
+                                            <option value="Yesterday">Yesterday</option>
+                                            <option value="this week">This Week</option>
+                                            <option value="This Month">This Month</option>
+                                            <option value="All Time">All Time</option>
                                         </select>
                                         <select className="form-control" onChange={this._handleChangeGraph.bind(this)} id="changeGraph">
                                             <option>Average Score (%)</option>

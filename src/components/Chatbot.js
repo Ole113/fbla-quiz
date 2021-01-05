@@ -17,12 +17,14 @@ export default class Chatbot extends React.Component {
         this.sendButton = null;
         this.chatbotContainer = null;
         this.state = { chatMessages: [] };
+        this.test = false;
     }
 
     /**
      * Checks if the component has mounted. If so the chatInput is initialized, the initial chat bot message is sent and the keyup event listener is added to check for enter key presses.
      */
     componentDidMount() {
+        //Initializes the instance variables when the component has mounted on the page.
         this.chatInput = document.getElementById("chatbot-input");
         this.sendButton = document.getElementById("chatbot-submit");
         this.chatbotContainer = document.getElementsByClassName("chatbot-container")[0];
@@ -37,6 +39,7 @@ export default class Chatbot extends React.Component {
      * After the user has input something the message contents are checked for keywords in _serverSendMessage().
      */
     _checkMessageSent() {
+        //Checks if the user has clicked the send message button at the far right of the chat box.
         this.sendButton.addEventListener("click", () => {
             if (this.chatInput.value !== "") {
                 this._addMessage("client");
@@ -44,12 +47,12 @@ export default class Chatbot extends React.Component {
             }
         });
 
+        //Checks if the user has pressed enter while typing in the chatbot.
         this.chatInput.addEventListener("keyup", (event) => {
             if (this.chatInput.value !== "" && event.key === "Enter") {
                 this._addMessage("client");
                 this._serverSendMessage();
-                //Makes it so when the user sends a message the chatbot input is always at the bottom of the container.
-                this.chatbotContainer.scrollTop = this.chatbotContainer.scrollHeight;
+                this.test = true;
             }
         });
     }
@@ -150,6 +153,14 @@ export default class Chatbot extends React.Component {
     }
 
     /**
+     * When the component updates the chatbot input is moved to the bottom of the div.
+     */
+    componentDidUpdate() {
+        //Makes it so when the user sends a message the chatbot input is always at the bottom of the container.
+        this.chatbotContainer.scrollTop = this.chatbotContainer.scrollHeight;
+    }
+
+    /**
      * Renders the messages, the input box, and the message containers.
      */
     render() {
@@ -159,7 +170,8 @@ export default class Chatbot extends React.Component {
                     {this._getChatMessages()}
                 </div>
                 <input id="chatbot-input" type="text" placeholder="What do you need help with?" />
-                <input id="chatbot-submit" />
+                {/* readOnly makes it so the input box cannot be typed in. */}
+                <input id="chatbot-submit" readOnly />
             </div>
         );
     }

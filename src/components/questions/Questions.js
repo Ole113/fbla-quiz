@@ -237,9 +237,7 @@ export default class Questions extends React.Component {
      * @param {Object} data The object of the data.
      */
     _handleQuestionValue = (data) => {
-        if(this.startTime === "") {
-            this.startTime = new Date().toLocaleTimeString();
-        }
+        if(this.startTime === "") this.startTime = new Date().toLocaleTimeString();
 
         //If theres isn't a value in the array then it's impossible for the new data to be a multiple.
         if (this.questionValues.length === 0) this.questionValues.push({ data });

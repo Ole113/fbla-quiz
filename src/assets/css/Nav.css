@@ -13,8 +13,8 @@
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Bootstrap media query if screen width is less than 985px hide the nav card(it's too big to fit and will look weird if set below). */
-@media (max-width: 985px) {
+/* Bootstrap media query if screen width is less than 1050px hide the nav card(it's too big to fit and will look weird if set below). */
+@media (max-width: 1050px) {
     .col-card {
         display: none;
     }
@@ -41,10 +41,10 @@
     }
 }
 
-/* If the screen size is not less than 985px and is not greater than or equal to 1561px then this query is executed which sets padding, margin, and the font size. */
+/* If the screen size is not less than 1050px and is not greater than or equal to 1561px then this query is executed which sets padding, margin, and the font size. */
 @media (max-width: 1560px) {
     .nav-card {
-        padding: 40px 40px 100px 40px;
+        padding: 40px 25px 50px 25px;
         margin: 0 100px 0 -80px;
     }
 
