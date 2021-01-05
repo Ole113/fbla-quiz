@@ -16,13 +16,15 @@ export default class Multiple extends React.Component {
     /**
      * Sends the id and value back to the parent class with a callback.
      */
-    _sendQuestionValue = () => this.props.sendQuestionValue({ id: this.state.id, value: this.state.value, answer: this.props.answer, type: "multiple" });
+    _sendQuestionValue() {
+        this.props.sendQuestionValue({ id: this.state.id, value: this.state.value, answer: this.props.answer, type: "multiple" });
+    }
 
     /**
      * Updates the Components state when the user updates their answer.
      * @param {Object} event The update event.
      */
-    _handleChange = (event) => {
+    _handleChange(event) {
         let value;
         const eventID = event.target.id;
 

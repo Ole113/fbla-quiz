@@ -17,13 +17,14 @@ export default class Matching extends React.Component {
     /**
      * Sends the id and value back to the parent class with a callback.
      */
-    _sendQuestionValue = () => this.props.sendQuestionValue({ id: this.state.id, value: this.state.value, answer: this.props.answer, type: "matching" });
-
+    _sendQuestionValue() {
+        this.props.sendQuestionValue({ id: this.state.id, value: this.state.value, answer: this.props.answer, type: "matching" });
+    }
     /**
      * Updates the Components state when the user updates their answer.
      * @param {Object} event The update event.
      */
-    _handleChange = (event) => {
+    _handleChange(event) {
         let eventID = event.target.id;
 
         //Sets the value of content which is the question that the user has answered.

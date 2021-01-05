@@ -236,7 +236,7 @@ export default class Questions extends React.Component {
      * Handles when the user updates their answer.
      * @param {Object} data The object of the data.
      */
-    _handleQuestionValue = (data) => {
+    _handleQuestionValue(data) {
         if(this.startTime === "") this.startTime = new Date().toLocaleTimeString();
 
         //If theres isn't a value in the array then it's impossible for the new data to be a multiple.
