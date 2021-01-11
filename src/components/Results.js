@@ -4,10 +4,13 @@ import "../assets/css/Results.css";
 
 import Chart from "chart.js";
 
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-toast.configure()
+import { Toast } from "../components/Toast.js";
+
+//Configures the toast module.
+toast.configure();
 
 /**
  * Renders the results of the quiz.
@@ -65,6 +68,8 @@ export default class Results extends React.Component {
         this.pieRef = React.createRef();
         this.lineRef = React.createRef();
         this.currentDate = "0/0/0000";
+        //The line chart needs to be a variable so it can be destroyed when the user wants the chart updated.
+        this.lineChart = "";
     }
 
     /**
@@ -105,49 +110,75 @@ export default class Results extends React.Component {
             }
         });
 
+        let chartData = this._getLineChartDataNumbers();
+
         /**
          * Returns if the line chart will have 1 or 2 lines.
          * 2 lines if the chart is Correct/Incorrect.
          */
         const getLineChartData = () => {
+            //Makes it so old chart data won't show. There used to be a bug where data from average score would show when hovering over data points.
+            if (this.lineChart !== "") this.lineChart.destroy();
+
+            //Needs to be in a try catch because chartData[0][0].length will throw an error if invalid.
             try {
-                if (this._getLineChartDataNumbers()[0].length === 2) {
+                //Checks if the user wants to find the Correct/Incorrect.
+                if (chartData[0][0].length === 2) {
+                    /**
+                     * First index of chartData[0] is the number correct, second index is the number incorrect.
+                     * If index is 0 then the number correct is added to an array(chartArray) if the index is 1 then all the number of incorrect questions is added to the array.
+                     * @param {Number} index The index to loop from.
+                     */
+                    const getChartInfo = (index) => {
+                        let chartArray = [];
+                        chartData[0].forEach(array => {
+                            chartArray.push(array[index][0]);
+                        });
+                        return chartArray;
+                    }
+
                     return [
                         {
                             label: "Correct",
                             backgroundColor: "green",
                             borderColor: "green",
-                            data: [10, 34, 23, 56],
+                            data: getChartInfo(0),
                             fill: false
                         },
                         {
                             label: "Incorrect",
                             backgroundColor: "red",
                             borderColor: "red",
-                            data: [20, 33, 45, 76],
+                            data: getChartInfo(1),
                             fill: false
                         }
                     ];
                 }
-                return [{ data: this._getLineChartDataNumbers() }];
+
+                return [{
+                    label: "Results",
+                    data: chartData[0]
+                }];
             }
-            catch (err) {
-                //
-            }
+            catch (err) { }
         }
 
-        const getLineChartLabels = () => {
-            
-        }
-
-        new Chart(lineChartRef, {
+        //Sets the instance variable lineChart equal to a Chart.
+        this.lineChart = new Chart(lineChartRef, {
             type: "line",
             data: {
-                labels: ["12/30/2020", "12/31/2020"],
+                labels: chartData[1],
                 datasets: getLineChartData()
             },
             options: {
-
+                scales: {
+                    xAxes: [{
+                        ticks: {
+                            autoSkip: true,
+                            maxTicksLimit: 15
+                        }
+                    }]
+                }
             }
         });
     }
@@ -157,6 +188,10 @@ export default class Results extends React.Component {
      */
     _getLineChartDataNumbers() {
         let foundData = [];
+        //The charts data is the first index and the labels are the second.
+        foundData[0] = [];
+        foundData[1] = [];
+
         let i = 1;
 
         //When getting an item from localStorage that doesn't exist it will return null, so it loops until every element in localStorage has been accessed.
@@ -168,10 +203,12 @@ export default class Results extends React.Component {
              * Sets the value of foundData which is all the information that is needed to graph.
              */
             const setData = () => {
-                if (this.state.changeGraph === "Average Score (%)") foundData.push((parsedJSON.correct / parsedJSON.wrong) * 100);
-                else if (this.state.changeGraph === "Correct/Incorrect") foundData.push([[parsedJSON.correct], [parsedJSON.wrong]]);
-                else if (this.state.changeGraph === "Time Per Question") foundData.push(parsedJSON.timePerQuestion);
-                else if (this.state.changeGraph === "Number Of Questions") foundData.push(parsedJSON.numberOfQuestions);
+                if (this.state.changeGraph === "Average Score (%)") foundData[0].push((parsedJSON.correct / parsedJSON.wrong) * 100);
+                else if (this.state.changeGraph === "Correct/Incorrect") foundData[0].push([[parsedJSON.correct], [parsedJSON.wrong - parsedJSON.correct]]);
+                else if (this.state.changeGraph === "Time Per Question") foundData[0].push(parsedJSON.timePerQuestion);
+                else if (this.state.changeGraph === "Number Of Questions") foundData[0].push(parsedJSON.numberOfQuestions);
+
+                foundData[1].push(parsedJSON.date);
             }
 
             let splitCurrentDate = this.currentDate.split("/");
@@ -187,21 +224,8 @@ export default class Results extends React.Component {
         }
 
         //There were no elements in localStorage that were found to work with the conditions.
-        if (foundData[0] === undefined) {
-            //Makes a toast using react-toastify
-            toast.error(
-                <div>
-                    <img id="errorImage" src={require("../assets/images/error.svg").default} alt="Error loading image." />
-                    &nbsp;&nbsp;&nbsp;The data couldn't be found for the specified time.
-                </div>, {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-            });
+        if (foundData[0][0] === undefined) {
+            Toast("The data couldn't be found for the specified time.");
         }
 
         return foundData;
