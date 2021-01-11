@@ -6,6 +6,10 @@ import QAPage from "./pages/QAPage.js";
 import QuizPage from "./pages/QuizPage.js";
 import ErrorPage from "./pages/ErrorPage.js";
 
+import {toast} from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+toast.configure()
+
 /*
   Switch tag makes it so that only one Route component can be rendered at one time.
   

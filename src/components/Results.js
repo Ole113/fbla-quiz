@@ -3,7 +3,11 @@ import React from "react";
 import "../assets/css/Results.css";
 
 import Chart from "chart.js";
-import ErrorModal from "../components/ErrorModal.js";
+
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+toast.configure()
 
 /**
  * Renders the results of the quiz.
@@ -15,7 +19,6 @@ export default class Results extends React.Component {
         this.state = {
             changeTime: "Today",
             changeGraph: "Average Score (%)",
-            renderError: [false, ""]
         }
         this.answers = [
             {
@@ -133,6 +136,10 @@ export default class Results extends React.Component {
             }
         }
 
+        const getLineChartLabels = () => {
+            
+        }
+
         new Chart(lineChartRef, {
             type: "line",
             data: {
@@ -157,6 +164,9 @@ export default class Results extends React.Component {
             let foundStorageItem = localStorage.getItem(`quiz${i}`);
             let parsedJSON = JSON.parse(foundStorageItem);
 
+            /**
+             * Sets the value of foundData which is all the information that is needed to graph.
+             */
             const setData = () => {
                 if (this.state.changeGraph === "Average Score (%)") foundData.push((parsedJSON.correct / parsedJSON.wrong) * 100);
                 else if (this.state.changeGraph === "Correct/Incorrect") foundData.push([[parsedJSON.correct], [parsedJSON.wrong]]);
@@ -166,20 +176,32 @@ export default class Results extends React.Component {
 
             let splitCurrentDate = this.currentDate.split("/");
 
+            //Determines if the dates are within the chosen time period.
             if (this.state.changeTime === "Today" && parsedJSON.date === this.currentDate) setData();
             else if (this.state.changeTime === "Yesterday" && (splitCurrentDate[0] + "/" + (splitCurrentDate[1] - 1) + "/" + splitCurrentDate[2]) === parsedJSON.date) setData();
-            else if (this.state.changeTime === "This Week" && (splitCurrentDate[1] - parsedJSON.date.split("/")[1]) <= 0) setData();
+            else if (this.state.changeTime === "This Week" && (splitCurrentDate[1] - parsedJSON.date.split("/")[1]) >= 0) setData();
             else if (this.state.changeTime === "This Month" && splitCurrentDate[0] === parsedJSON.date.split("/")[0]) setData();
             else if (this.state.changeTime === "All Time") setData();
-            //There were no elements in localStorage that were found to work with the conditions.
-            else {
-                if (!this.state.renderError[0]) {
-                    this.setState({ renderError: [true, "There was no data that was found to match the chosen time.  _getLineChartDataNumbers() in Results.js"] });
-                }
-                console.error("There was no data that was found to match the chosen time.  _getLineChartDataNumbers() in Results.js");
-            }
 
             i++;
+        }
+
+        //There were no elements in localStorage that were found to work with the conditions.
+        if (foundData[0] === undefined) {
+            //Makes a toast using react-toastify
+            toast.error(
+                <div>
+                    <img id="errorImage" src={require("../assets/images/error.svg").default} alt="Error loading image." />
+                    &nbsp;&nbsp;&nbsp;The data couldn't be found for the specified time.
+                </div>, {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            });
         }
 
         return foundData;
@@ -220,22 +242,8 @@ export default class Results extends React.Component {
      * @param {Object} event The event passed into the function by the onChange.
      */
     _handleChangeTime(event) {
-        if (this.state.renderError[0]) {
-            if (event.target.value === "Yesterday") {
-                event.target.value = "Today";
-            }
-        }
-
         this.setState({ changeTime: event.target.value });
     }
-
-    /*******************
-     * 
-     * Need to make it so when the error message is rendered the value of the dropdown defaults back to its default values.
-     * 
-     ******************/
-
-
 
     /**
      * Handles the change of the graphs data.
@@ -292,13 +300,8 @@ export default class Results extends React.Component {
         const hours = Number(submitTime.split(":")[0]) - Number(startTime.split(":")[0]);
         const minutes = Number(submitTime.split(" ")[0].split(":")[1]) - Number(startTime.split(" ")[0].split(":")[1]);
         const seconds = Number(submitTime.split(" ")[0].split(":")[2]) - Number(startTime.split(" ")[0].split(":")[2]);
-        return (this.answers.length / ((hours * 1000) + minutes + (seconds * 0.01))).toFixed(2);
-    }
 
-    _renderError() {
-        if (this.state.renderError[0]) {
-            return <ErrorModal />;
-        }
+        return (this.answers.length / ((hours * 1000) + minutes + (seconds * 0.01))).toFixed(2);
     }
 
     /**
@@ -307,7 +310,6 @@ export default class Results extends React.Component {
     render() {
         return (
             <div className="Results">
-                {this._renderError()}
                 <div className="card card-results">
                     <div className="card-body">
                         <h5 className="card-title">Quiz Results<button className="print-button" onClick={function print() { window.print() }}>Print</button></h5>
@@ -344,7 +346,7 @@ export default class Results extends React.Component {
                                         <select className="form-control" onChange={this._handleChangeTime.bind(this)} id="changeTime">
                                             <option value="Today">Today</option>
                                             <option value="Yesterday">Yesterday</option>
-                                            <option value="this week">This Week</option>
+                                            <option value="This Week">This Week</option>
                                             <option value="This Month">This Month</option>
                                             <option value="All Time">All Time</option>
                                         </select>

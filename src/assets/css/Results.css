@@ -45,3 +45,7 @@
 #changeTime, #changeGraph {
     margin-bottom: 10px;
 }
+
+#errorImage {
+    margin-bottom: 4px;
+}
