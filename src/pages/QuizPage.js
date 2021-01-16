@@ -12,7 +12,7 @@ import Results from "../components/Results.js";
  */
 export default function QuizPage() {
 
-	//const API_URL = "http://localhost:5000/questions";
+	const API_URL = "http://localhost:5000/questions";
 
 	return (
 		<div className="Quiz">
@@ -25,13 +25,13 @@ export default function QuizPage() {
 			<Modal title="FBLA Quiz Help Menu"
 				body={<HelpMenu />}
 			/>
-			{/* <Quiz apiURL={API_URL} /> */}
-			<Results
+			<Quiz apiURL={API_URL} />
+			{/* <Results
 				startTime="7:12:02 PM"
 				submitTime="7:15:34 PM"
 				totalQuestions={5}
 				time={"00:05:23"}
-			/>
+			/> */}
 			<Footer
 				mainTitle="FBLA Quiz"
 				copyright="&copy;2020 FBLA Quiz"

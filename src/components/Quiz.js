@@ -20,6 +20,7 @@ export default class Quiz extends React.Component {
             answers: "",
             timer: ""
         };
+        this.answersHolder = "";
     }
 
     /**
@@ -35,19 +36,31 @@ export default class Quiz extends React.Component {
      * @param {Object} answers The answers the user submitted along with the right answer and the question itself.
      */
     handleUserAnswers = (answers, timer, startTime) => {
-        if (!this.state.answers) this.setState({ answers: answers, timer: timer, startTime: startTime });
+        if (!this.state.answers) {
+            this.setState({ answers: answers, timer: timer, startTime: startTime }, () => {
+                this.answersHolder = this.state.answers;
+                this.setState({ answers: "" });
+            });
+        }
+    }
+
+    /**
+     * If the user has submitted the quiz then this makes it so if the user clicks on a link to the Quiz page again it shows the quiz form and not the results page.
+     * The question type and number was defaulted to the last quiz submit so this makes them the default value.
+     */
+    handleResultsLoaded = () => {
+        this.setState({ type: "Random",number: "5" }, () => {
+            this.answersHolder = "";
+        });
     }
 
     /**
      * Renders the quiz options and the quiz unless the QuizForm submit button has been clicked. If so the Results page is rendered.
      */
     render() {
-        if (this.state.answers) {
-            //Resets the state answers so when the quiz links are clicked on the results page is removed and the actual quiz is shown again.
-            let answersHolder = this.state.answers;
-            this.setState({ answers: "" });
-
-            return <Results startTime={this.state.startTime} submitTime={new Date().toLocaleTimeString()} answers={answersHolder} numberQuestions={this.state.number} />
+        //Checks if the answersHolder variable is blank because if it is then the quiz hasn't been submitted yet.
+        if (this.answersHolder) {
+            return <Results resultsLoaded={this.handleResultsLoaded} startTime={this.state.startTime} submitTime={new Date().toLocaleTimeString()} answers={this.answersHolder} numberQuestions={this.state.number} />
         }
         return (
             <div className="container">

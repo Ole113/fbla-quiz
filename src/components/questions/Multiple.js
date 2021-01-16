@@ -16,15 +16,13 @@ export default class Multiple extends React.Component {
     /**
      * Sends the id and value back to the parent class with a callback.
      */
-    _sendQuestionValue() {
-        this.props.sendQuestionValue({ id: this.state.id, value: this.state.value, answer: this.props.answer, type: "multiple" });
-    }
+    _sendQuestionValue = () => this.props.sendQuestionValue({ id: this.state.id, value: this.state.value, answer: this.props.answer, type: "multiple" });
 
     /**
      * Updates the Components state when the user updates their answer.
      * @param {Object} event The update event.
      */
-    _handleChange(event) {
+    _handleChange = (event) => {
         let value;
         const eventID = event.target.id;
 
@@ -62,7 +60,7 @@ export default class Multiple extends React.Component {
                     </label>
                 </div >
                 <div className="form-check">
-                    <input className="form-check-input" type="radio" name={`questionRadios${this.props.id}`} id={`questionRadios4${this.props.id}`} value="radio4" onChange={this.handleChange} required />
+                    <input className="form-check-input" type="radio" name={`questionRadios${this.props.id}`} id={`questionRadios4${this.props.id}`} value="radio4" onChange={this._handleChange} required />
                     <label className="form-check-label" htmlFor={`questionRadios4${this.props.id}`} id={`questionLabel4${this.props.id}`}>
                         {this.props.optionFour}
                     </label>

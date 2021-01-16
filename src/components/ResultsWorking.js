@@ -76,19 +76,14 @@ export default class Results extends React.Component {
      * Renders the pie and line chart and sets the local storage of the new quiz result.
      */
     componentDidMount() {
-        //Sets the quiz in the local storage.
         this._setLocalStorage();
-        //Renders both of the charts.
         this._renderCharts();
-        //Calls to parent which sets parent's answer state variable to blank so if the user clicks on the quiz link it will show a new quiz form and not the previous results page.
-        this.props.resultsLoaded();
     }
 
     /**
      * Updates the app when either of the input boxes have been changed.
      */
     componentDidUpdate() {
-        //If the user changes the time or information they want to chart to show the page needs to update to show the new chart. Could possibly be done with Chart.js built in updating chart.
         this._renderCharts();
     }
 
@@ -106,7 +101,7 @@ export default class Results extends React.Component {
                 datasets: [
                     {
                         backgroundColor: ["#0e9d58", "#db4437"],
-                        data: [this._getNumberCorrect(), this.props.answers.length - this._getNumberCorrect()]
+                        data: [this._getNumberCorrect(), this.answers.length - this._getNumberCorrect()]
                     }
                 ],
             },
@@ -250,7 +245,7 @@ export default class Results extends React.Component {
         let year = today.getFullYear();
         this.currentDate = month + "/" + day + "/" + year;
 
-        let json = `{ "correct": "${this._getNumberCorrect()}", "wrong": "${this.props.answers.length}", "timePerQuestion": "${this._calculateTimePerQuestion()}", "date": "${this.currentDate}", "numberOfQuestions": "${this.props.answers.length}" }`;
+        let json = `{ "correct": "${this._getNumberCorrect()}", "wrong": "${this.answers.length}", "timePerQuestion": "${this._calculateTimePerQuestion()}", "date": "${this.currentDate}", "numberOfQuestions": "${this.answers.length}" }`;
         let i = 1;
         while (!(localStorage.getItem(`quiz${i}`) === null)) {
             i++;
@@ -264,7 +259,7 @@ export default class Results extends React.Component {
      */
     _getNumberCorrect() {
         let totalCorrect = 0;
-        this.props.answers.forEach(answer => {
+        this.answers.forEach(answer => {
             if (answer.data.answer === answer.data.value) totalCorrect++;
         });
         return totalCorrect;
@@ -291,19 +286,19 @@ export default class Results extends React.Component {
      * @param {Number} index The index of the question to load.
      */
     _getRenderResult(index) {
-        if (this.props.answers[index].data.value === this.props.answers[index].data.answer) {
+        if (this.answers[index].data.value === this.answers[index].data.answer) {
             return (
                 <div className="result-question-info">
-                    <h5>{index + 1}. {this.props.answers[index].data.id}</h5>
-                    <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/checkBox.svg").default} />{this.props.answers[index].data.answer}</h6>
+                    <h5>{index + 1}. {this.answers[index].data.id}</h5>
+                    <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/checkBox.svg").default} />{this.answers[index].data.answer}</h6>
                 </div>
             );
         }
         return (
             <div className="result-question-info">
-                <h5>{index + 1}. {this.props.answers[index].data.id}</h5>
-                <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/crossBox.svg").default} />Your answer: {this.props.answers[index].data.value}</h6>
-                <h6>Correct answer: {this.props.answers[index].data.answer}</h6>
+                <h5>{index + 1}. {this.answers[index].data.id}</h5>
+                <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/crossBox.svg").default} />Your answer: {this.answers[index].data.value}</h6>
+                <h6>Correct answer: {this.answers[index].data.answer}</h6>
             </div>
         );
     }
@@ -334,7 +329,7 @@ export default class Results extends React.Component {
         const minutes = Number(submitTime.split(" ")[0].split(":")[1]) - Number(startTime.split(" ")[0].split(":")[1]);
         const seconds = Number(submitTime.split(" ")[0].split(":")[2]) - Number(startTime.split(" ")[0].split(":")[2]);
 
-        return (this.props.answers.length / ((hours * 1000) + minutes + (seconds * 0.01))).toFixed(2);
+        return (this.answers.length / ((hours * 1000) + minutes + (seconds * 0.01))).toFixed(2);
     }
 
     /**
@@ -350,11 +345,11 @@ export default class Results extends React.Component {
                         <div className="row">
                             <div className="col">
                                 <h6 className="gray-font">Your score is</h6>
-                                <h1 style={{ display: "inline-block" }}>{(this._getNumberCorrect() / this.props.answers.length) * 100}%</h1>
+                                <h1 style={{ display: "inline-block" }}>{(this._getNumberCorrect() / this.props.totalQuestions) * 100}%</h1>
                             </div>
                             <div className="col">
                                 <h6 className="gray-font">Total number correct</h6>
-                                <h1 style={{ display: "inline-block" }}>{this._getNumberCorrect()}/{this.props.answers.length}</h1>
+                                <h1 style={{ display: "inline-block" }}>{this._getNumberCorrect()}/{this.props.totalQuestions}</h1>
                             </div>
                             <div className="col">
                                 <h6 className="gray-font">Total time taken</h6>
