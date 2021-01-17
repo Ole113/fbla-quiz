@@ -61,7 +61,7 @@ export default class Quiz extends React.Component {
         //Checks if the answersHolder variable is blank because if it is then the quiz hasn't been submitted yet.
         if (this.answersHolder) {
             return <Results resultsLoaded={this.handleResultsLoaded} startTime={this.state.startTime} submitTime={new Date().toLocaleTimeString()} answers={this.answersHolder} numberQuestions={this.state.number} />
-        }
+        }  
         return (
             <div className="container">
                 <div className="row quizRow">

@@ -1,15 +1,19 @@
+/* Makes it so there's padding on the top of the whole results container so the navbar doesn't block any content. */
 .Results {
     padding-top: 100px;
 }
 
+/* Other css files make these headers have a bold header. This defaults them back to normal font weight. */
 .Results h6, .Results h6 {
     font-weight: normal;
 }
 
+/* Adds a margin to the top card. */
 .card-results {
     margin: 0 60px 30px 60px;
 }
 
+/* Gives the print button the gradient, width, height, font size, and floats it to the right. */
 .print-button {
     float: right;
     background-color: #2a2a72;
@@ -22,30 +26,51 @@
     font-size: 15px;
 }
 
+/* Makes it so when the user hovers over the button the opacity changes to make the button more interactive and let the user know you can click it. */
 .print-button:hover {
     opacity: 0.9;
 }
 
+/* Makes it so the print button will fit and will look good. */
 .hr-result-title {
     margin-top: 25px;
 }
 
+/* Makes it so the child text has a subtle text color change to make it look better. */
 .gray-font {
     color: #404040;
 }
 
+/* Adds adding to make it look better and have space at the bottom. */
 .result-question-info {
     padding: 5px 0 50px 40px;
 }
 
+/* Fixes the material icon issue where the icons don't line up with the text perfectly. */
 .result-icon {
     margin-bottom: 3px;
 }
 
+/* Adds a margin bottom to make it look better and match the top. */
 #changeTime, #changeGraph {
     margin-bottom: 10px;
 }
 
+/* Fixes the material icon issue where the icons don't line up with the text perfectly. */
 #errorImage {
     margin-bottom: 4px;
+}
+
+/* Makes it so the retry button is the same color as the footer background and floats to the right. */
+.try-again-button {
+    border: 1px solid #b3b3b3;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.009);
+    padding: 3px 15px 3px 15px;
+    float: right;
+}
+
+/* If the user hovers over the redo button this lets them know that the button can be clicked and helps with user interaction. */
+.try-again-button:hover {
+    border: 1px solid #8c8c8c;
 }

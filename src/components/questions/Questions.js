@@ -7,6 +7,14 @@ import Blank from "./Blank.js";
 
 import Modal from "../Modal.js";
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+import { Toast } from "../../components/Toast.js";
+
+//Configures the toast module.
+toast.configure();
+
 /**
  * Handles rendering the questions and getting the user answer from the questions.
  */
@@ -16,7 +24,8 @@ export default class Questions extends React.Component {
         this.questions = []; //Questions is the array with all the html questions in it such as <TF /> or <Blank />
         this.currentType = "Random";
         this.state = {
-            data: null //The data is the data of all the questions returned by _findTypeID. It will be an array of all the questions.
+            data: null, //The data is the data of all the questions returned by _findTypeID. It will be an array of all the questions.
+            errorRendered: false
         }
         this.renderedIDs = []; //The IDs of all the questions that have already been rendered.
         this.questionValues = []; //The values that the user has input for all the question answers.
@@ -31,22 +40,9 @@ export default class Questions extends React.Component {
             .then(response => response.json())
             .then(data => this.setState({ data: data }))
             .catch(err => console.error(`An error occurred in Questions.js componentDidMount(). ${err}`));
-    }
-
-    _catchError(id, res) {
-        /*
-        If the numbers of questions in the database is less than the number of questions the user is requesting then an error will be thrown.
-        If this is true then the error is logged and a user friendly error message pops up.
-        */
-        try { let testVariable = res[id].category; }
-        catch (err) {
-            console.error(`The number of questions that are requested to render is more questions than are in the database. ${err}`);
-            //Show modal here.
-            return <Modal
-                title="An Error Occurred"
-                body="Error Body"
-            />
-        }
+            if (this.renderedIDs.length === 0) {
+                //need to make a var and see if the error has already been rendered so it can't render multiple times
+            }
     }
 
     /**
@@ -179,11 +175,15 @@ export default class Questions extends React.Component {
 
     /**
      * 
-     * @param {String} title 
-     * @param {String} body 
+     * @param {String} message 
+     * @param {String} error 
      */
-    _renderError(title, body) {
-        console.error(title + " " + body);
+    _renderError(message, error) {
+        console.error(message + error);
+        if(!this.state.errorRendered) {
+            Toast(message);
+            this.setState({ errorRendered: true });
+        }
     }
 
     /**
@@ -204,7 +204,7 @@ export default class Questions extends React.Component {
             let randomNumber = Math.floor(Math.random() * 4);
             questionInfo = this._getQuestionInfo(res, randomNumber);
             return randomNumber === 0 ? <Blank key={id} content={questionInfo.content} answer={questionInfo.answer} sendQuestionValue={this._handleQuestionValue} />
-                : randomNumber === 1 ? <Multiple key={id} content={questionInfo.content} optionOne={questionInfo.optionOne} optionTwo={questionInfo.optionTwo} optionThree={questionInfo.optionThree} optionFour={questionInfo.optionFour} answer={questionInfo.answer} sendQuestionValue={this._handleQuestionValue} />
+                : randomNumber === 1 ? <Multiple id={id} key={id} content={questionInfo.content} optionOne={questionInfo.optionOne} optionTwo={questionInfo.optionTwo} optionThree={questionInfo.optionThree} optionFour={questionInfo.optionFour} answer={questionInfo.answer} sendQuestionValue={this._handleQuestionValue} />
                     : randomNumber === 2 ? <TF key={id} content={questionInfo.content} answer={questionInfo.answer} sendQuestionValue={this._handleQuestionValue} />
                         : <Matching key={id} contentOne={questionInfo[0].content} contentTwo={questionInfo[1].content} contentThree={questionInfo[2].content} contentFour={questionInfo[3].content} answerOne={questionInfo[0].answer} answerTwo={questionInfo[1].answer} answerThree={questionInfo[2].answer} answerFour={questionInfo[3].answer} answer={questionInfo.answer} sendQuestionValue={this._handleQuestionValue} />;
         }
@@ -274,22 +274,16 @@ export default class Questions extends React.Component {
      * Renders the questions.
      */
     render() {
-        /**
-         * THIS NEEDS TO BE FIXED BECAUSE AT THE START OF THE PROGRAM THE RENDERED IDS WILL BE EMPTY
-         * Check in componentDidMount maybe
-         */
-        if (this.renderedIDs.length === 0) {
-            //this._renderError("There were either not enough True/False question types or not enough Multiple choice question types.", "")
-        }
-
-        if (this.state.data == null) return <div>
+        if (this.state.data == null) {
+            return <div>
             <h1>Loading...</h1>
-            <br />
-            <p>
-                If this message persists then an error has occurred. Most likely the database server is not online.
-                    <br />To turn it on navigate to the database directory with <code>cd src/database</code> and run the command <code>node server.js</code>.
+                <br />
+                <p>
+                    If this message persists then an error has occurred. Most likely the database server is not online.
+                        <br />To turn it on navigate to the database directory with <code>cd src/database</code> and run the command <code>node server.js</code>.
                 </p>
-        </div>
+            </div>
+        }
         try { let testVariable = this.state.data[this.props.number].category; }
         catch (err) {
             this._renderError("The number of questions that are requested to render is more questions than are in the database.", err);

@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "../assets/css/Results.css";
 
@@ -66,6 +67,7 @@ export default class Results extends React.Component {
             }
         ];
         this.pieRef = React.createRef();
+        this.pieRef = React.createRef();
         this.lineRef = React.createRef();
         this.currentDate = "0/0/0000";
         //The line chart needs to be a variable so it can be destroyed when the user wants the chart updated.
@@ -81,7 +83,7 @@ export default class Results extends React.Component {
         //Renders both of the charts.
         this._renderCharts();
         //Calls to parent which sets parent's answer state variable to blank so if the user clicks on the quiz link it will show a new quiz form and not the previous results page.
-        this.props.resultsLoaded();
+        // this.props.resultsLoaded();
     }
 
     /**
@@ -106,7 +108,7 @@ export default class Results extends React.Component {
                 datasets: [
                     {
                         backgroundColor: ["#0e9d58", "#db4437"],
-                        data: [this._getNumberCorrect(), this.props.answers.length - this._getNumberCorrect()]
+                        data: [this._getNumberCorrect(), this.answers.length - this._getNumberCorrect()]
                     }
                 ],
             },
@@ -250,7 +252,7 @@ export default class Results extends React.Component {
         let year = today.getFullYear();
         this.currentDate = month + "/" + day + "/" + year;
 
-        let json = `{ "correct": "${this._getNumberCorrect()}", "wrong": "${this.props.answers.length}", "timePerQuestion": "${this._calculateTimePerQuestion()}", "date": "${this.currentDate}", "numberOfQuestions": "${this.props.answers.length}" }`;
+        let json = `{ "correct": "${this._getNumberCorrect()}", "wrong": "${this.answers.length}", "timePerQuestion": "${this._calculateTimePerQuestion()}", "date": "${this.currentDate}", "numberOfQuestions": "${this.answers.length}" }`;
         let i = 1;
         while (!(localStorage.getItem(`quiz${i}`) === null)) {
             i++;
@@ -264,7 +266,7 @@ export default class Results extends React.Component {
      */
     _getNumberCorrect() {
         let totalCorrect = 0;
-        this.props.answers.forEach(answer => {
+        this.answers.forEach(answer => {
             if (answer.data.answer === answer.data.value) totalCorrect++;
         });
         return totalCorrect;
@@ -291,19 +293,19 @@ export default class Results extends React.Component {
      * @param {Number} index The index of the question to load.
      */
     _getRenderResult(index) {
-        if (this.props.answers[index].data.value === this.props.answers[index].data.answer) {
+        if (this.answers[index].data.value === this.answers[index].data.answer) {
             return (
                 <div className="result-question-info">
-                    <h5>{index + 1}. {this.props.answers[index].data.id}</h5>
-                    <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/checkBox.svg").default} />{this.props.answers[index].data.answer}</h6>
+                    <h5>{index + 1}. {this.answers[index].data.id}</h5>
+                    <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/checkBox.svg").default} />{this.answers[index].data.answer}</h6>
                 </div>
             );
         }
         return (
             <div className="result-question-info">
-                <h5>{index + 1}. {this.props.answers[index].data.id}</h5>
-                <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/crossBox.svg").default} />Your answer: {this.props.answers[index].data.value}</h6>
-                <h6>Correct answer: {this.props.answers[index].data.answer}</h6>
+                <h5>{index + 1}. {this.answers[index].data.id}</h5>
+                <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/crossBox.svg").default} />Your answer: {this.answers[index].data.value}</h6>
+                <h6>Correct answer: {this.answers[index].data.answer}</h6>
             </div>
         );
     }
@@ -324,23 +326,34 @@ export default class Results extends React.Component {
     }
 
     /**
-     * Calculates the time it takes for the user to answer each question by taking an average of the total questions and the total time taken.
+     * 
      */
-    _calculateTimePerQuestion() {
+    _calculateTimeTaken() {
         const startTime = this.props.startTime.split(" ")[0];
         const submitTime = this.props.submitTime.split(" ")[0];
 
-        const hours = Number(submitTime.split(":")[0]) - Number(startTime.split(":")[0]);
-        const minutes = Number(submitTime.split(" ")[0].split(":")[1]) - Number(startTime.split(" ")[0].split(":")[1]);
-        const seconds = Number(submitTime.split(" ")[0].split(":")[2]) - Number(startTime.split(" ")[0].split(":")[2]);
+        let hours = Number(submitTime.split(":")[0]) - Number(startTime.split(":")[0]);
+        let minutes = Number(submitTime.split(" ")[0].split(":")[1]) - Number(startTime.split(" ")[0].split(":")[1]);
+        let seconds = Number(submitTime.split(" ")[0].split(":")[2]) - Number(startTime.split(" ")[0].split(":")[2]);
 
-        return (this.props.answers.length / ((hours * 1000) + minutes + (seconds * 0.01))).toFixed(2);
+        return [hours, minutes, seconds];
+    }
+
+    /**
+     * Calculates the time it takes for the user to answer each question by taking an average of the total questions and the total time taken.
+     */
+    _calculateTimePerQuestion() {
+        let timeTaken = this._calculateTimeTaken();
+        //If the result is only comprised of seconds then toFixed(2) doesn't work and needs a third digit.
+        const result = ((timeTaken[0] * 1000) + timeTaken[1] + (timeTaken[2] * 0.01)) / this.answers.length
+        return result > 0.01 ? result.toFixed(2) : result.toFixed(3);
     }
 
     /**
      * Renders the quiz output report.
      */
     render() {
+        const timeTaken = this._calculateTimeTaken();
         return (
             <div className="Results">
                 <div className="card card-results">
@@ -350,17 +363,20 @@ export default class Results extends React.Component {
                         <div className="row">
                             <div className="col">
                                 <h6 className="gray-font">Your score is</h6>
-                                <h1 style={{ display: "inline-block" }}>{(this._getNumberCorrect() / this.props.answers.length) * 100}%</h1>
+                                <h1 style={{ display: "inline-block" }}>{((this._getNumberCorrect() / this.answers.length) * 100).toFixed(0)}%</h1>
                             </div>
                             <div className="col">
                                 <h6 className="gray-font">Total number correct</h6>
-                                <h1 style={{ display: "inline-block" }}>{this._getNumberCorrect()}/{this.props.answers.length}</h1>
+                                <h1 style={{ display: "inline-block" }}>{this._getNumberCorrect()}/{this.answers.length}</h1>
                             </div>
                             <div className="col">
                                 <h6 className="gray-font">Total time taken</h6>
-                                <h1 style={{ display: "inline-block" }}>{this.props.time}</h1>
+                                <h1 style={{ display: "inline-block" }}>{`${timeTaken[0] < 10 ? "0" + timeTaken[0] : timeTaken[0]}:${timeTaken[1] < 10 ? "0" + timeTaken[1] : timeTaken[1]}:${timeTaken[2] < 10 ? "0" + timeTaken[2] : timeTaken[2]}`}</h1>
                             </div>
                         </div>
+                    </div>
+                    <div className = "card-footer">
+                        <Link to="/quiz"><button className="try-again-button">Retry</button></Link>
                     </div>
                 </div>
                 <div className="container">
@@ -408,10 +424,10 @@ export default class Results extends React.Component {
                                 <div className="card-body">
                                     <div id="quiz-info">
                                         <h5>Quiz start time</h5>
-                                        <p>{this.props.submitTime}</p>
+                                        <p>{this.props.startTime}</p>
                                         <br />
                                         <h5>Quiz submit time</h5>
-                                        <p>{this.props.startTime}</p>
+                                        <p>{this.props.submitTime}</p>
                                         <br />
                                         <h5>Time per question</h5>
                                         <p>{this._calculateTimePerQuestion()} seconds</p>
