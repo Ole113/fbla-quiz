@@ -12,13 +12,13 @@ CRON.schedule("* * * * *", () => {
 
     child = exec("node backup/backupScript.js", (error, stdout, stderr) => {
         console.log(stdout + stderr);
-        if (error) console.log("Exec Error: " + error);
+        if (error) console.error("Exec Error: " + error);
         console.log("Successfully backed up.");
     });
 });
 
 //Sets up the connection info to the MySQL database.
-let connection = MYSQL.createConnection({
+const CONNECTION = MYSQL.createConnection({
     host: CONFIG.host,
     user: CONFIG.user,
     password: CONFIG.password,
@@ -26,13 +26,13 @@ let connection = MYSQL.createConnection({
 });
 
 //Connects to the MySQL database.
-connection.connect(err => { if (err) throw err; });
+CONNECTION.connect(err => { if (err) throw err; });
 
 APP.use(CORS());
 
 //Sets the URL directory "/questions" to return the JSON.
 APP.get("/questions", (req, res) => {
-    connection.query("SELECT * from questions", function (err, result) {
+    CONNECTION.query("SELECT * from questions", function (err, result) {
         if (err) throw err;
         else return res.json(result);
     });
@@ -40,5 +40,5 @@ APP.get("/questions", (req, res) => {
 
 //Creates the server on port 5000.
 APP.listen(5000, () => {
-    console.log("Server successfully started.")
+    console.log("Server successfully started on port 5000.")
 });
