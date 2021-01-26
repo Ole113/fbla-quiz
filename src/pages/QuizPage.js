@@ -25,12 +25,12 @@ export default function QuizPage() {
 			<Modal title="FBLA Quiz Help Menu"
 				body={<HelpMenu />}
 			/>
-			{/* <Quiz apiURL={API_URL} /> */}
-			<Results
+			<Quiz apiURL={API_URL} />
+			{/* <Results
 				startTime="7:12:02 PM"
 				submitTime="8:15:34 PM"
 				totalQuestions={5}
-			/>
+			/> */}
 			<Footer
 				mainTitle="FBLA Quiz"
 				copyright="&copy;2020 FBLA Quiz"

@@ -22,14 +22,14 @@ export default class Questions extends React.Component {
     constructor(props) {
         super(props);
         this.questions = []; //Questions is the array with all the html questions in it such as <TF /> or <Blank />
-        this.currentType = "Random";
+        this.currentType = "Random"; //The default question type that is chosen.
         this.state = {
             data: null, //The data is the data of all the questions returned by _findTypeID. It will be an array of all the questions.
-            errorRendered: false
+            errorRendered: false //If an error has already been rendered the value is updated.
         }
         this.renderedIDs = []; //The IDs of all the questions that have already been rendered.
         this.questionValues = []; //The values that the user has input for all the question answers.
-        this.startTime = "";
+        this.startTime = ""; //The time when the quiz was started.
     }
 
     /**
@@ -40,9 +40,25 @@ export default class Questions extends React.Component {
             .then(response => response.json())
             .then(data => this.setState({ data: data }))
             .catch(err => console.error(`An error occurred in Questions.js componentDidMount(). ${err}`));
-            if (this.renderedIDs.length === 0) {
-                //need to make a var and see if the error has already been rendered so it can't render multiple times
-            }
+        if (this.renderedIDs.length === 0) {
+            //need to make a var and see if the error has already been rendered so it can't render multiple times
+        }
+    }
+
+    /**
+     * Checks if the form has been submitted.
+     * Originally this code was in the render method but this error occurred and the solution was to use componentDidUpdate()
+     * Cannot update during an existing state transition (such as within `render`). Render methods should be a pure function of props and state.
+     */
+    componentDidUpdate() {
+        if (this.props.submitStatus) {
+            this.props.sendUserAnswers(this.questionValues, this.startTime);
+            return <div>
+                <h1>Loading the quiz results...</h1>
+                <br />
+                <p>If this message persists then an error has occurred.</p>
+            </div>
+        }
     }
 
     /**
@@ -174,13 +190,13 @@ export default class Questions extends React.Component {
     }
 
     /**
-     * 
-     * @param {String} message 
-     * @param {String} error 
+     * Renders an error message with a Toast.
+     * @param {String} message The custom error message.
+     * @param {String} error The error that has happened.
      */
     _renderError(message, error) {
         console.error(message + error);
-        if(!this.state.errorRendered) {
+        if (!this.state.errorRendered) {
             Toast(message);
             this.setState({ errorRendered: true });
         }
@@ -206,12 +222,12 @@ export default class Questions extends React.Component {
             return randomNumber === 0 ? <Blank key={id} content={questionInfo.content} answer={questionInfo.answer} sendQuestionValue={this._handleQuestionValue} />
                 : randomNumber === 1 ? <Multiple id={id} key={id} content={questionInfo.content} optionOne={questionInfo.optionOne} optionTwo={questionInfo.optionTwo} optionThree={questionInfo.optionThree} optionFour={questionInfo.optionFour} answer={questionInfo.answer} sendQuestionValue={this._handleQuestionValue} />
                     : randomNumber === 2 ? <TF key={id} content={questionInfo.content} answer={questionInfo.answer} sendQuestionValue={this._handleQuestionValue} />
-                        : <Matching key={id} contentOne={questionInfo[0].content} contentTwo={questionInfo[1].content} contentThree={questionInfo[2].content} contentFour={questionInfo[3].content} answerOne={questionInfo[0].answer} answerTwo={questionInfo[1].answer} answerThree={questionInfo[2].answer} answerFour={questionInfo[3].answer} answer={questionInfo.answer} sendQuestionValue={this._handleQuestionValue} />;
+                        : <Matching key={id} contentOne={questionInfo[0].content} contentTwo={questionInfo[1].content} contentThree={questionInfo[2].content} contentFour={questionInfo[3].content} answerOne={questionInfo[0].answer} answerTwo={questionInfo[1].answer} answerThree={questionInfo[2].answer} answerFour={questionInfo[3].answer} sendQuestionValue={this._handleQuestionValue} />;
         }
         else if (this.props.type === "Multiple choice") return <Multiple id={id} key={id} content={questionInfo.content} optionOne={questionInfo.optionOne} optionTwo={questionInfo.optionTwo} optionThree={questionInfo.optionThree} optionFour={questionInfo.optionFour} answer={questionInfo.answer} sendQuestionValue={this._handleQuestionValue} />;
         else if (this.props.type === "Fill in the blank") return <Blank key={id} content={questionInfo.content} onChange={this.props.onChange} answer={questionInfo.answer} sendQuestionValue={this._handleQuestionValue} />;
         else if (this.props.type === "True/False") return <TF key={id} content={questionInfo.content} answer={questionInfo.answer} sendQuestionValue={this._handleQuestionValue} />;
-        else if (this.props.type === "Matching") return <Matching key={id} contentOne={questionInfo[0].content} contentTwo={questionInfo[1].content} contentThree={questionInfo[2].content} contentFour={questionInfo[3].content} answerOne={questionInfo[0].answer} answerTwo={questionInfo[1].answer} answerThree={questionInfo[2].answer} answerFour={questionInfo[3].answer} answer={questionInfo.answer} sendQuestionValue={this._handleQuestionValue} />;
+        else if (this.props.type === "Matching") return <Matching key={id} contentOne={questionInfo[0].content} contentTwo={questionInfo[1].content} contentThree={questionInfo[2].content} contentFour={questionInfo[3].content} answerOne={questionInfo[0].answer} answerTwo={questionInfo[1].answer} answerThree={questionInfo[2].answer} answerFour={questionInfo[3].answer} sendQuestionValue={this._handleQuestionValue} />;
     }
 
     /**
@@ -237,7 +253,7 @@ export default class Questions extends React.Component {
      * @param {Object} data The object of the data.
      */
     _handleQuestionValue = (data) => {
-        if(this.startTime === "") this.startTime = new Date().toLocaleTimeString();
+        if (this.startTime === "") this.startTime = new Date().toLocaleString();
 
         //If theres isn't a value in the array then it's impossible for the new data to be a multiple.
         if (this.questionValues.length === 0) this.questionValues.push({ data });
@@ -255,28 +271,12 @@ export default class Questions extends React.Component {
     }
 
     /**
-     * Checks if the form has been submitted.
-     * Originally this code was in the render method but this error occurred and the solution was to use componentDidUpdate()
-     * Cannot update during an existing state transition (such as within `render`). Render methods should be a pure function of props and state.
-     */
-    componentDidUpdate() {
-        if (this.props.submitStatus) {
-            this.props.sendUserAnswers(this.questionValues, this.startTime);
-            return <div>
-                <h1>Loading the quiz results...</h1>
-                <br />
-                <p>If this message persists then an error has occurred.</p>
-            </div>
-        }
-    }
-
-    /**
      * Renders the questions.
      */
     render() {
         if (this.state.data == null) {
             return <div>
-            <h1>Loading...</h1>
+                <h1>Loading...</h1>
                 <br />
                 <p>
                     If this message persists then an error has occurred. Most likely the database server is not online.

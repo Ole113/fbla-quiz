@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS `questions` (
   `option_three` text,
   `option_four` text,
   PRIMARY KEY (`id`)
-) ENGINE = InnoDB AUTO_INCREMENT = 27 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+) ENGINE = InnoDB AUTO_INCREMENT = 28 DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
 # ------------------------------------------------------------
 # DATA DUMP FOR TABLE: questions
