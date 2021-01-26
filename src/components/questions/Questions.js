@@ -5,8 +5,6 @@ import TF from "./TF.js";
 import Multiple from "./Multiple.js";
 import Blank from "./Blank.js";
 
-import Modal from "../Modal.js";
-
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -19,6 +17,10 @@ toast.configure();
  * Handles rendering the questions and getting the user answer from the questions.
  */
 export default class Questions extends React.Component {
+    /**
+     * Sets the state of the component and initializes instance variables.
+     * @param {Object} props The properties passed in by the parent class.
+     */
     constructor(props) {
         super(props);
         this.questions = []; //Questions is the array with all the html questions in it such as <TF /> or <Blank />
@@ -40,9 +42,6 @@ export default class Questions extends React.Component {
             .then(response => response.json())
             .then(data => this.setState({ data: data }))
             .catch(err => console.error(`An error occurred in Questions.js componentDidMount(). ${err}`));
-        if (this.renderedIDs.length === 0) {
-            //need to make a var and see if the error has already been rendered so it can't render multiple times
-        }
     }
 
     /**
@@ -81,7 +80,6 @@ export default class Questions extends React.Component {
 
         //Matching question types needs to have 4 questions returned not just 1 like the other question types.
         if (type === "matching") return RENDER_MATCHING();
-
         /*
         If the question needs to be random a number will be passed in which represents the question type. The number will be a randomly chosen.
         The condition checks if the passed in type is a string or a number. If it is a string then the type will be matching, else it will be a randomly chosen question.
@@ -137,27 +135,28 @@ export default class Questions extends React.Component {
                  * Fills up the randomizedOptionsNumbers array with numbers that will never be the same as each other.
                  */
                 for (let i = 0; i < 4; i++) {
-                    let randomOptionNumber = Math.floor(Math.random() * 4) + 1;
+                    const RANDOM_OPTION_NUMBER = Math.floor(Math.random() * 4) + 1;
 
-                    if (randomizedOptionsNumbers.includes(randomOptionNumber)) {
+                    if (randomizedOptionsNumbers.includes(RANDOM_OPTION_NUMBER)) {
                         FIND_NEW_ID(1, 4, randomizedOptionsNumbers);
-                    } else randomizedOptionsNumbers.push(randomOptionNumber);
+                    } else randomizedOptionsNumbers.push(RANDOM_OPTION_NUMBER);
 
                     FIND_OPTION(randomizedOptionsNumbers[i]);
 
                 }
+
                 return randomizedOptionsStrings;
             }
 
-            const randomAnswers = randomizeOptions();
+            const RANDOM_ANSWERS = randomizeOptions();
 
             return {
                 content: question.content,
                 answer: QUESTION_ANSWER,
-                optionOne: randomAnswers[0],
-                optionTwo: randomAnswers[1],
-                optionThree: randomAnswers[2],
-                optionFour: randomAnswers[3]
+                optionOne: RANDOM_ANSWERS[0],
+                optionTwo: RANDOM_ANSWERS[1],
+                optionThree: RANDOM_ANSWERS[2],
+                optionFour: RANDOM_ANSWERS[3]
             }
         }
 
@@ -206,7 +205,7 @@ export default class Questions extends React.Component {
      * Gets the question to be added to the array in setOutput.
      * Each element needs to have a key or it will throw a warning: "Warning: Each child in a list should have a unique "key" prop."
      * @param {Number} id The id of the question to get.
-     * @param {Object} res The api result.
+     * @param {Object} res The API result.
      */
     _getQuestionTag(id, res) {
         //Sets the value of question info using conditionals.
@@ -242,6 +241,7 @@ export default class Questions extends React.Component {
             this.currentType = this.props.type;
         }
 
+        //Handles if there is being questions added or questions removed from the page by pushing or popping.
         if (this.props.number > this.questions.length) for (let key = this.questions.length; key < this.props.number; key++) this.questions.push(this._getQuestionTag(key, res));
         else if (this.props.number < this.questions.length) for (let i = 0; i < this.questions.length - this.props.number + 1; i++) this.questions.pop();
 
@@ -253,6 +253,7 @@ export default class Questions extends React.Component {
      * @param {Object} data The object of the data.
      */
     _handleQuestionValue = (data) => {
+        //Checks if startTime has been initialized to anything other than its default value.
         if (this.startTime === "") this.startTime = new Date().toLocaleString();
 
         //If theres isn't a value in the array then it's impossible for the new data to be a multiple.
@@ -284,10 +285,12 @@ export default class Questions extends React.Component {
                 </p>
             </div>
         }
+        //To check if the number of questions requested to be rendered is more than in the database a test variable is used. If the variable throws an error it is caught and handled.
         try { let testVariable = this.state.data[this.props.number].category; }
         catch (err) {
             this._renderError("The number of questions that are requested to render is more questions than are in the database.", err);
         }
+
         return this._setOutput(this.state.data);
     }
 }

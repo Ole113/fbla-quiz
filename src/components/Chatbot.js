@@ -169,9 +169,9 @@ export default class Chatbot extends React.Component {
                 <div className="chatbot-messages">
                     {this._getChatMessages()}
                 </div>
-                <input id="chatbot-input" type="text" placeholder="What do you need help with?" />
+                <input id="chatbotInput" type="text" placeholder="What do you need help with?" />
                 {/* readOnly makes it so the input box cannot be typed in. */}
-                <input id="chatbot-submit" readOnly />
+                <input id="chatbotSubmit" readOnly />
             </div>
         );
     }

@@ -12,7 +12,7 @@
 }
 
 /* The input where the user puts their message into. */
-#chatbot-input {
+#chatbotInput {
     width: 100%;
     background-color: #f2f2f2;
     border: 0;
@@ -21,7 +21,7 @@
 }
 
 /* The send message button, needs margin-left so its on top of the input box. */
-#chatbot-submit {
+#chatbotSubmit {
     margin-left: -45px;
     width: 25px;
     background-image: url("../images/sendMessage.svg");

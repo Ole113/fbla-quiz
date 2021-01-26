@@ -2,18 +2,17 @@ import React from "react";
 
 /**
  * The Blank question type.
- * @param {Object} props The props passed in by the Questions.js file.
  */
 export default class Blank extends React.Component {
     /**
      * Holds the state of Blank.
-     * @param {Object} props 
+     * @param {Object} props The props from the parent class.
      */
     constructor(props) {
         super(props);
         this.state = {
-            id: "",
-            value: "",
+            id: "", //The id of the question which is the content of the question.
+            value: "" //The value of the question which is the what the user input.
         };
     }
 

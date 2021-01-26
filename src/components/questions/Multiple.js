@@ -2,14 +2,17 @@ import React from "react";
 
 /**
  * The Multiple question type.
- * @param {Object} props The properties of the Multiple question type the contains all the question info.
  */
 export default class Multiple extends React.Component {
+    /**
+     * Sets the state of the component.
+     * @param {Object} props The properties passed in by the parent class.
+     */
     constructor(props) {
         super(props);
         this.state = {
-            id: "",
-            value: "",
+            id: "", //The id of the question which is the content of the question.
+            value: "" //The value of the question which is the what the user input.
         };
     }
 
@@ -24,19 +27,22 @@ export default class Multiple extends React.Component {
      */
     _handleChange = (event) => {
         let value;
-        const eventID = event.target.id;
+        const EVENT_ID = event.target.id;
 
         //Because you can't just use event.target.value to get the chosen answer because the answer text is a <label> so the correct text value needs to be found using the id of the input and corresponding that with the label's id. 
-        if (eventID.includes("1")) value = document.getElementById(`questionLabel1${this.props.id}`).innerText;
-        else if (eventID.includes("2")) value = document.getElementById(`questionLabel2${this.props.id}`).innerText;
-        else if (eventID.includes("3")) value = document.getElementById(`questionLabel3${this.props.id}`).innerText;
-        else if (eventID.includes("4")) value = document.getElementById(`questionLabel4${this.props.id}`).innerText;
+        if (EVENT_ID.includes("1")) value = document.getElementById(`questionLabel1${this.props.id}`).innerText;
+        else if (EVENT_ID.includes("2")) value = document.getElementById(`questionLabel2${this.props.id}`).innerText;
+        else if (EVENT_ID.includes("3")) value = document.getElementById(`questionLabel3${this.props.id}`).innerText;
+        else if (EVENT_ID.includes("4")) value = document.getElementById(`questionLabel4${this.props.id}`).innerText;
 
         this.setState({ id: this.props.content, value: value, answer: this.props.answer, type: "multiple" }, () => {
             this._sendQuestionValue();
         });
     }
 
+    /**
+     * Renders the multiple choice question type with the correct information.
+     */
     render() {
         return (
             <div className="form-group">

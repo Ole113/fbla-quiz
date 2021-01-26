@@ -417,7 +417,7 @@ export default class Results extends React.Component {
                         <div className="col-lg-7">
                             <div style={{ paddingLeft: "0px" }} className="card card-results">
                                 <div className="card-body">
-                                    <div id="line-chart">
+                                    <div id="lineChart">
                                         <select className="form-control" onChange={this._handleChangeTime.bind(this)} id="changeTime">
                                             <option value="Today">Today</option>
                                             <option value="Yesterday">Yesterday</option>
@@ -439,7 +439,7 @@ export default class Results extends React.Component {
                             </div>
                             <div style={{ paddingLeft: "0px" }} className="card card-results">
                                 <div className="card-body">
-                                    <div id="pie-chart">
+                                    <div id="pieChart">
                                         <canvas
                                             ref={this.pieRef}
                                         />
@@ -448,7 +448,7 @@ export default class Results extends React.Component {
                             </div>
                             <div style={{ paddingLeft: "0px" }} className="card card-results">
                                 <div className="card-body">
-                                    <div id="quiz-info">
+                                    <div id="quizInfo">
                                         <h5>Quiz start time</h5>
                                         <p>{this.props.startTime}</p>
                                         <br />

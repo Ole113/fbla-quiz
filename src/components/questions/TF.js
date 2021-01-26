@@ -2,14 +2,17 @@ import React from "react";
 
 /**
  * The True/False question type.
- * @param {Object} props The props passed in by the Questions.js file.
  */
 export default class TF extends React.Component {
+    /**
+     * Handles setting the state of the component.
+     * @param {Object} props The properties passed in by the parent class.
+     */
     constructor(props) {
         super(props);
         this.state = {
-            id: "",
-            value: "",
+            id: "", //The id of the question which is the content of the question.
+            value: "" //The value of the question which is the what the user input.
         };
     }
 
@@ -23,12 +26,15 @@ export default class TF extends React.Component {
      * @param {Object} event The update event.
      */
     _handleChange = (event) => {
-        //There has to be a way to know which answer corresponds to which question
+        //There has to be a way to know which answer corresponds to which question.
         this.setState({ id: this.props.content, value: event.target.value, answer: this.props.answer, type: "tf" }, () => {
             this._sendQuestionValue();
         });
     }
 
+    /**
+     * Renders the TF question type with the correct data.
+     */
     render() {
         return (
             <div className="form-group">

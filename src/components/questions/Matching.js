@@ -3,18 +3,19 @@ import "../../assets/css/Matching.css";
 
 /**
  * The Matching type of quiz question.
- * @param {Object} props the props passed in by the Questions.js file.
  */
 export default class Matching extends React.Component {
+    /**
+     * Sets the initial state of the class.
+     * @param {Object} props The properties that the parent class passed in.
+     */
     constructor(props) {
         super(props);
         this.state = {
-            id: "",
-            value: "",
-            randomizedAnswers: [],
-            correctAnswers: [this.props.answerOne, this.props.answerTwo, this.props.answerThree, this.props.answerFour],
-            userAnswers: [],
-            content: [this.props.contentOne, this.props.contentTwo, this.props.contentThree, this.props.contentFour]
+            randomizedAnswers: [], //The array that contains the randomizedAnswers that will be rendered.
+            correctAnswers: [this.props.answerOne, this.props.answerTwo, this.props.answerThree, this.props.answerFour], //The answers are passed in the correct order and that order needs to be preserved.
+            userAnswers: [], //The answers that the user has chosen. Are compared against the correct answers.
+            content: [this.props.contentOne, this.props.contentTwo, this.props.contentThree, this.props.contentFour] //The content of the question.
         };
     }
 
