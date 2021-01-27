@@ -17,7 +17,6 @@ export default class Chatbot extends React.Component {
         this.sendButton = null;
         this.chatbotContainer = null;
         this.state = { chatMessages: [] };
-        this.test = false;
     }
 
     /**
@@ -25,8 +24,8 @@ export default class Chatbot extends React.Component {
      */
     componentDidMount() {
         //Initializes the instance variables when the component has mounted on the page.
-        this.chatInput = document.getElementById("chatbot-input");
-        this.sendButton = document.getElementById("chatbot-submit");
+        this.chatInput = document.getElementById("chatbotInput");
+        this.sendButton = document.getElementById("chatbotSubmit");
         this.chatbotContainer = document.getElementsByClassName("chatbot-container")[0];
         //Sends the initial hello message.
         this._serverSendMessage();
@@ -52,7 +51,6 @@ export default class Chatbot extends React.Component {
             if (this.chatInput.value !== "" && event.key === "Enter") {
                 this._addMessage("client");
                 this._serverSendMessage();
-                this.test = true;
             }
         });
     }
@@ -170,7 +168,7 @@ export default class Chatbot extends React.Component {
                     {this._getChatMessages()}
                 </div>
                 <input id="chatbotInput" type="text" placeholder="What do you need help with?" />
-                {/* readOnly makes it so the input box cannot be typed in. */}
+                {/* readOnly makes it so the input box cannot be typed in. This is the submit button that can be clicked to sent a message. */}
                 <input id="chatbotSubmit" readOnly />
             </div>
         );

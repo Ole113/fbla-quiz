@@ -8,7 +8,7 @@ import "../assets/css/Card.css";
  */
 export default function Card(props) {
     return (
-        <div className="card card-class">
+        <div className="card card-shadow card-class">
             <img src={props.image} className="card-img-top" alt="" />
             <div className="card-body">
                 <h2 className="card-title">{props.title}</h2>

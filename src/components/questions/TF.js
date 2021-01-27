@@ -39,7 +39,7 @@ export default class TF extends React.Component {
         return (
             <div className="form-group">
                 <label htmlFor="numberQuestions">{this.props.content}</label>
-                <input type="text" className="form-control" id="blankQuestion" aria-describedby="blankQuestion" placeholder="Type your answer here" onChange={this._handleChange} required />
+                <input type="text" className="form-control" id="blankQuestion" aria-describedby="blankQuestion" placeholder="Type your answer here" onChange={this._handleChange} required={true} />
             </div>
         );
     }

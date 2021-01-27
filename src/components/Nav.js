@@ -22,7 +22,7 @@ export default function Nav(props) {
                     <Link to={props.links[0]}><button className="main-btn">Start</button></Link>
                 </div>
                 <div className="col col-card">
-                    <div className="card nav-card">
+                    <div className="card card-shadow nav-card">
                         { /* The cards on the right of the screen that have some additional information and a button that brings you to the points. */}
                         <nav>
                             <div className="nav nav-tabs" id="nav-tab" role="tablist">

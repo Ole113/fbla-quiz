@@ -7,11 +7,10 @@
 1. Fix the styling of matching question type 
    
 
-   ****** I THINK THAT IDS NEED TO BE CAMELCASE AND CLASS NAMES NEED TO BE class-name
-
 ***************************************************
 
-Matching question content, answers, all done. Answers randomized.
-Now I just need to check if the question type is multiple in results and handle it there.
+Not all questions are required
+Fix mobile version of Results
+Add hrs in between matching questions
 
 *************************************************** 

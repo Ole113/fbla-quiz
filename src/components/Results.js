@@ -29,7 +29,13 @@ export default class Results extends React.Component {
                     answer: ["correct answer 1", "correct answer 2", "correct answer 3", "correct answer 4"],
                     id: ["question 1", "question 2", "question 3", "question 4"],
                     type: "matching",
-                    value: ["User answer 1", "user answer 2", "user answer 3", "user answer 4"]
+                    value: ["correct answer 1", "user answer 2", "user answer 3", "user answer 4"]
+                },
+                data: {
+                    answer: "false",
+                    id: "DOes the bla bla bla",
+                    type: "tf",
+                    value: "t"
                 }
             }
         ];
@@ -276,16 +282,22 @@ export default class Results extends React.Component {
             for (let i = 0; i < this.props.answers[index].data.value.length; i++) {
                 if (this.props.answers[index].data.value[i] === this.props.answers[index].data.answer[i]) {
                     multipleResults.push(
-                        <div className="result-question-info matching-question" id={`question-number-${i}`}>
-                            <h5>{this.props.answers[index].data.id[i]}</h5>
-                            <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/checkBox.svg").default} />{this.props.answers[index].data.value[i]}</h6>
+                        <div className="card matching-question" id={`question-number-${i}`}>
+                            <div className="card-header answer-card-header-correct">Correct</div>
+                            <div className="card-body">
+                                <h5>{this.props.answers[index].data.id[i]}</h5>
+                                <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/checkBox.svg").default} />{this.props.answers[index].data.value[i]}</h6>
+                            </div>
                         </div>
                     );
                 } else {
                     multipleResults.push(
-                        <div className="result-question-info matching-question" id={`question-number-${i}`}>
-                            <h5>{this.props.answers[index].data.id[i]}</h5>
-                            <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/crossBox.svg").default} />Your answer: {this.props.answers[index].data.value[i]}</h6>
+                        <div className="card matching-question" id={`question-number-${i}`}>
+                            <div className="card-header answer-card-header-incorrect">Incorrect</div>
+                            <div className="card-body">
+                                <h5>{this.props.answers[index].data.id[i]}</h5>
+                                <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/crossBox.svg").default} />Your answer: {this.props.answers[index].data.value[i]}</h6>
+                            </div>
                         </div>
                     );
                 }
@@ -298,24 +310,31 @@ export default class Results extends React.Component {
                         {result}
                     </div>
                 }
+
                 return <div key={result.props.id}>{result}</div>
             });
         }
 
         if (this.props.answers[index].data.value === this.props.answers[index].data.answer) {
             return (
-                <div className="result-question-info">
-                    <h5>{index + 1}. {this.props.answers[index].data.id}</h5>
-                    <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/checkBox.svg").default} />{this.props.answers[index].data.answer}</h6>
+                <div className="card multi-question">
+                    <div className="card-header answer-card-header-correct">Correct</div>
+                    <div className="card-body">
+                        <h5>{this.props.answers[index].data.id}</h5>
+                        <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/checkBox.svg").default} />{this.props.answers[index].data.answer}</h6>
+                    </div>
                 </div>
             );
         }
 
         return (
-            <div className="result-question-info">
-                <h5>{index + 1}. {this.props.answers[index].data.id}</h5>
-                <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/crossBox.svg").default} />Your answer: {this.props.answers[index].data.value}</h6>
-                <h6>Correct answer: {this.props.answers[index].data.answer}</h6>
+            <div className="card multi-question">
+                <div className="card-header answer-card-header-incorrect">Incorrect</div>
+                <div className="card-body">
+                    <h5>{this.props.answers[index].data.id}</h5>
+                    <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/crossBox.svg").default} />Your answer: {this.props.answers[index].data.value}</h6>
+                    <h6>Correct answer: {this.props.answers[index].data.answer}</h6>
+                </div>
             </div>
         );
     }
@@ -337,10 +356,12 @@ export default class Results extends React.Component {
             if (result.length === undefined) {
                 return <div key={this.uniqueKey - 1}>{result}</div>
             }
-            return <div key={this.uniqueKey - 1}>
+            return <div key={this.uniqueKey - 1} >
                 <h5>Matching Question</h5>
                 {result}
             </div>
+
+
         });
     }
 
@@ -368,11 +389,13 @@ export default class Results extends React.Component {
      * Calculates the time it takes for the user to answer each question by taking an average of the total questions and the total time taken.
      */
     _calculateTimePerQuestion() {
-        let timeTaken = this._calculateTimeTaken();
-        //If the result is only comprised of seconds then toFixed(2) doesn't work and needs a third digit.
-        const result = ((timeTaken[0] * 1000) + timeTaken[1] + (timeTaken[2] * 0.01)) / this.props.answers.length;
+        const TIME_TAKEN = this._calculateTimeTaken();
 
-        return result > 0.01 ? result.toFixed(2) : result.toFixed(3);
+        //Finds the total number of seconds it took to submit.
+        const RESULT = ((TIME_TAKEN[0] * 3600) + (TIME_TAKEN[1] * 60) + (TIME_TAKEN[2])) / this.props.answers.length;
+
+        //If the result is only comprised of seconds then toFixed(2) doesn't work and needs a third digit.
+        return RESULT > 0.01 ? RESULT.toFixed(2) : RESULT.toFixed(3);
     }
 
     /**
@@ -382,7 +405,7 @@ export default class Results extends React.Component {
         const timeTaken = this._calculateTimeTaken();
         return (
             <div className="Results">
-                <div className="card card-results">
+                <div className="card card-shadow card-results">
                     <div className="card-body">
                         <h5 className="card-title">Quiz Results<button className="print-button" onClick={function print() { window.print() }}>Print</button></h5>
                         <hr className="hr-result-title" />
@@ -408,14 +431,14 @@ export default class Results extends React.Component {
                 <div className="container">
                     <div className="row">
                         <div style={{ paddingRight: "0px" }} className="col-lg-5">
-                            <div style={{ marginRight: "0px" }} className="card card-results">
+                            <div style={{ marginRight: "0px" }} className="card card-shadow card-results">
                                 <div className="card-body">
                                     {this._renderQuestionResults()}
                                 </div>
                             </div>
                         </div>
                         <div className="col-lg-7">
-                            <div style={{ paddingLeft: "0px" }} className="card card-results">
+                            <div style={{ paddingLeft: "0px" }} className="card card-shadow card-results">
                                 <div className="card-body">
                                     <div id="lineChart">
                                         <select className="form-control" onChange={this._handleChangeTime.bind(this)} id="changeTime">
@@ -437,7 +460,7 @@ export default class Results extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div style={{ paddingLeft: "0px" }} className="card card-results">
+                            <div style={{ paddingLeft: "0px" }} className="card card-shadow card-results">
                                 <div className="card-body">
                                     <div id="pieChart">
                                         <canvas
@@ -446,7 +469,7 @@ export default class Results extends React.Component {
                                     </div>
                                 </div>
                             </div>
-                            <div style={{ paddingLeft: "0px" }} className="card card-results">
+                            <div style={{ paddingLeft: "0px" }} className="card card-shadow card-results">
                                 <div className="card-body">
                                     <div id="quizInfo">
                                         <h5>Quiz start time</h5>

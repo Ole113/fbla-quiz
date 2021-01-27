@@ -58,19 +58,19 @@ export default class Multiple extends React.Component {
                     <label className="form-check-label" htmlFor={`questionRadios2${this.props.id}`} id={`questionLabel2${this.props.id}`}>
                         {this.props.optionTwo}
                     </label>
-                </div >
+                </div>
                 <div className="form-check">
                     <input className="form-check-input" type="radio" name={`questionRadios${this.props.id}`} id={`questionRadios3${this.props.id}`} value="radio3" onChange={this._handleChange} required />
                     <label className="form-check-label" htmlFor={`questionRadios3${this.props.id}`} id={`questionLabel3${this.props.id}`}>
                         {this.props.optionThree}
                     </label>
-                </div >
+                </div>
                 <div className="form-check">
                     <input className="form-check-input" type="radio" name={`questionRadios${this.props.id}`} id={`questionRadios4${this.props.id}`} value="radio4" onChange={this._handleChange} required />
                     <label className="form-check-label" htmlFor={`questionRadios4${this.props.id}`} id={`questionLabel4${this.props.id}`}>
                         {this.props.optionFour}
                     </label>
-                </div >
+                </div>
             </div>
         );
     }

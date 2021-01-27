@@ -74,3 +74,21 @@
 .try-again-button:hover {
     border: 1px solid #8c8c8c;
 }
+
+.answer-card-header-correct {
+    background-color: #dff0d8;
+    opacity: 0.7;
+}
+
+.answer-card-header-incorrect {
+    background-color: #ffcbc7;
+    opacity: 0.7;
+}
+
+/* Removes the box shadow for the individual cards for every question. */
+.matching-question, .multi-question {
+    margin: 10px 30px 10px 30px;
+    -webkit-box-shadow: 0;
+    -moz-box-shadow: 0;
+    box-shadow: 0;
+}

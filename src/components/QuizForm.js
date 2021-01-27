@@ -106,7 +106,7 @@ export default class QuizForm extends React.Component {
      */
     render() {
         return (
-            <div className="card card-class quiz-form-container">
+            <div className="card card-shadow card-class quiz-form-container">
                 <div className="timer">
                     <h2 id="timerValue">{this.state.currentTime}</h2>
                 </div>
