@@ -85,6 +85,7 @@
     }
 }
 
+/* If the screen width is less than 762px then the padding is applied to the messages. */
 @media (max-width: 762px) {
     .server-message p, .client-message p {
         padding: 15px 35px 15px 35px;
