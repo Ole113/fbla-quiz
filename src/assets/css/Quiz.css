@@ -87,6 +87,7 @@ form {
     padding: 0;
 }
 
+/* The time is floated to the right and is given padding on the bottom to seperate it from the questions below it. */
 .timer h2 {
     float: right;
     padding-bottom: 25px;
