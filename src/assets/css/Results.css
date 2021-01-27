@@ -75,11 +75,13 @@
     border: 1px solid #8c8c8c;
 }
 
+/* Sets the headers background color of the correct card. */
 .answer-card-header-correct {
     background-color: #dff0d8;
     opacity: 0.7;
 }
 
+/* Sets the headers background color of the incorrect card. */
 .answer-card-header-incorrect {
     background-color: #ffcbc7;
     opacity: 0.7;
