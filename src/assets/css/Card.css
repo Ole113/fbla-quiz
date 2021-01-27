@@ -1,3 +1,4 @@
+/* Adds a box shadow to all cards except for ones that don't have the card-shadow class. */
 .card-shadow {
     -webkit-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 0 3px 15px rgba(0, 0, 0, 0.2);
