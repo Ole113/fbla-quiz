@@ -1,7 +1,9 @@
+/* Gives a bottom margin to the matching question type to make sure that it is seperate from other questions. */
 .select-col select {
     margin: 0 0 12px 0;
 }
 
+/* Adds padding to the top of the content column. */
 .content-col {
     padding-top: 7px;
 }
