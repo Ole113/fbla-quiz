@@ -94,3 +94,23 @@
     -moz-box-shadow: 0;
     box-shadow: 0;
 }
+
+/* Deals with the cards padding and margin on the right so it looks correct. */
+.col-lg-5 {
+    padding-right: 0px;
+}
+
+/* Sets the margin to make the cards closer together. */
+.rendered-questions {
+    margin-right: 0px;
+}
+
+/* If the screen size is small enough to where the cards collapse then this new padding and margins will be applied. */
+@media(max-width: 991px) {
+    .col-lg-5 {
+        padding-right: 15px;
+    }
+    .rendered-questions {
+        margin-right: 60px;
+    }
+}

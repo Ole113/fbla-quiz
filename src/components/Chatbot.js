@@ -106,6 +106,7 @@ export default class Chatbot extends React.Component {
     _serverSendMessage() {
         //If nothing has been sent in the chat messages then chatMessages will be undefine which will throw an error.
         const NEWEST_MESSAGE = this.state.chatMessages.length > 0 ? this.state.chatMessages[this.state.chatMessages.length - 1].message.toLowerCase() : "";
+        //Delays the message slightly so it gives it a more human response time.
         const MESSAGE_DELAY = 300;
         if (this.state.chatMessages.length === 0) {
             this._addMessage("server", "Hello, welcome to FBLA Chat Bot Help! You can ask me anything about FBLA Quiz.");
@@ -122,15 +123,15 @@ export default class Chatbot extends React.Component {
             window.setTimeout(() => this._addMessage("server", "The FBLA Chat Bot uses keywords to determine what you need help with. For example if you need help with the quiz section and type in \"How do I use the quiz page?\" the Chat Bot will pick up that you said \"quiz\" and return the appropriate message. To get a full list of the keywords Chat Bot uses type \"keyword\"."), MESSAGE_DELAY);
         } else if (NEWEST_MESSAGE.includes("keyword")) {
             //Update this once all the keywords are set.
-            window.setTimeout(() => this._addMessage("server", "The keywords that the FBLA Chat Bot looks for are: hello, hi, thank, goodbye, bye, help, keyword, and quiz."), MESSAGE_DELAY);
+            window.setTimeout(() => this._addMessage("server", "To learn more about the keywords Chat bot uses type 'help'"), MESSAGE_DELAY);
         } else if (NEWEST_MESSAGE.includes("quiz")) {
             window.setTimeout(() => this._addMessage("server", "FBLA Quiz's Quiz section is where you can put your skills to practice and test your knowledge. The Quiz Section is split into 2 parts, the options part and the quiz part."), MESSAGE_DELAY);
             window.setTimeout(() => this._addMessage("server", "The quiz options section on the left side of the page is where you can determine the types of questions, and number of questions to be tested on. The amount of questions cannot be changed lower than 1.  There are five types of questions: random, fill in the blank, multiple choice, true/false, and matching."), MESSAGE_DELAY);
             window.setTimeout(() => this._addMessage("server", "On the right side of the Quiz page is the quiz section where the quiz questions are present.  There will be at least 1 question.  At the bottom of the questions is the submit button. Clicking the submit button will grade the quiz and display the results."), MESSAGE_DELAY);
         } else if (NEWEST_MESSAGE.includes("custom") || NEWEST_MESSAGE.includes("database")) {
-            window.setTimeout(() => this._addMessage("server", ""), MESSAGE_DELAY);
+            window.setTimeout(() => this._addMessage("server", "Learn how to add custom questions to the database by visiting https://github.com/Ole113/fbla-quiz/tree/master/src/database/questionCompiler."), MESSAGE_DELAY);
         } else if (NEWEST_MESSAGE.includes("github") || NEWEST_MESSAGE.includes("source") || NEWEST_MESSAGE.includes("code") || NEWEST_MESSAGE.includes("download")) {
-            window.setTimeout(() => this._addMessage("server", "FLBA Quiz is open source, meaning you can download FBLA Quiz and can modify it any way you want. There's documentation on how to use custom questions and run the website on your own. https://github.com/Ole113/fbla-quiz-2021"), MESSAGE_DELAY);
+            window.setTimeout(() => this._addMessage("server", "FBLA Quiz is open source, meaning you can download FBLA Quiz and can modify it any way you want. There's documentation on how to use custom questions and run the website on your own. https://github.com/Ole113/fbla-quiz-2021"), MESSAGE_DELAY);
         } else if (NEWEST_MESSAGE.includes("question") || NEWEST_MESSAGE.includes("database") || NEWEST_MESSAGE.includes("custom")) {
             window.setTimeout(() => this._addMessage("server", "FBLA Quiz has custom quiz question integrations. To get started download the source code from the GitHub repository, https://github.com/Ole113/fbla-quiz-2021."), MESSAGE_DELAY);
             window.setTimeout(() => this._addMessage("server", "Once the source code has been downloaded go to the Question Compiler and follow the instructions in the README.md file, https://github.com/Ole113/fbla-quiz-2021/tree/master/src/database/questionCompiler."), MESSAGE_DELAY);
@@ -141,10 +142,6 @@ export default class Chatbot extends React.Component {
             window.setTimeout(() => this._addMessage("server", "I am a chatbot created to help you understand how FBLA Quiz works! To get started use the \"help\" command!"), MESSAGE_DELAY);
         } else if (NEWEST_MESSAGE.includes("age") || NEWEST_MESSAGE.includes("name")) {
             window.setTimeout(() => this._addMessage("server", "I don't have a name or age but you can call me Chatbot help!"), MESSAGE_DELAY);
-            //         } else if(NEWEST_MESSAGE.includes("")) {
-            //             window.setTimeout(() => this._addMessage("server", ""), MESSAGE_DELAY);
-            //         } else if(NEWEST_MESSAGE.includes("")) {
-            //             window.setTimeout(() => this._addMessage("server", ""), MESSAGE_DELAY);
         }
         //If no keywords are picked up then an error message is sent.
         else window.setTimeout(() => this._addMessage("server", "I'm sorry, I don't understand what you're asking me. Make sure your spelling is correct, if you still need help type \"help\" into the chat."), MESSAGE_DELAY);

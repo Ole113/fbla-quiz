@@ -12,5 +12,7 @@
 Not all questions are required
 Fix mobile version of Results
 Add hrs in between matching questions
+Make the text not black
+Maybe make headers have a lighter color of gray
 
-*************************************************** 
+***************************************************
