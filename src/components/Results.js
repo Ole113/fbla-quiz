@@ -29,7 +29,7 @@ export default class Results extends React.Component {
                     answer: ["correct answer 1", "correct answer 2", "correct answer 3", "correct answer 4"],
                     id: ["question 1", "question 2", "question 3", "question 4"],
                     type: "matching",
-                    value: ["correct answer 1", "user answer 2", "user answer 3", "user answer 4"]
+                    value: ["correct fanswer 1", "correct answer 2", "correct answer 3", "correct answer 4"]
                 }
             }
         ];
@@ -50,7 +50,7 @@ export default class Results extends React.Component {
         //Renders both of the charts.
         this._renderCharts();
         //Calls to parent which sets parent's answer state variable to blank so if the user clicks on the quiz link it will show a new quiz form and not the previous results page.
-        //this.props.resultsLoaded();
+        this.props.resultsLoaded();
     }
 
     /**
@@ -75,7 +75,7 @@ export default class Results extends React.Component {
                 datasets: [
                     {
                         backgroundColor: ["#0e9d58", "#db4437"],
-                        data: [this._getNumberCorrect(), this.answers.length - this._getNumberCorrect()]
+                        data: [this._getNumberCorrect(), this.props.answers.length - this._getNumberCorrect()]
                     }
                 ],
             },
@@ -219,7 +219,7 @@ export default class Results extends React.Component {
         const YEAR = TODAY.getFullYear();
         this.currentDate = MONTH + "/" + DAY + "/" + YEAR;
 
-        const JSON = `{ "correct": "${this._getNumberCorrect()}", "wrong": "${this.answers.length}", "timePerQuestion": "${this._calculateTimePerQuestion()}", "date": "${this.currentDate}", "numberOfQuestions": "${this.answers.length}" }`;
+        const JSON = `{ "correct": "${this._getNumberCorrect()}", "wrong": "${this.props.answers.length}", "timePerQuestion": "${this._calculateTimePerQuestion()}", "date": "${this.currentDate}", "numberOfQuestions": "${this.props.answers.length}" }`;
         let i = 1;
         while (!(localStorage.getItem(`quiz${i}`) === null)) {
             i++;
@@ -234,16 +234,20 @@ export default class Results extends React.Component {
     _getNumberCorrect() {
         let totalCorrect = 0;
 
-        this.answers.forEach(answer => {
+        this.props.answers.forEach(answer => {
             if (answer.data.type === "matching") {
                 let matchingNumberCorrect = 0;
+
                 for (let i = 0; i < answer.data.answer.length; i++) {
                     if (answer.data.answer[i] === answer.data.value[i]) {
                         matchingNumberCorrect++;
                     }
                 }
 
-                if (matchingNumberCorrect === answer.data.answer.length) totalCorrect++;
+                if (matchingNumberCorrect === answer.data.answer.length) {
+                    totalCorrect++;
+                    this.matchingNumberCorrect = true;
+                }
             } else if (answer.data.answer === answer.data.value) totalCorrect++;
         });
 
@@ -271,27 +275,22 @@ export default class Results extends React.Component {
      * @param {Number} index The index of the question to load.
      */
     _getRenderResult(index) {
-        if (this.answers[index].data.type === "matching") {
+        if (this.props.answers[index].data.type === "matching") {
             let multipleResults = [];
-            for (let i = 0; i < this.answers[index].data.value.length; i++) {
-                if (this.answers[index].data.value[i] === this.answers[index].data.answer[i]) {
+
+            for (let i = 0; i < this.props.answers[index].data.value.length; i++) {
+                if (this.props.answers[index].data.value[i] === this.props.answers[index].data.answer[i]) {
                     multipleResults.push(
-                        <div className="card matching-question" id={`question-number-${i}`}>
-                            <div className="card-header answer-card-header-correct">Correct</div>
-                            <div className="card-body">
-                                <h5>{this.answers[index].data.id[i]}</h5>
-                                <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/checkBox.svg").default} />{this.answers[index].data.value[i]}</h6>
-                            </div>
+                        <div className="matching-question" id={`question-number-${i}`}>
+                            <h5>{this.props.answers[index].data.id[i]}</h5>
+                            <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/checkBox.svg").default} />{this.props.answers[index].data.value[i]}</h6>
                         </div>
                     );
                 } else {
                     multipleResults.push(
-                        <div className="card matching-question" id={`question-number-${i}`}>
-                            <div className="card-header answer-card-header-incorrect">Incorrect</div>
-                            <div className="card-body">
-                                <h5>{this.answers[index].data.id[i]}</h5>
-                                <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/crossBox.svg").default} />Your answer: {this.answers[index].data.value[i]}</h6>
-                            </div>
+                        <div className="matching-question" id={`question-number-${i}`}>
+                            <h5>{this.props.answers[index].data.id[i]}</h5>
+                            <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/crossBox.svg").default} />Your answer: {this.props.answers[index].data.value[i]}</h6>
                         </div>
                     );
                 }
@@ -309,13 +308,13 @@ export default class Results extends React.Component {
             });
         }
 
-        if (this.answers[index].data.value === this.answers[index].data.answer) {
+        if (this.props.answers[index].data.value === this.props.answers[index].data.answer) {
             return (
                 <div className="card multi-question">
                     <div className="card-header answer-card-header-correct">Correct</div>
                     <div className="card-body">
-                        <h5>{this.answers[index].data.id}</h5>
-                        <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/checkBox.svg").default} />{this.answers[index].data.answer}</h6>
+                        <h5>{this.props.answers[index].data.id}</h5>
+                        <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/checkBox.svg").default} />{this.props.answers[index].data.answer}</h6>
                     </div>
                 </div>
             );
@@ -325,9 +324,9 @@ export default class Results extends React.Component {
             <div className="card multi-question">
                 <div className="card-header answer-card-header-incorrect">Incorrect</div>
                 <div className="card-body">
-                    <h5>{this.answers[index].data.id}</h5>
-                    <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/crossBox.svg").default} />Your answer: {this.answers[index].data.value}</h6>
-                    <h6>Correct answer: {this.answers[index].data.answer}</h6>
+                    <h5>{this.props.answers[index].data.id}</h5>
+                    <h6><img alt="quiz answer result" className="result-icon" src={require("../assets/images/crossBox.svg").default} />Your answer: {this.props.answers[index].data.value}</h6>
+                    <h6>Correct answer: {this.props.answers[index].data.answer}</h6>
                 </div>
             </div>
         );
@@ -340,22 +339,27 @@ export default class Results extends React.Component {
         let resultList = [];
 
         //Adds to the resultList all the question result html.
-        for (let i = 0; i < this.answers.length; i++) {
+        for (let i = 0; i < this.props.answers.length; i++) {
             resultList.push(this._getRenderResult(i));
         }
 
         //Maps all of the elements in the resultList and returns them in a div.
         return resultList.map(result => {
             this.uniqueKey++;
+
             if (result.length === undefined) {
                 return <div key={this.uniqueKey - 1}>{result}</div>
             }
-            return <div key={this.uniqueKey - 1} >
-                <h5>Matching Question</h5>
-                {result}
-            </div>
 
-
+            return (
+                <div className="card matching-question" key={this.uniqueKey - 1} >
+                    <div className="card-header answer-card-header-correct">Correct</div>
+                    <div className="card-body">
+                        <h5>Matching Question</h5>
+                        {result}
+                    </div>
+                </div>
+            );
         });
     }
 
@@ -386,7 +390,7 @@ export default class Results extends React.Component {
         const TIME_TAKEN = this._calculateTimeTaken();
 
         //Finds the total number of seconds it took to submit.
-        const RESULT = ((TIME_TAKEN[0] * 3600) + (TIME_TAKEN[1] * 60) + (TIME_TAKEN[2])) / this.answers.length;
+        const RESULT = ((TIME_TAKEN[0] * 3600) + (TIME_TAKEN[1] * 60) + (TIME_TAKEN[2])) / this.props.answers.length;
 
         //If the result is only comprised of seconds then toFixed(2) doesn't work and needs a third digit.
         return RESULT > 0.01 ? RESULT.toFixed(2) : RESULT.toFixed(3);
@@ -397,6 +401,7 @@ export default class Results extends React.Component {
      */
     render() {
         const timeTaken = this._calculateTimeTaken();
+
         return (
             <div className="Results">
                 <div className="card card-shadow card-results">
@@ -406,11 +411,11 @@ export default class Results extends React.Component {
                         <div className="row">
                             <div className="col">
                                 <h6 className="gray-font">Your score is</h6>
-                                <h1 style={{ display: "inline-block" }}>{((this._getNumberCorrect() / this.answers.length) * 100).toFixed(0)}%</h1>
+                                <h1 style={{ display: "inline-block" }}>{((this._getNumberCorrect() / this.props.answers.length) * 100).toFixed(0)}%</h1>
                             </div>
                             <div className="col">
                                 <h6 className="gray-font">Total number correct</h6>
-                                <h1 style={{ display: "inline-block" }}>{this._getNumberCorrect()}/{this.answers.length}</h1>
+                                <h1 style={{ display: "inline-block" }}>{this._getNumberCorrect()}/{this.props.answers.length}</h1>
                             </div>
                             <div className="col">
                                 <h6 className="gray-font">Total time taken</h6>

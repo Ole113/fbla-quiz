@@ -36,12 +36,19 @@ export default class Matching extends React.Component {
      * @param {Object} event The update event.
      */
     _handleChange = (event) => {
-        //When the state variable is an array first you need to push to it then you set the state of the state array to itself as done below.
-        this.state.userAnswers.push(event.target.value);
+        const selectID = event.target.id;
+        const selectValue = event.target.value;
+
+        //Depending on what select was updated the correct index in userAnswers needs to be updated as well.
+        if(selectID === "selectOne") this.state.userAnswers[0] = selectValue;
+        else if(selectID === "selectTwo") this.state.userAnswers[1] = selectValue;
+        else if(selectID === "selectThree") this.state.userAnswers[2] = selectValue;
+        else if(selectID === "selectFour") this.state.userAnswers[3] = selectValue;
 
         //Sets the state of the class and calls the method that will send the question value to the parent class.
-        this.setState({ value: this.state.userAnswers, userAnswers: this.state.userAnswers, answer: this.state.correctAnswers, type: "matching" }, () => {
+        this.setState({ userAnswers: this.state.userAnswers, answer: this.state.correctAnswers, type: "matching" }, () => {
             this._sendQuestionValue();
+            console.log(this.state.userAnswers)
         });
     }
 
