@@ -1,5 +1,5 @@
 /*
- * Code boostraped by create-react-app
+ * Code bootstrapped by create-react-app
  * Sets up the development server when running `npm start`
  */
 

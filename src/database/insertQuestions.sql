@@ -1,3 +1,4 @@
+--All the questions that were entered into the database.
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
 VAlUES ("Are the official colors of FBLA blue and gold?", "tf", "true", "", "", "");
 
@@ -65,7 +66,7 @@ INSERT INTO questions(content, category, option_one, option_two, option_three, o
 VALUES ("Excluding the three division presidents, what is the term of office for National Board of Director members?", "multi", "Three years", "One year", "Four years", "Two years");
 
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
-VALUES ("What officer counts the votes and then records them during an election?", "multi”, “Secretary", "Vice President", "President", "Treasurer");
+VALUES ("What officer counts the votes and then records them during an election?", "multi", "Secretary", "Vice President", "President", "Treasurer");
 
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
 VALUES ("Who determines national dues?", "multi", "National Board of Directors", "Secretary", "Vice President", "President");
@@ -78,10 +79,6 @@ VALUES ("Who needs to approve a new chapter application before it is forwarded t
 
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
 VALUES ("How many administrative regions does National FBLA-PBL have?", "multi", "Five", "Two", "Seven", "Three");
-
---------------------------------------------------------
---THE ONES BELOW THIS LINE HAVE NOT YET BEEN ENTERED
---------------------------------------------------------
 
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
 VALUES ("What year did FBLA gain independent status?", "multi", "1969", "1947", "1937", "1958");
@@ -126,43 +123,28 @@ INSERT INTO questions(content, category, option_one, option_two, option_three, o
 VALUES ("What are the Five Regions of FBLA?", "multi", "Western, Mountain Plains, North Central, Southern and Eastern", "Western, Mountain Plains, North Central, Southern and Western Mountain", "Western, Mountain Plains, North Central, Southern Plains and Eastern", "Western, Mountain Plains, North Central, Southern Plains and Eastern Plains");
 
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
-VALUES ("What is FBLA's Membership year?", "multi", "August 1- July 31", "", "", "");
+VALUES ("Are there 4 FBLA districts in South Carolina?", "tf", "true", "", "", "");
 
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
-VALUES ("", "", "", "", "", "");
+VALUES ("Is a blue candle represent the chapter in its entirety during the officer installation ceremony?", "tf", "false", "", "", "");
 
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
-VALUES ("", "", "", "", "", "");
+VALUES ("Is the Director of Education for FBLA-PBL Barbara Small?", "tf", "true", "", "", "");
 
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
-VALUES ("", "", "", "", "", "");
+VALUES ("Is the national publication for FBLA and FBLA-Middle level advisors called 'Hotline'?", "tf", "true", "", "", "");
 
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
-VALUES ("", "", "", "", "", "");
+VALUES ("Does the white candle symbolize the office of the president?", "tf", "false", "", "", "");
 
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
-VALUES ("", "", "", "", "", "");
+VALUES ("Did FBLA-PBL membership first top 200,000 memebers in 1988?", "tf", "false", "", "", "");
 
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
-VALUES ("", "", "", "", "", "");
+VALUES ("Is personal development one of the five functional chapter activities?", "tf", "true", "", "", "");
 
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
-VALUES ("", "", "", "", "", "");
+VALUES ("Is American Enterprise Day observed on November 14th every year?", "tf", "false", "", "", "");
 
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
-VALUES ("", "", "", "", "", "");
-
-INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
-VALUES ("", "", "", "", "", "");
-
-INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
-VALUES ("", "", "", "", "", "");
-
-INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
-VALUES ("", "", "", "", "", "");
-
-INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
-VALUES ("", "", "", "", "", "");
-
-INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
-VALUES ("", "", "", "", "", "");
+VALUES ("Does the FBLA-PBL Board of Directors Chairman serve for one year?", "tf", "true", "", "", ""); 

@@ -40,15 +40,14 @@ export default class Matching extends React.Component {
         const selectValue = event.target.value;
 
         //Depending on what select was updated the correct index in userAnswers needs to be updated as well.
-        if(selectID === "selectOne") this.state.userAnswers[0] = selectValue;
-        else if(selectID === "selectTwo") this.state.userAnswers[1] = selectValue;
-        else if(selectID === "selectThree") this.state.userAnswers[2] = selectValue;
-        else if(selectID === "selectFour") this.state.userAnswers[3] = selectValue;
+        if (selectID === "selectOne") this.state.userAnswers[0] = selectValue;
+        else if (selectID === "selectTwo") this.state.userAnswers[1] = selectValue;
+        else if (selectID === "selectThree") this.state.userAnswers[2] = selectValue;
+        else if (selectID === "selectFour") this.state.userAnswers[3] = selectValue;
 
         //Sets the state of the class and calls the method that will send the question value to the parent class.
         this.setState({ userAnswers: this.state.userAnswers, answer: this.state.correctAnswers, type: "matching" }, () => {
             this._sendQuestionValue();
-            console.log(this.state.userAnswers)
         });
     }
 

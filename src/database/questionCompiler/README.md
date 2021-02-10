@@ -37,14 +37,13 @@ Example config.json
 ## Adding Questions to the Config File
 Adding questions to the config file goes right below the database config.
 
-**Questions have 2 options of syntax:**
- 1. If the question is phrased to have multiple solutions(that aren't true or false) `["Question title", "Question type", ["Option One", "Option Two", "Option Three", "Option Four"] ]`
- 2. If the question is phrased to have only 1 answer(true or false) `["Question Title", "tf", "Question answer(either true or false)"]`
+**Questions syntax:**
+`["Question title", "Question type", ["Option One", "Option Two", "Option Three", "Option Four"] ]`
 
 
 **Question type can be 1 of 2 values:**
  1. "multi", which can be rendered as any type of question except for a True/False question.
-  2. "tf", which is a True/False question.
+  1. "tf", which is a True/False question.
 
 **All values need to be strings.**
 ```json
@@ -55,10 +54,11 @@ Adding questions to the config file goes right below the database config.
 	"database": "questions",
 	"questions": [
 		["Question title", "multi", ["Option One", "Option Two", "Option Three", "Option Four"]],
-		["A True/False question", "tf", "The answer to the true false question"]
+		["A True/False question", "tf", "The answer to the true false question", "", "", ""]
 	]
 }
 ```
+Note: the three blank strings in the True/False questions is required. Only the first string should be filled.
 
 ## Running the Compiler
 Once the config file has the correct values for the database connection and has at least 1 question you can run the compiler which will populate the database with the questions in the config file.<br />

@@ -11,6 +11,28 @@ Either:
 1. Start the app in development mode `npm start`<br />
 2. Build the app for production `npm run build`
 
+## Documentation
+**Library's used:**<br />
+Bootstrap: https://getbootstrap.com/<br />
+Google fonts: https://fonts.google.com/<br />
+React: https://reactjs.org/<br />
+Node-cron: https://www.npmjs.com/package/cron<br />
+Express: https://www.npmjs.com/package/express<br />
+Cors: https://www.npmjs.com/package/cors<br />
+MySql: https://www.npmjs.com/package/mysql<br />
+mysqldump: https://www.npmjs.com/package/mysqldump<br />
+readline: https://www.npmjs.com/package/readline<br />
+react-toastify: https://www.npmjs.com/package/react-toastify<br />
+jQuery: https://code.jquery.com/<br />
+Material icons: https://material.io/resources/icons/?style=baseline<br />
+react-router-dom: https://www.npmjs.com/package/react-router-dom<br />
+<br />
+**Picture Attributions:**<br />
+Fbla logos: https://www.fbla-pbl.org/cmh/logos-images/<br />
+Gradient image http://www.capbl.org/conferences/nlc<br />
+Card image qa http://thinkcybis.com/story/the-national-stage/<br />
+Card image quiz https://www.cafbla.org/domain/30<br />
+
 # Injected by Create React App:
 
 ## Available Scripts

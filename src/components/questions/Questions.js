@@ -41,7 +41,7 @@ export default class Questions extends React.Component {
         fetch(this.props.apiURL)
             .then(response => response.json())
             .then(data => this.setState({ data: data }))
-            .catch(err => console.error(`An error occurred in Questions.js componentDidMount(). ${err}`));
+            .catch(err => this._renderError("An error when fetching the questions from the database.", err));
     }
 
     /**
@@ -149,6 +149,7 @@ export default class Questions extends React.Component {
             }
 
             const RANDOM_ANSWERS = randomizeOptions();
+            console.log(QUESTION_ANSWER);
 
             return {
                 content: question.content,
@@ -210,7 +211,7 @@ export default class Questions extends React.Component {
     _getQuestionTag(id, res) {
         //Sets the value of question info using conditionals.
         let questionInfo = this.props.type === "True/False" ? this._getQuestionInfo(res, "tf") : this.props.type === "Matching" ? this._getQuestionInfo(res, "matching") : this._getQuestionInfo(res, "multi");
-
+        console.log(questionInfo.answer)
         if (this.props.type === "Random") {
             /*
             If the question type is random then _getQuestionInfo doesn't know what information it should return because question types like TF or Matching require different info than the other question types of multi.
@@ -281,10 +282,11 @@ export default class Questions extends React.Component {
                 <br />
                 <p>
                     If this message persists then an error has occurred. Most likely the database server is not online.
-                        <br />To turn it on navigate to the database directory with <code>cd src/database</code> and run the command <code>node server.js</code>.
+                    <br />To turn it on navigate to the database directory with <code>cd src/database</code> and run the command <code>node server.js</code>.
                 </p>
             </div>
         }
+
         //To check if the number of questions requested to be rendered is more than in the database a test variable is used. If the variable throws an error it is caught and handled.
         try { let testVariable = this.state.data[this.props.number].category; }
         catch (err) {
