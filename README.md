@@ -1,6 +1,6 @@
 <img src = "/src/assets/images/fblaLogo.png" width = "100px" >
 <h1 style = "display: inline" >FBLA Quiz 2021</h1><br /><br />
-Created by Alex Elbel for the FBLA Coding and Programming 2020-2021 Competition.
+Created by Alex for the FBLA Coding and Programming 2020-2021 Competition.
 <br /><br />
 This project was bootstrapped with Create React App.
 
