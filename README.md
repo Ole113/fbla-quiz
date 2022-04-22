@@ -5,12 +5,18 @@ Created by Alex for the FBLA Coding and Programming 2020-2021 Competition.
 This project was bootstrapped with Create React App.
 
 ## Building
-Clone the repo and then install the node modules with `npm install`<br />
-Start the backend server `nodemon server.js`<br />
-Either:
-1. Start the app in development mode `npm start`<br />
-2. Build the app for production `npm run build`
+1. Install MySQL<br />
+2. Create a database called *questions*<br />
+3. Create a table in the *questions* database. Use the exact table in `src/database/questionSchema.sql`<br />
+4. Add the questions in `src/database/insertQuestions.sql`<br />
+5. In `src/database/questionCompiler/config.js` change the host, user, password, and database fields to have the correct information. You should only need to change the password field to your you set up MySQL with.<br />
+6. Install the node modules with `npm install`<br />
+7. Start the backend server `nodemon server.js` If you run into the error `Client does not support authentication protocol requested by server; consider upgrading MySQL client` refer to https://stackoverflow.com/a/50131831<br />
+8. Either:
+    Start the app in development mode `npm start` or <br />
+    Build the app for production `npm run build`
 
+Note: The questions API uses port 5000. If you are using a Mac make sure that AirPlay Receiver is unticked in System Preferences > Sharing > AirPlay Reveiver as it uses the same port.
 ## Documentation
 **Library's used:**<br />
 Bootstrap: https://getbootstrap.com/<br />
