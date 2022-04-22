@@ -1,4 +1,3 @@
---All the questions that were entered into the database.
 INSERT INTO questions(content, category, option_one, option_two, option_three, option_four)
 VAlUES ("Are the official colors of FBLA blue and gold?", "tf", "true", "", "", "");
 

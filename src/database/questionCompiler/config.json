@@ -1,7 +1,7 @@
 {
 	"host": "localhost",
 	"user": "root",
-	"password": "aelb8362580",
+	"password": "CHANGE ME TO YOUR PASSWORD",
 	"database": "questions",
 	"dumpFile": "backup/questionsBackup.sql",
 	"questions": [

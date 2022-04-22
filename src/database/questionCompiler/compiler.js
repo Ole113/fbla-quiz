@@ -8,7 +8,7 @@ const RL = READLINE.createInterface({
 	output: process.stdout
 });
 
-RL.question("Example config file name: \"config.json\". \nType \"exit\" to quit. \nLeave the input blank for the default file \"default.json\".\n\n  Config File: ", file => {
+RL.question("Example config file name: \"config.json\". \nType \"exit\" to quit. \nLeave the input blank for the default file \"config.json\".\n\n  Config File: ", file => {
 	if (file !== "") CONFIG_FILE_NAME = file;
 	if (file == "exit") RL.close();
 	const CONFIG_FILE = require(`./${CONFIG_FILE_NAME}`);

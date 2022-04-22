@@ -1,4 +1,3 @@
--- The schema for the questions table.
 CREATE TABLE questions (
     id           INT PRIMARY KEY AUTO_INCREMENT,
     content      TEXT NOT NULL,
